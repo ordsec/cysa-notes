@@ -7,12 +7,14 @@
 # Defense in depth and its levels
 
 - Designing our physical and cyber security to have all sorts of layers working together
+- Minimizing the number of SPF's
 - If one layer is bypassed, the next one might succeed in protecting us from the attacker
 	- Example: multiple firewalls at different levels
 - **Vendor diversity**: if one vendor's solution gets exploited, it won't affect others
 - **Device diversity**: when possible and feasible, look for different solutions that can help achieve one specific goal
 - Assume compromise while designing your security solutions
 - "If this particular control gets bypassed, what's our next line of defense?"
+- Layered security design, from the 
 
 ### Personnel
 
