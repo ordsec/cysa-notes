@@ -12,7 +12,7 @@
 
 - What **we** know vs what **others** know
 
-![[johari-window.png]]
+![johari-window.png](img/johari-window.png)
 
 - Known knowns - we know the threat, we understand it, we know what to do about it
 - Known unknowns - we know about the threat, but we don't understand it completely, and therefore we don't have a clear course of action
