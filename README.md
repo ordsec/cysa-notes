@@ -4,7 +4,7 @@ Welcome!
 
 These are my notes that I've been taking while watching the [Certify Breakfast CySA+ video course](https://www.youtube.com/playlist?list=PLMYSjEaGLw_vGxGsAIUgmkbEm52QR02tx) on YouTube.
 
-I highly recomment watching that course if you're preparing for the CS0-002 exam - the quality of content and explanation is terrific.
+I highly recommend watching that course if you're preparing for the CS0-002 exam - the quality of content and explanation is absolutely top-notch.
 
 The names of files match video titles from the course, but numbers don't match - hopefully this isn't much of a problem.
 
