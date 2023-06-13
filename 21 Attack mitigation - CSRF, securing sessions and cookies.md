@@ -90,7 +90,7 @@
 	- It can be done as a POST request (see below), so doing it via query strings isn't even necessary (although possible if the web app is silly enough to allow it)
 	- And chances are that it will go through if the web app puts all its trust into the session the user has
 
-![[csrf-example-1.png]]
+![csrf-example-1.png](img/csrf-example-1.png)
 - The last line in that code is submitting the form that was created by the attacker to the resource - it will be done the next time the victim visits the web app
 - This attack can be used for a variety of applications
 - Mitigation:

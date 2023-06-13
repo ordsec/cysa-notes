@@ -7,7 +7,7 @@
 - Those boundaries are minimum and maximum values the number can be
 - What happens if you store the maximum value and then increment it by 1?
 
-![[8-bit-integer-binary.png]]
+![8-bit-integer-binary.png](img/8-bit-integer-binary.png)
 
 - This is the smallest amount of memory that can be allocated: 1 byte (or 8 bits)
 - To convert any position from binary to decimal, raise 2 to the power of the corresponding position

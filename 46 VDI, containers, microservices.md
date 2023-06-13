@@ -5,7 +5,7 @@
 
 - This should look familiar...
 
-![[virtualization-1.png]]
+![virtualization-1.png](img/virtualization-1.png)
 
 - **Type 2 hypervisor**: a dedicated piece of software that runs on top of an OS
 - **Type 1 hypervisor**: a dedicated piece of software that runs on bare metal, without an underlying OS
@@ -54,7 +54,7 @@
 
 - Aka user space virtualization
 
-![[containers-1.png]]
+![containers-1.png](img/containers-1.png)
 
 - No need for a hypervisor, no need to spin up entire OS's as a VM
 - Isolated environments dedicated to running a single application, built on top of a single operating system

@@ -14,7 +14,7 @@
 - Agile: release features ASAP, focus on functionality and performance, bugs can be identified in production. Reacting to and patching these bugs happens as quickly as possible, and the overall approach to **integration** is **continuous** and **delivery** is fast - and that's CI/CD for ya!
 - It goes in a continuous loop that involves all four development stages from above, and each cycle is called an iteration
 
-![[ci-cd-1.png]]
+![ci-cd-1.png](img/ci-cd-1.png)
 
 - CI/CD tools:
 	- [Jenkins](https://www.jenkins.io)

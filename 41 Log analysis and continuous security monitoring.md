@@ -53,7 +53,7 @@
 		- 7 is debug
 	- Message: what happened, using words
 
-![[syslog-1.png]]
+![syslog-1.png](img/syslog-1.png)
 
 ### Firewall logs
 

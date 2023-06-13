@@ -53,7 +53,7 @@
 	- We must begin data acquisition with what's most volatile, i.e. most likely to be lost
 	- This isn't simple
 
-![[order-of-volatility-1.png]]
+![order-of-volatility-1.png](img/order-of-volatility-1.png)
 
 - The Windows Registry mostly exists on the disk, but parts of it are stored in memory
 - Collect free space as well - it may not be free after all since deleting files from a drive really only means severing pointers that once pointed to those files

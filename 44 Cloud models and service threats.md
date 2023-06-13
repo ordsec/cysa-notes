@@ -56,7 +56,7 @@
 
 - What the CSP manages vs what you manage
 
-![[cloud-service-models-2.png]]
+![cloud-service-models-2.png](img/cloud-service-models-2.png)
 
 - IaaS examples:
 	- AWS EC2

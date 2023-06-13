@@ -37,7 +37,7 @@
 
 ### Centralized management
 
-![[uem-schematic-1.png]]
+![uem-schematic-1.png](img/uem-schematic-1.png)
 
 - There are lots of solutions and related acronyms, which can be confusing since a lot of them are not tied to specific technologies 
 - A lot of these things are concepts or sets of policies (such as MDM, which encompasses a lot of different ideas of methodologies for how to manage mobile devices in a corporate environment)

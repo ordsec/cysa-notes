@@ -70,7 +70,7 @@
 - Centralized decision making rather than local on each networking device, and the "command center" (aka the **control plane**) is separate from the rest of the infrastructure
 	- Networking devices simply follow commands issued to them and focus on their primary task: moving packets from point A to point B
 
-![[sdn-1.png]]
+![sdn-1.png](img/sdn-1.png)
 
 - Control plane aka SDN controller: where policies and decisions are made, the brain of the SDN operation
 - Data plane: where individual physical devices exist. They don't need any intelligence anymore now that the control plane takes care of it; they simply accept and follow commands and move traffic
@@ -94,7 +94,7 @@
 - Communication: physical devices <--> SDN controller <--> management application
 	- All of this is done via API's
 
-![[sdn-api-1.png]]
+![sdn-api-1.png](img/sdn-api-1.png)
 
 ---
 

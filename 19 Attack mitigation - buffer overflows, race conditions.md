@@ -6,7 +6,7 @@
 
 ### How memory works
 
-![[program-memory-1.png]]
+![program-memory-1.png](img/program-memory-1.png)
 
 - Memory is a linear space - every position has a specific address
 	- In this example, the range is between `0x0000` and `0xFFFF`

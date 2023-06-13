@@ -51,7 +51,7 @@ This is a way of getting around static IP/domain blacklists through generating c
 - Resource information via a query string (after the `?`)
 - Sometimes a URL can contain a `#`, which points a browser to a specific location on the page. These can also be abused
 
-![[url-components-1.png]]
+![url-components-1.png](img/url-components-1.png)
 
 - In the example above, in addition to all the good things, we have an attempt at RFI from a malicious domain using an encoded path
 

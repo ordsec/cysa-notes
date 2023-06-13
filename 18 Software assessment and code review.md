@@ -168,7 +168,7 @@
 
 **Dynamic Application Security Testing**
 
-![[sast-dast-explained.png]]
+![sast-dast-explained.png](img/sast-dast-explained.png)
 
 ### Exam
 

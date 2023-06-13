@@ -33,7 +33,7 @@
 	- Some management traffic (ICMP, STP) is also allowed, but that's it
 - [Some great info about 802.1X and its process](https://www.securew2.com/blog/complete-guide-to-ios-802-1x)
 
-![[802.1x-authentication-1.png]]
+![802.1x-authentication-1.png](img/802.1x-authentication-1.png)
 
 0. HTTP (or any other) traffic isn't accepted by the authenticator just yet - the supplicant must authenticate first
 1. Supplicant (aka user) sends valid credentials to the authenticator using EAPoL

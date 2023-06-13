@@ -57,14 +57,14 @@
 - Asking people which risk factors should be taken into consideration and how high a specific risk factor should be (low/medium/high, or some other type of a ranking system)
 - As a result, a "traffic lights" report is created, such as this:
 
-![[qualitative-risk-matrix-1.png]]
+![qualitative-risk-matrix-1.png](img/qualitative-risk-matrix-1.png)
 
 - Easier to understand, no need to assign precise values - but it's still guesswork!
 - **Semi-quantitative** assessments are also possible, they're kind of a middle ground for when you need to guesstimate dollar values: how much is our reputation worth, how much is our employees' morale worth, and so on. 
 
 ### Business impact analysis
 
-![[bia-1.png]]
+![bia-1.png](img/bia-1.png)
 
 - BIA is the process of estimating the losses for a specific threat scenario
 - What's the business impact of an adverse event?

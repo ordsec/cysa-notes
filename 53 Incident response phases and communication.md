@@ -3,7 +3,7 @@
 
 ### IR phases
 
-![[incident-response-process-1.png]]
+![incident-response-process-1.png](img/incident-response-process-1.png)
 
 - **Preparation**
 	- "What if we had an incident?"
@@ -58,7 +58,7 @@
 - Respond, don't react
 - Deep breaths, cool head, follow the procedure, eyes everywhere
 
-![[ooda-loop.png]]
+![ooda-loop.png](img/ooda-loop.png)
 
 - Inspired by the military
 - Constant re-evaluation of our decisions

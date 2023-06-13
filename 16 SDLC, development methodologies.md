@@ -51,7 +51,7 @@
 - We need some **structure**
 - And, as security professionals, we're concerned with cybersecurity at every step of the way
 
-![[sdlc-2.png]]
+![sdlc-2.png](img/sdlc-2.png)
 
 - Security is not something that "just happens" to be implemented - it's very intentional, and it needs a very clear direction/overview/process
 - There are documented practices for secure development:
@@ -192,7 +192,7 @@
 
 ### Waterfall
 
-![[waterfall-methodology-1.png]]
+![waterfall-methodology-1.png](img/waterfall-methodology-1.png)
 
 - We have a plan
 - It's a very strict plan!
@@ -221,7 +221,7 @@
 
 ### Agile
 
-![[agile-development-methodology-2.jpg]]
+![agile-development-methodology-2.jpg](img/agile-development-methodology-2.jpg)
 
 - Not really a model per se, more like a style
 - Focused on values and principles
@@ -247,7 +247,7 @@
 
 ### Iterative
 
-![[iterative-model-1.png]]
+![iterative-model-1.png](img/iterative-model-1.png)
 
 - Doesn't generally focus on the big picture
 - Instead it focuses on a specific feature or part of the app
@@ -265,7 +265,7 @@
 
 ### Spiral
 
-![[spiral-model-1.png]]
+![spiral-model-1.png](img/spiral-model-1.png)
 
 - Combines waterfall and iterative
 - Relies on incremental releases of software

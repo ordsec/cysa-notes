@@ -17,7 +17,7 @@
 - **Exam**: be able to describe each phase!
 - [Great visual representation and lots more info](https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html)
 
-![[cyber-kill-chain-LM.png]]
+![cyber-kill-chain-LM.png](img/cyber-kill-chain-LM.png)
 
 - **Reconnaisance**: where the attacker gets to know you (a bit too well). What are your weaknesses and what are your defenses like? Usually done in a stealthy manner.
 	- Based on all this, attacker decides how to ruin your day
@@ -124,7 +124,7 @@
 - Which is why the Diamond Model is used to describe...
 - Example (by ThreatConnect): the destruction of the Death Star:
 
-![[death-star-diamond-model.png]]
+![death-star-diamond-model.png](img/death-star-diamond-model.png)
 
 ### Activity threads
 
@@ -136,7 +136,7 @@
 	- for multiple victims
 - Really good for describing pivoting!
 
-![[diamond-model-threads.png]]
+![diamond-model-threads.png](diamond-model-threads.png)
 
 - Hard to follow? That's because this model was designed for automatic processing by software security solutions designed for threat modeling
 	- E.g. ThreatConnect for Splunk

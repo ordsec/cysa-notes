@@ -58,12 +58,12 @@
 	- `o` - others / the rest of the world
 - Permissions are described the following way (use `ls -l` in terminal to see it):
 
-![[linux-file-permissions.webp]]
+![linux-file-permissions.webp](img/linux-file-permissions.webp)
 
 - Each entry will be prefixed with `-` or `d` for "directory"
 - And this is how Linux permissions work as numbers:
 
-![[linux-permissions-numbers-1.png]]
+![linux-permissions-numbers-1.png](img/linux-permissions-numbers-1.png)
 
 - Use `chmod` to change permissions using numbers from above or the `[u|g|o] [+|-] [r|w|x]` structure, such as `chmod g-x /path/to/file.sh` - now the group can't execute it
 - Use `chown` to change the owner of the file
@@ -262,7 +262,7 @@ Know what ACL's and ACE's are, be very familiar with the different types of file
 - **eDiscovery**
 	- The process in which electronic data is located and secured with the intent of using it as evidence later on in a legal case, in the court of law
 
-![[e-discovery-1.png]]
+![e-discovery-1.png](img/e-discovery-1.png)
 
 - Retention is also covered by policies and procedures, which depend on the data's purpose
 	- A formalization of how much data should be kept, how, where, how long, what you have to do when it's time to destroy the data, etc.

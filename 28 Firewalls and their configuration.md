@@ -52,10 +52,10 @@
 - There are two types of designs for this setup:
 
 1. 
-![[dmz-design-2.png]]
+![dmz-design-2.png](img/dmz-design-2.png)
 
 2. 
-![[dmz-design-1.gif]]
+![dmz-design-1.gif](dmz-design-1.gif)
 
 - The first one uses one FW through which the traffic to the DMZ and the intranet are routed
 - The second one puts a firewall between the internet and the DMZ and another one between the DMZ and the intranet
