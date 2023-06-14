@@ -8,13 +8,16 @@
 
 - Designing our physical and cyber security to have all sorts of layers working together
 - Minimizing the number of SPF's
+- Addressing every aspect of the CIA
 - If one layer is bypassed, the next one might succeed in protecting us from the attacker
 	- Example: multiple firewalls at different levels
 - **Vendor diversity**: if one vendor's solution gets exploited, it won't affect others
 - **Device diversity**: when possible and feasible, look for different solutions that can help achieve one specific goal
 - Assume compromise while designing your security solutions
 - "If this particular control gets bypassed, what's our next line of defense?"
-- Layered security design, from the 
+- Security at every layer:
+
+![layered-security-1.png](img/layered-security-1.png)
 
 ### Personnel
 
@@ -113,6 +116,37 @@
 		- [Microsoft Endpoint Confugiration Manager](https://learn.microsoft.com/en-us/mem/configmgr/core/understand/introduction)
 		- [Solarwinds Network Configuration Manager](https://www.solarwinds.com/network-configuration-manager)
 
+---
+
 ### Exam
 
 Understand the importance of configuration baselines - how are they important for the security posture, how do they help detect anomalies/attacks before anything bad happens? Be able to discuss the importance of configuration hardening, with examples of steps taken in this process, particularly regarding desktops and servers.
+
+---
+
+# From the Sybex book
+
+### Zero trust
+
+- **Exam**: not on the objectives list, but it might come up, so be familiar
+- No trust by default
+- Much more strict than the "trust but verify" model
+- Each action requested and allowed must be verified and validated before it can occur
+- More than a strong perimeter - deeply layered security model where devices, apps, and user accounts are part of the security design
+- Addresses the increasingly blurry concept of perimeters
+- Continuous monitoring, management, assessment, and maintenance in a complex environment
+
+### Segmentation - all types
+
+- Aka separation
+- **Physical segmentation**: running systems on separate infrastructure or networks
+- **System isolation**: ensuring that infrastructure is separated, up to using an air gap
+	- Air gapping is only as effective as the humans responsible for maintaining the security
+- **Virtual segmentation**: using virtualization capabilities to separate functions to virtual machines and containers, can involve separate physical hosts for VM's as well
+- **Network segmentation**: common element of network design that uses VLAN's and subnets to split a network up. 
+	- Advantages:
+		- Reducing the attack surface - fewer systems exposed to attackers at once
+		- Limiting the scope of regulatory compliance - if everything that has to be compliant is separated from the rest of the systems (and then split up within that separated unit for better organization and security), then the rest doesn't need to be audited
+		- Helps increase availability by limiting the impact in case of an attack
+		- Increases network efficiency, reduces congestion by using network segments with fewer endpoints in each
+- See 25 for secure network design and segmentation, DMZ's, jumpboxes and all that fun stuff

@@ -20,8 +20,13 @@
 	- Controlling access to the premises
 	- Don't forget about everything that's offsite: your employees and their devices which may hold confidential data
 - We also need **logical controls**, built on top of physical:
-	- Authentication, NAC, 802.1X - ensuring that only allowed devices/users can connect to the network
 	- Assumes that devices in use have physical access to the network, so this is at the stage where we have to decide whether to allow or deny logical access
+	- Firewalls controlling traffic flow between network segments or systems
+	- IDPS solutions
+	- Content filtering and caching (proxies)
+	- Network scanners to gather information about connected devices
+	- Authentication, NAC, 802.1X - ensuring that only allowed devices/users can connect to the network, assessing the security state of devices that are allowed
+	- UTM
 
 ---
 
@@ -96,6 +101,16 @@
 
 ![sdn-api-1.png](img/sdn-api-1.png)
 
+##### From Sybex
+- Control planes can be in the form of an API
+	- Allows for network monitoring and management from disparate devices
+	- Can be facilitated through the [OpenFlow protocol](https://www.section.io/engineering-education/openflow-sdn/)
+- API security and secure coding concepts apply to SDN
+- **SDN-WAN** (software-defined wide-area networks): SDN-driven service model where providers employ SDN to provide network services
+	- Blended infrastructures combining a variety of of technologies behind the scenes to deliver network connectivity to customers
+	- Often provide encryption
+	- Introduce some risks (SDN orchestration platform vulns, multivendor network related risks, availability and integrity risks as traffic flows through multiple paths)
+
 ---
 
 ### VPC: Virtual Private Cloud
@@ -128,7 +143,7 @@
 
 ### VPN: Virtual Private Network
 
-- A component of network design
+- A component of secure network design
 - Secure data tunnel across a public infrastructure
 - "Is this line secure?"
 - A way to remotely access some resources as if you are in the same network
@@ -142,6 +157,10 @@
 	- Takes care of the isolation part, but not security
 - **Normally** it's a protected tunnel through which data is sent
 - Nobody else can read this data
+- Use a VPN as part of a network design as such:
+
+![vpn-in-network-design.png](img/vpn-in-network-design.png)
+
 - Keep in mind that opening yourself up to VPN connection means increasing your attack surface
 - A VPN endpoint accessible from the internet means it's accessible for attackers
 - Make sure it's protected

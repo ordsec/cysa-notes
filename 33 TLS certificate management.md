@@ -48,7 +48,7 @@
 - Managing self-signed certs
 	- Very convenient, but should only ever be used internally - never in a production environment
 	- Be careful when accepting and installing captive portal certs - they are often self-signed, and they give the owner permission to inspect your traffic. Anybody can create a captive portal
-- Must revoke untrusted certs ASAP
+- Must revoke untrusted certs ASAP, make sure systems abide by cert revocation policies
 - Cert status can be checked:
 	- By looking at the CRL (should be periodically downloaded and checked)
 		- But this isn't a great method because various delays can occur
@@ -59,6 +59,10 @@
 - Utilities for cert management
 	- `openssl` on Linux
 	- `certutil` on Windows
+
+##### From Sybex: cert management
+- Keep all related secrets such as private keys very secure
+- Come up with a cert-specific IR plan in case secrets get compromised: who to contact, how to replace secrets ASAP
 
 ### SSL & TLS
 

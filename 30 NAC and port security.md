@@ -1,6 +1,6 @@
 - You do lock your door when you leave your house, right?
 - NAC is the same concept - except for a network
-- It's a brought topic, with many vendors providing many ways of implementing it
+- It's a broad topic, with many vendors providing many ways of implementing it
 - Sometimes referred to as NAP (Network Access Prevention) or **port security**, which was coined by Cisco and is used for their switches
 
 ### Physical security
@@ -15,7 +15,8 @@
 
 ### Technical security
 
-- NAC is also about controls you can apply logically:
+- NAC is also about controls you can apply logically
+- Pre-admission and post-admission access control (checking systems before or after connecting to network)
 - Port security, **MAC filtering**: which MAC addresses are allowed to send traffic on each switch port?
 	- Simple, but not highly secure as MAC addresses can be spoofed pretty much by anyone; there's also a lot of administrative overhead here
 - NAC / NAP / **802.1X** / **port-based authentication**

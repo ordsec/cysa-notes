@@ -176,6 +176,9 @@ Know the different types of cloud infrastructures (public/private/hybrid) and wh
 - These functions are discrete units of code that are easily scaled to millions or even billions of executions per day
 - Amazon Lambda offers support for Python, Node, C#, Ruby, Go, and PowerShell, runtime API can be used for other languages
 - Abstract the infrastructure from developers completely, billing is for computational power and memory consumed during function executions (so you better write them well)
+- FaaS security:
+	- Address the functions like any other code - same type of controls as for software development
+	- Additionally, controls that apply to cloud computing also apply here: access control and permissions, monitoring, resource management
 
 ### Cloud security
 
@@ -189,6 +192,13 @@ Know the different types of cloud infrastructures (public/private/hybrid) and wh
 - SOC integration
 	- We have to ensure that cloud providers offer sufficient visibility by allowing us to view as many logs as possible and letting us monitor things
 	- The SOC must have the ability to access logs through existing security tools
+- SaaS / PaaS: security is primarily tackled through contractual obligations, also IAM
+- IaaS: traditional security concerns around OS configuration, management, patching; secure installation of services and apps; least function
+	- CSP's offer additional security-oriented services that can replace or supplement tools we might use on prem
+	- Audit and assessment results can be provided upon request, often under an NDA
+- VPC: typically exists on a private subnet, may have additional security for intersystem communications
+- In general, when choosing cloud vs on prem, review options for each environment depending on your needs and what some relevant threats are
+- Third-party security audits: SSAE-16 Type 1 and 2
 
 ### DevOps approach
 

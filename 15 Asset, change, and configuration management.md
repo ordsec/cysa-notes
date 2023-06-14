@@ -6,16 +6,17 @@
 ### Asset tagging
 
 - Lots of devices to keep track of, plus what's leased from other vendors - it must stay organized, or it's a total mess
-	- Assigning a unique identifier (number, QR code, barcode, RFID tag), ideally reflected in a physical tag that's attached to the device 
-	- If physical security is a concern, make sure tags are tamper-proof
-	- Use dedicated software (not Excel) to keep a record of everything
-	- We need this for
-		- Inventory and security - what devices are we exposing to the internet or to the physical world when they're taken home by an employee?
-		- Keeping track of who the device belongs to if other than our org
-		- Warranty and service - who you gonna call?
-		- Daily operations
-	- Software licenses should all be on record as well - they're paid assets
-	- Generate management/inventory reports
+- Assigning a unique identifier (number, QR code, barcode, RFID tag), ideally reflected in a physical tag that's attached to the device 
+- If physical security is a concern, make sure tags are tamper-proof
+- Use dedicated software (not Excel) to keep a record of everything
+- We need this for
+	- Inventory and security - what devices are we exposing to the internet or to the physical world when they're taken home by an employee?
+	- Discouraging theft
+	- Keeping track of who the device belongs to if other than our org
+	- Warranty and service - who you gonna call?
+	- Daily operations
+- Software licenses should all be on record as well - they're paid assets
+- Generate management/inventory reports
 
 ### Change management
 

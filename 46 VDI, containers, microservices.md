@@ -74,7 +74,9 @@
 - Security:
 	- Less secure out of the box than a VM - quite permissive
 	- Some additional precautions need to be taken to keep containers secure
-	- Rememnber that the container engine runs on top of a Windows/Linux OS - which can itself have a lot of weaknesses, especially if poorly managed
+		- Sign container images
+		- Monitor and patch containers
+		- Remember that the container engine runs on top of a Windows/Linux OS - which can itself have a lot of weaknesses, especially if poorly managed
 		- An OS is definitely less secure than a piece of hypervisor software
 
 ### Microservices

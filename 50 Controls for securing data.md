@@ -45,6 +45,7 @@
 	- `D` - delete
 	- It can list all the possible permission combinations as well if you run `icacls` by itself
 	- Inheritance also described, for instance `(I)` stands for "permission inherited from parent container" (i.e. parent folder)
+- Use the `attrib` command to change a file's read/write attribute or set the archive attribute
 
 ##### Linux
 - Three basic permissions, three special permissions
@@ -223,7 +224,7 @@ Know what ACL's and ACE's are, be very familiar with the different types of file
 	- **SOX**: Sarbanes-Oxley Act
 		- Requirements for storing documents about a company's finances and business operations
 		- Does not apply to companies with a market cap of <$75,000,000
-	- **PCI DSS**: Payment Card Industry Data Security Standard
+	- **[PCI DSS](https://www.csoonline.com/article/3566072/pci-dss-explained-requirements-fines-and-steps-to-compliance.html)**: Payment Card Industry Data Security Standard
 		- A set of security controls to ensure proper handling of people's credit card data and secure credit card processing
 		- Focuses on the what, not on the how, so plenty of freedom there
 		- Requires vulnerability scans on a regular basis

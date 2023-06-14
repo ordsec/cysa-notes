@@ -12,4 +12,6 @@ Additionally, I have been going through the [Wiley/Sybex CySA+ study guide](http
 
 Please note that the CS0-002 version of the exam is being retired in December 2023, and the CS0-003 version is getting a major update. You can refer to the [CS0-003 exam objectives](https://partners.comptia.org/docs/default-source/resources/comptia-cysa-cs0-003-exam-objectives-2-0.pdf) for further details. There are some structural changes. Updated study guides from Wiley should be available in July 2023.
 
+There's likely some repetition insofar as one concept may be explained in more than one note. I don't see it as a problem as we like redundancy! But I'm also trying to keep things as organized thematically as possible.
+
 That's all for now - enjoy, and I apologize in advance for any typos :)

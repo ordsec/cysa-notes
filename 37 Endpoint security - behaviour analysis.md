@@ -34,6 +34,7 @@
 
 ##### More advanced solutions
 - **EDR**: Endpoint Detection and Response
+	- Continuous monitoring and response to advanced threats
 	- Identifying malicious behaviour based on ML rather than signatures
 	- Looking for endpoint IOC's or suspicious behaviour, detecting anomalies
 	- Lots of vendors developing these solutions
@@ -44,6 +45,7 @@
 		- Processes with no attached information or metadata
 	- Behaviour info can be correlated between a larger set of hosts
 		- E.g. an unknown process on one host that then pops up on another dozen hosts - even if there's no signature, this is worm-like behaviour and it needs to be looked into
+	- Can handle ransomware, malware, data exfiltration
 - **UEBA**: User and Entity Behaviour Analysis
 	- CompTIA really needs you to know this one
 	- What do users do and how? When? What are the usual actions and what stands out?
@@ -94,3 +96,22 @@
 ### Exam
 
 Compare and contrast signature and behaviour analysis, know solutions for each, especially concepts such as HIDS/HIPS, EPP, EDR, and UEBA. Know how manual investigation can be performed and what tools are used. Be able to identify what info we should be looking for from a given scenario.
+
+---
+
+# From the Sybex book
+
+### Layered host security
+
+- Same layered approach as for larger systems
+	- Strong passwords and associated policies
+	- Host-based firewalls
+	- DLP
+	- Whitelisting/blacklisting
+	- Antimalware, antivirus solutions
+	- Patch management, vuln assessment
+	- System hardening - see 12
+	- Encryption either for files/folders or FDE
+	- File integrity monitoring
+	- Logging
+- 
