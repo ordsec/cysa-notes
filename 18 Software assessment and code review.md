@@ -84,7 +84,6 @@
 	- Very powerful, shows a breakdown of functions code performs, graphic representations of execution branches, etc.
 
 ##### Reverse-engineering malware
-
 - Use a **sandbox** (isolated environment where malware can't "detonate" and do any harm)
 - Examine behaviour as we let malware do its thing
 - But bad guys won't just let you take a look at their code and figure out how it achieves its task
@@ -170,6 +169,54 @@
 
 ![sast-dast-explained.png](img/sast-dast-explained.png)
 
+---
+
 ### Exam
 
-Just know all of the above, pretty much. Be able to explain the ideas behind static/dynamic testing, fuzzing, formal method, UAT, regression testing, reverse engineering, vuln assessment. SAST and DAST are on Sec+, may be on this one also.
+Just know all of the above, pretty much. Be able to explain the ideas behind static/dynamic testing, fuzzing, formal method, UAT, regression testing, reverse engineering, vuln assessment. SAST and DAST are on Sec+, may be on this one also. The objectives list all of the following terms: 
+- Improper error handling
+- Dereferencing
+- Insecure object references
+- Race conditions
+- Broken authentication
+- Sensitive data exposure
+- Insecure components
+- Insufficient logging and monitoring
+- Weak or default configurations
+- Use of insecure functions, in particular `strcpy`
+
+---
+
+# From the Sybex book
+
+### Software flaws from the list above
+
+- (Some of this may repeat what's earlier in this file)
+- **Improper error handling**
+	- Or lack of error handling - when an app just crashes instead of failing gracefully
+	- Error messages giving up too much info
+	- In general, a crash can give an attacker some info even if no further data is disclosed
+- **Dereferencing**
+	- See 19
+- **Insecure object references**
+	- When an app discloses information about internal objects
+	- Attackers can see how an object is identified and stored on the back end
+	- Then they may be able to find out about other objects
+- **Race conditions**
+	- See 19
+- **Broken authentication**
+	- Allowing users to view restricted areas of an app without authenticating or proper authorization
+- **Sensitive data exposure**
+	- More of an effect rather than a cause
+	- Exposing sensitive data as a result of various flaws in the app
+- **Insecure components**
+	- Vulnerable modules/libraries used by an app
+	- Audit all of your dependencies!
+- **Insufficient logging/monitoring**
+	- Results in being unable to conduct an investigation when something goes wrong
+	- We have to determine what should be logged and monitored, and implement that from the get-go (should probably be decided in the planning phase of SDLC)
+- **Weak or default configs**
+	- Apps/services improperly set up, default configurations used
+	- Default passwords for a DB connection for instance
+- **Use of insecure functions, `strcpy`**
+	- See 19

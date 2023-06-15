@@ -34,6 +34,13 @@
 - Use a whitelist approach - implicit block
 - Validate requests, validate everything in the address bar (avoiding IDOR, broken access control, SQLi, traversal, etc.), think of all ways nefarious things can be encoded (URL encoding, base64, null bytes, etc.)
 - For web apps: keep the entire OWASP Top 10 in mind at every step of the way because a lot of it has to do with input validation
+- Use **secure coding policies** as a foundation for secure development practices and standards
+
+### Risk assessment
+
+- Understanding what risks the application faces, how to prioritize remediation of those issues
+- Continuous assessment is recommended at every stage of SDLC
+- Regularly scheduled testing
 
 ### Output encoding
 
@@ -218,7 +225,7 @@
 	- Makes apps tamper-proof
 - Certificates can be attached to code so that the OS can validate the app's origin
 
-### Memory managemnet
+### Memory management
 
 - Check how much memory you're allocating for inputs/outputs
 - Don't allow any input that's larger than how much memory is allocated for it
@@ -255,6 +262,11 @@
 		- Files accessed
 		- Procedures executed
 		- Can users do stuff they're not allowed to do?
+- **Ensuring availability**
+	- Load and stress tests
+	- Designing the infrastructure to be scalable and elastic
+- MFA
+- [OWASP Proactive Controls](https://owasp.org/www-project-proactive-controls/) is a good read
 
 ### Bottom line
 
@@ -262,10 +274,14 @@
 - But we can do a lot to protect our imperfect code
 - Humans make mistakes - we help defend against what these mistakes can cause
 
+---
+
 ### Exam
 
 Be able to discuss:
 - Input validation
+- Risk assessment
+- WAF's (see 20 and 41)
 - Output encoding
 - Communication security
 - Session management

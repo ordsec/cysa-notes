@@ -36,6 +36,13 @@
 - This especially pertains to software development - security is important at every step of the way
 - Protecting DevOps environments with their cool automation tools and lightning-fast development speed
 - Security at the development and deployment stages, but also security solutions that play best with automation and scripting and generally benefit from the devs' expertise when it comes to detection and alerting
+- What security practitioners do:
+	- Threat analysis
+	- Communications, planning, testing, providing feedback
+	- Ongoing improvement and awareness responsibilities
+	- Strong understanding of the org's risk tolerance
+	- Awareness of what the rest of the DevSecOps team is doing
+	- Provide automated testing and integrated security tooling such as scanning, updates, configuration management
 
 ### IaC
 

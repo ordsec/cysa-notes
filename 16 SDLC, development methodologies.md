@@ -65,6 +65,7 @@
 
 ### Planning
 
+- Feasibility
 - This is the big picture. What's the target market? 
 - Surveys
 - Conversing with domain experts
@@ -226,12 +227,15 @@
 - Not really a model per se, more like a style
 - Focused on values and principles
 	- People and interactions
+	- Ensuring customer satisfaction through early and continuous delivery
 	- Working software (MVP: Minimum Viable Product) - get at least something working, show it to the customer, see what they think, make improvements based on that
 	- Actual working software is the main metric we use
 	- Lots of customer collaboration
 	- Welcomes change
 	- Rapid response to change: quickly develop and test new functionality, bring it straight back to the customer
 	- Deliver working software frequently
+	- Technical excellence, good design
+- Work is broken up into short sessions called *sprints*, lasting from a few days to a few weeks at most. The development effort is completed when developers and the customer agree that the task is finished
 - Pros:
 	- Focuses on teamwork
 	- Very flexible

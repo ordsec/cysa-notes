@@ -4,13 +4,15 @@
 
 ### What it is
 
+- An identity is a collection of user information, creds, rights, roles, group memberships, and other attributes. An identity is one of the most critical assets in any org
+- It's a set of claims made about an individual for another party to consider
 - IAM is a framework that basically creates order out of the huge mess of user accounts, devices, and permissions inside of an org
 - IAM also enables workflows: how do we add new users? How do we offboard them? How do we audit them? 
 - Applies to on-prem and cloud environments, and IAM is especially important for cloud environments because even more precision and granularity of control is needed
 
 ### Account types
 
-- Not all accounts are born equal!
+- Not all accounts are born equal! 
 - **User accounts**
 	- Personnel accounts
 	- They're the most risky - regular users can be pretty careless with their credentials/permissions
@@ -132,6 +134,11 @@
 	- The most granular type of access control
 	- Based on multiple subject and object attributes, or compiled sets of attributes
 	- Example: ABAC can be implemented in a NGFW that allows access based on **attributes** such as IP address, what kind of user you are, which group you belong to, your geolocation, the protocol you're using, and your user-agent type
+- **Rule-based AC** (we do not know the abbreviation for this ;-)
+	- Uses a set of rules implemented by an admin
+	- ACL's are associated with each object
+	- Rules are checked against the appropriate ACL when access is requested
+- **Exam**: DAC and rule-based AC are not mentioned, but it's worth knowing them
 
 ### Directory services and federation
 
@@ -140,8 +147,22 @@
 	- Basically an IAM database 
 	- AD stores information about objects and manages authentication and authorization by looking at users, their rules, and any policies that may be in place, and giving a yes/no verdict when a user tries to authenticate and access something
 	- Can be queried (it's a AAA database after all)
-	- Protocols are usually RADIUS, TACACS+, LDAP
-	- Others include OpenLDAP, Apache DS, OpenDS, RedHat Directory
+	- Protocols are usually RADIUS, TACACS+, LDAP, Kerberos
+		- TACACS+ has encryption flaws, should only be used on isolated networks
+		- RADIUS uses UDP (1645 or 1812 for authentication, 1646 or 1813 for accounting), can use TCP as well; uses client-server model; inherent password security isn't very strong, which is why IPSec or EAP are implemented in addition
+		- TACACS+ and RADIUS are designed to operate on trusted networks, Kerberos is for untrusted (but has its own weaknesses - see 23)
+		- Do not use NTLM in Windows domains - it's outdated and insecure!
+	- LDAP hierarchy: DC (Domain Controller) -> OU's (Organizational Units such as HR, sales, security) -> CN's (Common Names, sub-entries under each OU)
+	- Others include OpenLDAP, Apache DS, OpenDS, RedHat Directory, OpenDJ
+		- OpenLDAP is a fairly common choice, uses Salted SHA (SSHA) for password storage
+	- Commercial solutions: Oracle's Internet Directory, Microsoft's AD, IBM's Security Directory Server, CA Directory
+	- **Security**:
+		- Enabling and requiring TLS for all LDAP communications (LDAP doesn't have security built in); LDAPS is port 389
+		- Special attention must be paid to secure password storage
+		- Password-based authentication, disabling dangerous LDAP communication modes (anonymous, unauthenticated)
+		- LDAP server replication for better availability
+		- ACL's for LDAP, limiting access to specific objects and overall rules for how entries are created, modified, and deleted
+		- Validate all related user input - [LDAP injection](https://cheatsheetseries.owasp.org/cheatsheets/LDAP_Injection_Prevention_Cheat_Sheet.html) is a common attack!
 - **Federation**
 	- Extending authentication across more than one company/service via SSO
 	- Can interconnect IAM services
@@ -150,13 +171,16 @@
 	- **Federation == trust**
 	- The trust is mutual between your own domain and an outside service
 	- SSO experience is provided based on that trust, without the outside service requiring a copy of your local directory
-		- The application we're trying to access is the **Service Provider (SP)** (we're trying to access a service, and the application provides that service)
+		- The application we're trying to access is the **Service Provider (SP)** aka **Relying Party (RP)** - we're trying to access a service, and the application provides that service
 		- The entity that validates our access based on our SSO credentials is the **Identity Provider (IdP)**
 		- The SP has to trust the IdP
 	- So federation is pretty much the same as SSO
 		- One difference is that with SSO, once the user authenticates, a unique hash will be shared between the two systems as a means to authenticate transparently, i.e. only two parties are involved
 		- Whereas with federation, the entire authentication process is handled by the IdP; other systems trust that IdP with handling authentication **on their behalf**
 	- Federation caveat: password reset/recovery may no longer be allowed because the IdP, being a 3rd party, doesn't actually know anything about the user's credentials aside from whether they're valid or not. Users and admins have to be aware of this through user training
+- **Shared authentication**: similar to SSO, allow an identity to be reused on multiple sites while relying on authentication via a single IdP - the difference is that such systems require a user to enter creds when authenticating to each site (SSO is a single login)
+	- Reduces password fatigue
+	- Users are informed about what types of data are released to the relying party
 
 ### SAML, OAuth, OpenID
 
@@ -197,14 +221,25 @@
 	- OAuth relies on access tokens (strings that can only be validated by the resource owner) while OpenID relies on ID tokens which are self-contained and can be validated by the client
 	- OAuth is more flexible and can be used for various types of applications - OpenID is more specific and **used for SSO and social logins**
 - Once again...
-	- ==OpenID and SAML are industry standards for federated authentication==
-	- ==OAuth controls authorization to a protected resource such as an application or a set of files==
-	- ==OAuth can be used simultaneously with OpenID or SAML==
+	- ==OpenID and SAML are industry standards for federated authentication, where one account with an IdP can log you into various sites (relying parties)==
+	- ==OAuth controls authorization to a protected resource such as an application or a set of files; used by Google/Microsoft/FB to allow users to share elements of their identity while authenticating via the original IdP==
+	- ==OAuth can be used simultaneously with OpenID or SAML; OpenID Connect is an authentication layer built using the OAuth protocol==
 - Example situations:
 	- OAuth 2.0: you've signed up for a new app and agreed to let it automatically source new contacts via Facebook or your phone contacts - this is secure delegated access, i.e. the app takes actions to access resources from a different server on behalf of the user
 	- OpenID Connect: you've used your Google account to sign into YouTube, or your Facebook account to sign into an online shopping cart. Google or Facebook serve as IdP's here and access other websites without the need for a dedicated set of creds
 	- SAML: you've logged into your company's intranet, and this set of creds allows you to access numerous additional services such as Salesforce, Box, Workday, etc. - without having to authenticate into each. An IdP is also involved here - this is the service where you sign in.
 - **This is tricky stuff - study it!**
+
+### ADFS (from Sybex book)
+
+- **Active Directory Federation Services**
+- Microsoft's answer to federation
+- Authentication and identity info is provided as *claims* to 3rd-party partner sites
+- Partner sites use *trust policies* to match claims to those supported by a service
+- Those claims are used to make authorization decisions
+- Can be used with Azure AD
+- [More here](https://learn.microsoft.com/en-us/windows-server/identity/ad-fs/technical-reference/understanding-key-ad-fs-concepts)
+
 
 ### IAM monitoring and logging
 
@@ -217,7 +252,11 @@
 	- Very useful for correlation
 	- Needs lots of disk space and time to analyse
 - We need to quickly react to unauthorized/compromised accounts and other incidents
-- Manual review: reviewing accounts and permissions by hand
+- **Exam!** Manual review: reviewing accounts and permissions by hand
+	- Useful and sometimes necessary as part of access control schemes
+	- Can require a significant amount of effort and time
+	- Not necessarily error-proof
+	- The best bet is to have a combination of manual and automated reviews
 - Reviews should be performed periodically and when users change roles/departments, or leave - and when new users arrive
 - Privilege creep: when users changing departments and moving up in the company "just so happen to" retain too many privileges - and over time they pretty much attain superuser powers
 	- No malicious intent here, just a lack of proper accounting and auditing
@@ -226,4 +265,111 @@
 
 ### Exam
 
-Be able to discuss all aspects of IAM: account types, password policies, federation/SSO, access control models, accounting, etc. Know the difference between OAuth/OpenID/SAML and be able to apply them to given scenarios. 
+Be able to discuss all aspects of IAM: account types, password policies, federation/SSO, access control models, accounting, etc. Know the difference between OAuth/OpenID/SAML and be able to apply them to given scenarios. As far as SSO, understand the general concept - the objectives don't mention specific technologies, but it's still quite important to understand them.
+
+---
+
+# From the Sybex book
+
+### Identity-based security
+
+- Identity lifecycle - a core concept
+- All of the below should be done securely
+
+![identity-lifecycle-1.png](img/identity-lifecycle-1.png)
+
+### Threats to IAM
+
+- IAM threats have to do with a few areas such as threats to underlying AAA systems, account lifecycle, and accounts themselves
+- Identity-related attack surface examples:
+	- Personnel-based: training and awareness, insider attacks, phishing, social engineering
+	- Endpoints have a role in attacks on identities: local exploits for capturing creds, screen capturing, keylogging, attacks on password storage
+	- Server-based: targeting systems that run identity services and servers that send identity and authentication data to AAA services
+	- Applications and services that interact with identity systems
+	- Roles, rights, and permissions associated with users and groups
+	- **Exam**: consider identity security issues from each of these viewpoints, think about controls that can be implemented at each point
+
+### AAA systems attacks
+
+- Targeting software via vulns and misconfigurations
+- Protocols can be targeted
+- DoS attacks on underlying systems
+
+##### LDAP attacks
+- Targeting unencrypted LDAP traffic
+- Harvesting and modifying directory info through broken access control
+- LDAP injection (exploiting web apps that build LDAP queries from user input)
+- DoS attacks disrupting authentication services that rely on LDAP
+- Mitigation:
+	- Careful design and implementation of LDAP systems
+	- LDAPS
+	- User input validation
+	- Redundancy
+
+##### OAuth, OpenID, OpenID Connect
+- Attacks based on open redirects (unvalidated redirects and forwards where untrusted user input can be set to the relying web app, which results in users getting redirected to malicious sites)
+- OAuth flow for reference:
+
+![oauth-flow-1.png](img/oauth-flow-1.png)
+
+- Poor session management, reliance on central shared secrets, inadvertent use of plaintext OAuth sessions create attack vectors
+- For OpenID, protocol vulnerabilities can be attacked
+- OpenID Connect offers some protections for encryption and signing, but they have to be implemented correctly
+
+##### Kerberos
+- Admin account attacks
+- Pass-the-ticket (impersonation of legitimate users)
+- Pass-the-key (reusing a secret key to acquire tickets)
+- See 23 for the rest
+
+##### RADIUS
+- Session replay of server responses 
+- Targeting the shared secret if not secured well
+- DoS attacks preventing authentication
+- Credential-based attacks, brute-forcing the shared secret if a password is known
+- Remediation:
+	- Using secure protocols to tunnel RADIUS data: TLS, EAP, IPSec
+
+##### AD
+- Malware-based attacks attempting credential capturing
+- Credential theft via phishing
+- PrivEsc
+- Attacks based on service accounts and privilege creep
+- Attacking accounts that have admin rights but shouldn't have them, improperly maintained admin accounts
+- Attacks against weak protocols in Windows domains: NTLMv1, LANMAN, NetBIOS, unsigned LDAP, SMB
+
+##### Attacks against account creation, provisioning, deprovisioning
+- Between creation and disablement, accounts can be attacked: social engineering, phishing, etc.
+- Unused accounts are a target
+- Improperly deprovisioned accounts
+- Privilege creep
+
+### Defense
+
+- Identity is a useful control layer - consider it a security layer in architecture designs
+- **Exam**: privesc, impersonation, MitM, session hijacking, rootkits are all mentioned, and IAM techniques can be employed against these attacks:
+	- Session management and securing sessions properly to prevent impersonation and session hijacking
+	- End-to-end encryption against MitM
+	- Patching and proper configurations against privesc
+	- User awareness training, MFA against social engineering and account compromise
+	- Antimalware, heuristic detection, patching, layered security - all against rootkits, this is tricky stuff
+- Adopt a defense-in-depth mindset when thinking about securing IAAA
+	- Layered approach
+	- Make sure only valid accounts are created (no duplicates, everything should be added to a central management system)
+	- Consistent provisioning and rights management, based on roles, least privilege, etc.
+	- Track the employee's changes of roles, make sure rights and privileges are adjusted correctly
+	- Secure account termination
+	- Think about the whole CIA triad. Availability in this case has to do with making sure centralized IAM systems being redundant
+- Centralized authentication and authorization management, combined with logging and auditing, to prevent and detect attacks
+- SIEM: behavioural analysis, policy-based monitoring
+
+### IDaaS
+
+- Identity as a Service
+- Cloud-hosted services providing such functionality as
+	- Identity lifecycle management (creation, provisioning, privilege management, termination) for systems, services, other cloud services
+	- Directory services (LDAP, AD, etc.)
+	- Access management (authentication, authorization)
+	- SSO support via SAML, OAuth, etc.
+	- Privileged account management
+	- Reporting and auditing for oversight
