@@ -150,3 +150,74 @@ Understand the importance of configuration baselines - how are they important fo
 		- Helps increase availability by limiting the impact in case of an attack
 		- Increases network efficiency, reduces congestion by using network segments with fewer endpoints in each
 - See 25 for secure network design and segmentation, DMZ's, jumpboxes and all that fun stuff
+
+### Analyzing security architecture
+
+- Identify where defenses are weak, or where an attacker may be able to exploit flaws
+	- Non-technical: architectural design, processes, procedures
+	- Technical: vulnerabilities, misconfigurations
+- Security architecture analysis can also be performed by pentesters - thinking like an attacker always helps
+- Analyzing security requirements
+	- Reviewing the security model, ensuring it meets a specific requirement
+	- Example scenario: reviewing a workstation security design that uses antimalware, in order to determine whether it'll prevent unwanted software from being installed
+		- Three possible scenarios: 
+			- Success (installation prevented if it's known malware or behaves in such a way that antimalware catches it)
+			- Failure (not detecting software that's not permitted by the org but also isn't malware)
+			- Failure (not preventing unknown malware or malware that doesn't act all sus)
+	- Attribute-based testing is as part of a risk or control assessments
+	- Can be applied to each control by determining its goal and reviewing whether the goal is met
+- Reviewing architecture
+	- Formal architectural models relying on views aka viewpoints from which architecture and controls can be reviewed
+	- Common views:
+		- Operational: how a function is performed, what it accomplishes. Shows information flow, but doesn't capture technical details about how data is transmitted, stored, and captured
+		- Technical aka service-oriented aka systems-based: technologies, settings, configurations in an architecture. Helps identify incorrect configs and insecure design decisions. Example: looking at the TLS version used in a connection, looking at password policies
+		- Logical: describes how systems interconnect. Less technically detailed, but gives broader info about how a system or service connects and works. Network diagrams are an example
+- Design issues encountered in architecture analysis:
+	- SPF's: potential single weaknesses that, if exploited, bring the whole thing down
+		- Remediated through redundancy at every level, ideally
+		- Create, update, and use network diagrams to identify SPF's quite easily
+		- Use a similar approach (data flows for instance) to analyse apps, processes, and control architectures. This can identify points where separation of duties (or separation of concerns for apps) might be needed, for instance.
+		- Depending on the org's risk profile and functional requirements, certain SPF's might be ok
+		- On the other hand, redundancy isn't a bulletproof guarantee against failures. It can be negatively impacted by updates and other factors
+	- Data validation and trust problems: we have to be able to rely on data; it's often assumed to be valid, so when it's incorrect or falsified, it's bad news
+		- Enhance the ability to rely on data:
+			- Protect data at rest - encryption
+			- Validate integrity - hashing
+			- Implement processes to verify data in an automated or manual fashion
+			- Profile and boundary-check data based on its known attributes
+		- For any kind of app development, **input validation** is crucial - see 17
+		- For data flows, storage, and usage, look for places where data issues could cause high-impact failures - not all of these places are the same
+	- User issues: human error can cause many bad things, whether accidental or deliberate
+		- Mistakes, malfeasance, social engineering attacks all jeopardize security designs
+		- Never forget the human when designing your security layers, keep in mind people can make mistakes
+		- To limit these issues:
+			- Use automated monitoring and alerting systems to detect human error
+			- Constrain interfaces to only allow permitted activities
+			- Implement procedural checks and balances - see 51
+			- Put together employee training and awareness programs
+			- Proactively look for gaps in monitoring, think about where else issues can occur
+	- Authentication/authorization security and process issues: concerns user credentials and privileges as a potential source of security design issues
+		- Common problems:
+			- Inappropriate or overly broad sets of privileges - use least privilege, conduct privilege audits, prevent privilege creep, monitor privilege creep
+			- Poor credential security and management - use centralized solutions
+			- Embedded/stored secrets - just don't do that
+			- Reliance on passwords as a single factor to protect critical systems - use MFA
+		- A lot of these can be remediated by effective user training activities
+		- Always know exactly where authentication occurs, how authorization is performed, and what privileges are needed and granted to users
+		- More on this in 31
+- Security designs are even more complex in the cloud
+	- [NIST SP 800-145](https://csrc.nist.gov/publications/detail/sp/800-145/final)
+- Reviewing a security architecture requires a step-by-step analysis of security needs that influenced that design and of controls that are in place
+	- This is done for every larger network segment and for every critical asset
+	- Look for flaws at every step of the way
+- Maintaining a security design means that our org has to be fully in touch with the treat landscape, be aware of emerging threats, and be flexible enough to adjust to them quickly
+	- **Proactive** is the word here
+	- Scanning, auditing, reviewing, thinking outside the box, adopting an attacker's perspective
+	- Scheduled reviews
+	- Recording the last change date for a security design, track when reviews are done and what they focused on
+	- Continual improvement processes (CIP) - incremental improvements over time
+	- Retirement of processes - know when something needs to be retired
+		- A process or policy is no longer relevant
+		- It's been superseded by a newer policy
+		- Org no longer wants to use it
+		- Document all retirement processes clearly

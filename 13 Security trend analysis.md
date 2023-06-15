@@ -65,6 +65,8 @@
 - There are tools that can automate it - SIEM
 	- Aggregating, normalizing, correlating info
 
+---
+
 ### Exam
 
 Understand trend analysis and why it's useful, what types of metrics you would normally look for, remember that SIEM solutions are there to help you out.

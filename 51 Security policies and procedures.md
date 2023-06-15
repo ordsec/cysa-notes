@@ -98,6 +98,15 @@
 	- Mandatory vacation (against overstepping privileges)
 	- Dual control (two people to perform a restricted operation; different from separation of duties as the duty the two people are performing is the same, not two different things that complement each other)
 	- Least privilege (you know it by now)
+- **Sybex: personnel security controls**
+	- Separation of duties
+	- Succession planning - ensuring continuity of roles, regardless of the reason the person leaves the org. A departing staff member can take critical skills and expertise with them, so not having a succession plan can hinder some critical processes and result in a lack of oversight
+	- Background checks
+	- Termination (disabling accounts, reviewing access, retrieving org property, etc.)
+	- Cross training - teaching employees skill that enable them to take on tasks their coworkers and other staff normally perform, commonly used for **redundancy** purposes, i.e. making sure critical capabilities have backups in place to prevent issues with employee separation when an indispensable employee leaves the company
+	- Dual control
+	- Mandatory vacation
+		- Combined with separation of duties, it's a very effective way to detect employee collusion and malfeasance 
 
 ### Corporate policies
 

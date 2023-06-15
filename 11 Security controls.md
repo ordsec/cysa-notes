@@ -168,6 +168,8 @@
 - The reward is that it keeps the bad guys at bay as for them it becomes a lot more time- and resource-consuming to do any "meaningful" amount of harm to your org
 - There are tools that can automate this process!
 
+---
+
 ### Exam
 
 Understand what a security control is, be able to discuss NIST categories of controls and the 6 control purposes, be able to put examples of controls into the right bucket(s). Be able to talk about audits and assessments.
