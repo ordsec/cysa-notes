@@ -5,11 +5,15 @@
 - An attack that's unique in how it can be executed without relying on any technology at all
 - The human link is the weakest link - it's a social engineering attack
 - Tricking the receiver of a malicious email into thinking that it comes from a legitimate source and providing personal data to the attacker as a result
+- **Embedded links** are often used as part of a phishing scam because many users don't check where the link leads and just click
+	- The link can easily differ from the text in the email, and it can include all sorts of malicious crap or lead to a malicious site
+	- Email security tools scan for these links and block a lot of emails including them
+	- Others can be recognized via URL analysis - see 29
 - Subcategories:
 	- Spear phishing - targeted at a specific person or group of people 
 	- Whaling - targeted at high-level management, C-suite, etc.
 	- Pharming - anything that contains a malicious link that leads to a form which looks like a legitimate login form. Users enter their logins and passwords, attackers capture it, you know the drill
-- Email forwarding is not really an attack, but rather a technique of crafting an email subject or body to make them look like they belong to a chain of emails and replies
+- Email **forwarding** is not really an attack, but rather a technique of crafting an email subject or body to make them look like they belong to a chain of emails and replies
 	- Tricking someone into thinking they were just added to a group email
 	- A type of pretexting where all the forwarded/quoted emails contain names and info that look legitimate, lots of it can be discovered via OSINT
 	- Utilizing consensus and authority to elicit sensitive info
@@ -40,8 +44,10 @@
 - Malicious scripts can be embedded in the HTML code in message body - sometimes they can be executed without any user interaction
 	- Email clients often include preview functionality that just does it for you
 - Malicious links - what phishing primarily relies on, more likely to work than an attachment
-- Email signature block (the text signature - what's included in every email)
-	- May not be malicious itself, but what if it isn't there when it should be? Or it contains something that doesn't belong? Or it contains wrong contact info? This could be an indicator of a malicious email where the attacker tried to craft the signature to make it look real
+- **Email signature block** (the text signature - what's included in every email)
+	- Can help identify phishing attacks, but more sophisticated attackers will copy legitimate signatures
+	- Can contain embedded links and images, also dangerous elements that can be part of an attack or tell attackers if the email was opened
+	- Worth looking at for analysis: what if it isn't there when it should be? Or it contains something that doesn't belong? Or it contains wrong contact info? This could be an indicator of a malicious email where the attacker tried to craft the signature to make it look real
 
 >**SPF**
 
@@ -93,13 +99,14 @@
 
 **Secure/Multipurpose Internet Mail Extensions**
 
-- SPF/DKIM and DMARC are great to have for security, but they only help against impersonation - so this is about **integrity**
+- SPF/DKIM and DMARC are great to have for security, but they only help against **impersonation** - so this is about **integrity**
+	- Impersonation attacks are becoming increasingly common, often involving an email purporting to be from a trusted coworker or manager. The recipient is often asked to perform a certain action, and the attacker leverages social engineering principles of familiarity, authority, or urgency to try and get the victim to do what the attacker wants
 - But how do we ensure **confidentiality** of what's being sent?
 - Enter S/MIME - it digitally signs your emails and encrypts them
 - If someone wants to send a secure email to us:
 	- They'll need a digital certificate (not mandatory for the receiver unless encryption is needed for the reply as well)
 	- Our email client needs to be S/MIME-aware 
-	- Their email content is hashed, and the hash is encrypted with **their private key** - this is the digital signature and it takes care of integrity and non-repudiation
+	- Their email content is hashed, and the hash is encrypted with **their private key** - this is the **digital signature** and it takes care of integrity and non-repudiation
 	- Their email content is also encrypted with **our public key** - this ensures confidentiality
 	- The message is sent to us **in a blank email with an S/MIME attachment**
 - What we do now as the receiver:

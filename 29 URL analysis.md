@@ -24,6 +24,11 @@ This is a way of getting around static IP/domain blacklists through generating c
 - Domain can change on **each communication attempt**
 	- And it can be combined with continuously changing IP addresses
 	- Known as a "fast flux network" - it constantly changes its IP addressing scheme
+- More on fast flux (not exam though)
+	- **Single flux** continuously registers addresses as part of the A record for a DNS entry
+		- Can help disguise malicious systems by leveraging the very short TTL for records and a round-robin DNS that points to different systems as the record is called
+	- **Double flux** is more complex, but uses a similar technique to register and de-register DNS servers for the DNS zone, adding another layer of confusion when attempting to pin down malicious systems
+	- Commonly used as part of botnets
 
 ### DGA mitigation
 

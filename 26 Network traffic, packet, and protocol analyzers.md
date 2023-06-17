@@ -117,13 +117,14 @@
 	- No payload visibility - this ain't packet analysis! Malware will go undetected
 	- Cannot be reviewed/processed manually - have a physical/virtual machine running on the network with enough resources to collect this data, but it can't be processed by a network engineer
 	- Sampled (you only look at 1 in N packets), but unsampled solutions are becoming more widespread
-- Tools:
+- Tools and resources:
 	- [Solarwinds Network Traffic Analyzer](https://www.solarwinds.com/netflow-traffic-analyzer)
 	- [ManageEngine NetFlow Analyzer](https://www.manageengine.com/products/netflow/)
 	- [Cisco Secure Network Analytics](https://www.cisco.com/c/en/us/products/collateral/security/stealthwatch/datasheet-c78-739398.html) - security intelligence based on collecting flow information, formerly Stealthwatch
 	- [Silk](https://tools.netsa.cert.org/silk/), open-source
 	- [Argus](https://qosient.com/argus/argusnetflow.shtml), open-source
 	- [MRTG (Multi-Router Traffic Grapher)](https://oss.oetiker.ch/mrtg/) - agent-based, works with individual network devices (not just the entire network), uses SNMP; not really flow info, but it can give alerts about resource usage or easily identifiable traffic patterns (floods, DoS, scanning)
+	- [Malware Traffic Analysis](https://www.malware-traffic-analysis.net/)
 
 ---
 

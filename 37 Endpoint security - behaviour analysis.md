@@ -51,9 +51,20 @@
 	- What do users do and how? When? What are the usual actions and what stands out?
 	- A little intrusive and big-brothery
 	- Using ML to build a baseline by job role or user type, which will then help us identify abnormal behaviour happening on a user's workstation
+	- Can be implemented as part of a SIEM
 	- Solutions:
 		- [Splunk User Behaviour Analytics](https://www.splunk.com/en_us/products/user-behavior-analytics.html?301=/en_us/software/user-behavior-analytics.html)
 		- [Microsoft Advanced Threat Analytics](https://learn.microsoft.com/en-us/advanced-threat-analytics/what-is-ata)
+- **Heuristics**
+	- Again, this is all about the behaviour - of systems and apps
+	- Tracking it requires looking at the CPU, memory, network, and disk usage
+	- Manual review, automated tools
+	- Some tools provide the ability to use heuristic detection methodologies
+- **Known-good behaviour**
+	- The "normal" baseline behaviour
+	- Established as a result of monitoring a system over a period of time and comparing behaviours
+	- What allows us to distinguish **anomalous behaviour** right away
+	- Tools for detecting anomalous behaviour rely on heuristics and signatures, also checklists of configuration information and likely problems
 
 ### Low budget? 
 
