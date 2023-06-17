@@ -28,6 +28,11 @@
 	- Data sources (logs/alerts ingested into the SIEM)
 	- Query strings to correlate things ("find me all logon attempts on all domain hosts performed by user `johndoe42069` in the last 96 hours")
 	- Action triggered by the event
+- **Exam**: **known-bad IP addresses**
+	- Source: IP reputation lists containing addresses with suspected malicious behaviour
+	- Manual identification
+	- Entire netblocks can be blacklisted by orgs because of one address' malicious behaviour, but it's not always a good practice
+	- Because of VPN/proxy/cloud services, attackers can pretty easily source an address that won't be so easy to block
 
 ### Use case matching
 
@@ -101,7 +106,7 @@
 
 ### SIEM rules
 
-- SIEM solutions are not one-size-fits-all!
+- SIEM solutions are not one-size-fits-all! Avoid rules that would create too many false positives
 - Start from a pre-defined set of rules out of the box
 - This is usually not sufficient, and customization is required for the SIEM to fit a specific environment as each environment is unique
 - A rule is a statement that matches certain conditions by:
@@ -146,3 +151,23 @@ $ match end of line (anchor, boundary)
 ### Exam
 
 Know what a SIEM does and how it does it; be familiar with related concepts such as normalization, rule matching, string searching, and various types of analysis; know where data can be sourced by a SIEM and how it's done. Know Linux and Windows CLI utils for log analysis and string searching.
+
+---
+
+# From the Sybex book
+
+### SOAR
+
+- Security Orchestration, Automation, and Response
+- Relies on a stack of security tools to collect data from a variety of security sources and then automatically respond
+- SIEM's have a lot of these capabilities, but SOAR takes it a step further by complementing SIEM solutions with extra tools
+- Three major components:
+	- **Threat and vulnerability management**: threat management tools, vuln scanners, also workflow, reporting, and collaboration tools to support all this
+	- **Security incident response**: IR suites providing the tools to manage incidents from start to finish
+	- **Security Operations Automation**: orchestration and workflow tools fit into this category; also reporting, policy, and process management tools; see 45 for more info on orchestration as a concept
+- Adds a layer of workflow management
+	- SOAR deployments ingest SIEM alerts and other data, then apply workflows and automation to them
+- SOAR integrates with a broader range of tools
+- SIEM vendors usually also offer SOAR solutions: Splunk, Rapid7, IBM (QRadar)
+- SOAR-specific tools such as [ServiceNow](https://www.servicenow.com/products/itsm.html)
+- **Exam**: know what SOAR is, but technical questions are unlikely

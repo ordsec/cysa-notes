@@ -34,9 +34,10 @@
 	- Hardcoded, unchangeable private key aka **endorsement key**
 		- Used to generate any other keys that can be used to sign emails, encrypt disks, etc.
 		- BitLocker's key is derived from the endorsement key
+	- Provides remote attestation allowing hardware and software configurations to be verified
 	- Keeps cryptographic content out of reach
 	- Tamper-proof - will self-destruct if messed with
-		- PUF (Physical Unclonable Function) - unique signature made up of distinct features of the device the TPM is running on
+		- PUF (Physical Unclonable Function) - unique signature made up of distinct features of the device the TPM is running on; it's based on the unique features of a microprocessor that are created when it is manufactured and are not intentionally created or replicated
 		- Engages the crypto-shredding function on all TPM contents in the event of physical tampering
 	- Allows a very limited amount of interaction, namely erasing it
 	- On Windows, `tpm.msc` is the interface
@@ -73,8 +74,13 @@
 	- **Measured boot and attestation**: using the TPM chip's key to hash and sign the system's state
 		- The OS kernel gathers all this information and sends it to an external server (like a NAC server) when a PC boots up and connects to the network
 		- NAC server checks it and decides whether to allow access to the network depending on the security report
+		- Allows for comparison vs known good states
 		- Detecting IOC's before they can even manifest themselves
 - **Trusted firmware updates**
+	- Trusted firmware is usually described in the context of **Trusted Execution Environments (TEE's)**
+		- Signed by a chip vendor or other trusted party
+		- Used to access keys to help control access to hardware
+		- TEE's like those used by ARM processors use these technologies to protect the hardware by preventing unsigned code from using privileged features
 	- Trusted/measured boot ensures OS integrity
 	- But what if the firmware itself gets replaced with something malicious?
 	- Like any piece of code, it can be digitally signed - but the CPU needs to know which signature is valid
@@ -107,8 +113,12 @@
 - **Trusted execution**
 	- Uses the TPM and secure boot attestation to make sure only the valid OS is running and no malicious code gets executed at boot]
 - **Secure enclave**
+	- Common in modern Apple mobile devices
 	- A secure area or partition, kind of like a container (but not a Docker container), created by a trusted process, where it stores the cryptographic keys, if the OS is trusted
-	- The purpose is to make BOF attacks almost impossible - you can't overwrite any information from the secure enclave
+	- Designed to remain secure even if the OS is compromised
+	- Generates an encryption key at boot, pairs it with the user ID to encrypt, validate, and use the secure enclave's portion of the system memory
+	- Handles FaceID, allowing authentication to be handled in a secure partition
+	- Makes BOF attacks almost impossible - you can't overwrite any information from the secure enclave
 - **Processor security extensions**
 	- Low-level CPU instructions that enable secure processing
 	- **SME** by AMD (Secure Memory Encryption)
@@ -124,6 +134,9 @@
 	- Makes sure that the device at the other end of the bus is trusted
 	- Used for encrypted HDMI links for DRM (Digital Rights Management) for protecting end-user content 
 	- Transmitting encrypted information and encryption keys over the same link is security by obscurity - there's no way to hide the key somewhere else, otherwise the dumb TV on the other end of the HDMI cable will never be able to show the actual content
+- **Anti-tamper**
+	- Comes in many varieties from mechanical means to electronic detection methods
+	- Tamper-proofing processors: encasing electronics or otherwise securing them, 
 
 ---
 

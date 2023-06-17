@@ -89,6 +89,7 @@
 	- Intelligence, routing policies, protocols, security policies, etc. all in a centralized place
 	- Reconfiguring the network almost instantly whenever changes need to be made (rerouting traffic, adding a device) - in a few commands
 	- Self-repairing infrastructure with just the right amount of redundancy
+	- More in 45
 - Generally, SDN is traditional network device intelligence brought to the network-wide level via a control plane - and with more control/intelligence/overview/automation on top of that
 - Anything built in a cloud environment is software-defined since it's always a virtual infrastructure
 - The risk of human error is greatly reduced

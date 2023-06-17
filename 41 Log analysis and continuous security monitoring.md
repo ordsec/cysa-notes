@@ -68,7 +68,7 @@
 
 ### Proxy logs
 
-- Usually web traffic (HTTP)
+- Usually web traffic and related connections (HTTP)
 - Two types of proxies
 - Collecting logs from both types is very important for security purposes
 
@@ -80,6 +80,11 @@
 - Two subtypes:
 	- Transparent: able to catch traffic without any configuration on the client side
 	- Non-transparent: client must be configured with the proxy's address
+- Look for:
+	- Target host IP, hostname, what was requested
+	- Amount of content requested - might help indicate a compromise or match a known malicious package
+	- HTTP request method and payload
+	- Unusual user-agents and protocol versions to identify apps, malware, other targets
 
 ##### Reverse proxies
 - Used for inbound traffic, listen for requests coming from the outside, intercept them and forward them to an internal server in our network
@@ -125,9 +130,19 @@ alert tcp $EXTERNAL_NET any -> $HOME_NET143 (msg: "PROTOCOL-IMAP logon brute for
 	- [ATT&CK T1110](https://attack.mitre.org/techniques/T1110/) is referenced
 	- Class is "suspicious logon"
 	- Signature identifier is 2273, revision 12
+- Logs will contain:
+	- What rule was triggered
+	- Info about traffic that was captured and analyzed to trigger the rule
+	- Often some more data about what's happening at L7
 
 ---
 
 ### Exam
 
-Be able to discuss the importance of analyzing logs, be aware of all sources logs come from: event logs for Windows and Linux (and how they can be viewed), Syslog, and Firewall/proxy/WAF/IDPS logs. Be able to recognize Snort rules and read them at least roughly.
+Be able to discuss the importance of analyzing logs, be aware of all sources logs come from. Recognize Snort rules and read them at least roughly. Log sources from the exam objectives:
+- Event logs
+- Syslog
+- Firewall logs
+- WAF logs
+- Proxy logs
+- IDPS logs

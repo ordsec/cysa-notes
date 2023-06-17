@@ -156,8 +156,9 @@
 - Employs a predefined baseline, looks for faults and noncompliance using this baseline
 - It's a compliance/regulation check
 
-### Continuous monitoring
+### Security monitoring
 
+- Most security designs have defense in depth as their foundation (see 12)
 - Aka CSM: Continuous Security Monitoring
 - Basically a continuous risk assessment
 - Track anything that can be involved in a security incident

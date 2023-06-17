@@ -27,6 +27,7 @@
 		- Most are focused on specific programming languages
 		- Some are free, some are paid, some haven't been updated for a while
 		- Linters belong here
+	- [OWASP - static code analysis](https://owasp.org/www-community/controls/Static_Code_Analysis)
 
 ### Formal method
 
@@ -44,6 +45,8 @@
 ### UAT (User Acceptance Testing)
 
 - Focuses on users!
+- Does the app/feature set meet user requirements? Do users accept the app in its current state?
+- Business needs and usability requirements
 - Beta versions
 - Users become testers - knowingly or not...
 - Have a select few future customers volunteer
@@ -51,7 +54,7 @@
 - Provide guidelines/documentation for testers
 	- They may or may not follow them, but either way is fine - we're testing the app and looking for points of failure
 - This is about user experience as well. You may have a vision for how your app is gonna be used, but will it end up being used in such a way? 
-- Does the app/feature set meet user requirements? Do users accept the app in its current state?
+- Should have a formal test plan involving examples of all common business processes that the users will perform; paired with acceptance criteria that indicate what requirements must be satisfied to consider the work acceptable and ready for production
 
 ### Regression testing
 
@@ -120,6 +123,19 @@
 	- Devise testing mechanisms that kick in after fuzzing is completed to determine whether the app processed inputs properly or not. Has it crashed? Has it reached an undesireable state?
 	- Fuzzing for web apps: Burp Suite (Intruder mode for automation)
 	- Users shouldn't be able to do this stuff at all - once app is deployed, it needs to have limited request rates on the server side, captcha checks, etc.
+- **Fault injection**
+	- Directly inserting faults into error handling paths, particularly those rarely used (they might be missed later on in normal testing)
+	- Performed in three ways:
+		- Compile-time injection: inserting faults by modifying the source code
+		- Protocol software fault injection: fuzzing techniques to send unexpected or protocol-noncompliant data to an app/service that expects thusly compliant input
+		- Runtime injection: injecting data into the running program, either by inserting it into the running memory or injecting the faults in a way that forces the program to deal with them
+	- Typically performed using automated tools since human error is possible
+- **Mutation testing**
+	- Related to fuzzing and fault injection, but we're not throwing bad inputs or errors into the app - instead we're making small modifications to the program itself
+	- Altered versions, or *mutants*, are tested and rejected if the cause failures
+	- Mutations are guarded by some rules intended to create common errors or replicate the types of errors devs may introduce while programming
+	- Like fault injection, this helps identify issues with code that's rarely used
+	- Can identify problems with test data and scripts by finding places where scripts do not fully test for issues
 
 ### To summarize vuln assessment in testing...
 
@@ -220,3 +236,37 @@ Just know all of the above, pretty much. Be able to explain the ideas behind sta
 	- Default passwords for a DB connection for instance
 - **Use of insecure functions, `strcpy`**
 	- See 19
+
+### Code review
+
+- **Exam**: the term itself is mentioned without going into more detail, but it's worth knowing the below models
+- **Pair programming**
+	- Agile technique
+	- One dev writes code, the other reviews as it's being written
+	- Devs are expected to change roles frequently so both can spend time thinking and not just writing
+	- Additional cost, need 2 full-time devs, but review and analysis opportunities are worth it as quality increases
+- **Over-the-shoulder**
+	- Also two devs, but different in that this model requires the developer who wrote the code to explain it to the other developer
+	- Allows peer review, helps with understanding
+	- Costs less than pair programming
+- **Pass-around code reviews**
+	- Aka email pass-around
+	- Manual peer review, completed code is sent out to reviewers to check for issues
+	- Need more than one reviewer, different expertise/experience levels involved
+	- More flexibility in when reviews occur, but not as easy in terms of learning about the code as it's being written, such as with paired programming or over-the-shoulder
+	- Proper documentation is a must in this model
+- **Tool-assisted reviews**
+	- Formal and informal software-based tools for reviews
+	- Tools: Atlassian Crucible, Codacy, Phabricator's Differential
+	- Provide lots of SDLC options and ways to set up design and review processes
+- **Fagan inspection**
+	- A very formal model ensuring due diligence in the process
+	- Phases: planning, overview, preparation, meeting, rework (can go back to planning), follow-up
+
+### Web app vuln scanning
+
+- Nessus, Nexpose, OpenVAS can test web apps to a certain extent
+- Nikto, Arachni, Burp Suite - see 32
+- Other tools: Acunetix WVS, HCL AppScan, WebInspect by Micro Focus, Netsparker, Qualys Web Application Scanner, W3AF
+- Manual scanning and review is important - not all problems can be identified by automated solutions
+	- This is where *interception proxies* shine - see 32

@@ -23,6 +23,7 @@
 	- Storing security baselines and threat intel in a database
 	- Reacting as soon as an incident is detected
 	- Data is fine-tuned using ML, data enrichment is provided for better understanding of the nature of an incident and how response is conducted
+	- See 42 for more on SOAR
 
 ---
 

@@ -61,7 +61,7 @@
 
 # SDLC in detail
 
-- **Know every phase, from the security persepctive, for the exam!**
+- **Know every phase, from the security perspective, for the exam!**
 
 ### Planning
 
@@ -74,6 +74,7 @@
 - **Security**:
 	- Training developers and testers in best practices relating to security
 	- They need to know what to look for and how to approach every new feature from the security standpoint
+	- Participating in initial assessments and cost evaluations
 
 ### Requirements and analysis
 
@@ -103,11 +104,12 @@
 	- Scenarios and workflows
 	- This is all pretty specific
 - **Security**:
-	- Perform risk analysis
+	- Perform risk analysis, document the security architecture
 	- Figure out what threats we might face - yes, we haven't even written any code, but we're already thinking about this!
 	- This needs to be done for every connection/API endpoint/opened port because it's a potential attack surface expansion
 	- Analyse 3rd-party code you will use - is it secure? What vulnerabilities are we introducing? 
 	- Functional requirements have to be very granular - again, what libraries are we using, how much access are we allowing, what encryption/hashing/digital signature algorithms will be employed
+	- Data flow analysis
 	- Design audit and debug functionality
 		- Have a way to identify and store what users are doing in the app (for debugging/investigation/performance purposes)
 
@@ -115,6 +117,7 @@
 
 - Let's write some code!
 - Code review sessions
+- Version control, source code management
 - Unit testing - testing minimum functionality (methods, classes, etc.)
 - **Security**:
 	- Testing needs to be performed with security in mind
@@ -129,7 +132,7 @@
 - Think of all possible edge cases, make sure they're covered
 - Fuzz it, throw unexpected inputs at it
 - **Security**:
-	- Start looking at the app from an attacker's point of view
+	- Start looking at the app from an attacker's point of view, test for vulns
 	- When (not if) you break your code, figure out why, make sure it fails properly
 	- Static analysis
 	- Dynamic analysis
@@ -144,7 +147,7 @@
 	- Delivery: getting to the final state where the app is built, compiled, and ready to be used, but it's not just yet in the hands of users
 	- Deployment: making the app fully available to users
 - **Security**:
-	- Giving access to the final product to users? Do it right!
+	- Giving access to the final product to users? Do it right! User training is very important.
 	- How do we deploy in a secure manner?
 	- Code signing: the customer always has to be confident that the app they're about to use under the name of your app is in fact your app and not something that comes from an attacker or has malicious code injected
 	- How do we package the app? Auto-download? Virtual appliance? Container? SaaS?
@@ -161,6 +164,7 @@
 - Same goes for external dependencies
 - **Security**:
 	- A lot of patches are security-related
+	- Regression testing when upgrades occur
 	- Monitor for any type of data breach, address it immediately
 	- New vulns are introduced every single day - be vigilant!
 
@@ -286,6 +290,8 @@
 	- Requires a lot of structure and documentation - not a problem if you can properly handle that (therefore requires resources for that)
 	- Requires someone to decide beforehand when the development should stop so it doesn't go on indefinitely
 	- Many in-between phases
+
+---
 
 ### Exam
 
