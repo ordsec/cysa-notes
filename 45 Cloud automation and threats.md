@@ -5,7 +5,7 @@
 ### Cloud automation methods
 
 - The most basic way of automating anything is **scripting**
-	- Bash, PowerShell, Python, Ruby, etc.
+	- Bash, PowerShell, Python, Ruby, Perl, etc.
 - "If it's worth doing once, it's worth automating"
 - A script is a collection of commands that can be run without human intervention
 - In the cloud, scripts can be used to programmatically create and configure resources, but at the core it's just a set of commands
@@ -28,6 +28,7 @@
 	- Puppet - similar to Chef, also agent server architecture 
 	- Docker - developing and shipping applications in containers, which are isolated, self-sufficient instances with all dependencies included that can run on any system that has the Docker engine installed. Some orchestration is included (`docker compose`).
 	- Kubernetes - the real master of container orchestration, introduces a whole new level of managing container-based apps and the infrastructure behind them (storage, networking, external access) with lots of flexibility
+- **SOAR** - see 42
 
 ### Cloud automation methods
 

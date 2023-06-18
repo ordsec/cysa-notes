@@ -17,6 +17,8 @@
 	- Tricking someone into thinking they were just added to a group email
 	- A type of pretexting where all the forwarded/quoted emails contain names and info that look legitimate, lots of it can be discovered via OSINT
 	- Utilizing consensus and authority to elicit sensitive info
+	- Auto-forwarding is a security concern - can be used by attackers who have successfully compromised an account to send all emails meant for that account to an address of the attacker's choosing
+	- Even without compromise, forwarding can cause data leakage
 - Business Email Compromise (BEC)
 	- Compromising a real email account in the company so that everything coming from that address looks perfectly legitimate
 
@@ -58,6 +60,7 @@
 - **SPF is a very misleading term** - it doesn't quite represent what this technology does
 - An SPF entry is published in a company's DNS TXT record
 	- Only one SPF entry per DNS entry
+	- 255-character limit (becomes tricky if you're a big org with a lot of email servers)
 	- It's a list of hosts that are known, valid email servers that belong to the company, authorized to send emails on behalf of that company
 	- Email servers that are responsible for the company's domain
 - Someone with an email server on the receiving side can configure SPF checking
@@ -71,9 +74,10 @@
 
 >**DKIM**
 
-**Domain Keys Identified Mail**
+**DomainKeys Identified Mail**
 
 - Again with the poor naming...
+- Adding content to messages to identify them as being from their domain
 - Replaces or augments SPF using PKI! Cryptography rulez
 - A company publishes their public key in its DNS server's TXT record - just like SPF
 - For any sent messages, specific header fields will be hashed
@@ -88,12 +92,15 @@
 
 - Naming keeps getting *better*...
 - This isn't another security tool, but rather a **policy** for implementing SPF & DKIM
+- Protocol using SPF and DKIM to determine if an email message is authentic
 - Also published as a DNS record
 - The domain owner can create a custom DMARC policy, which is not unlike an authentication procedure telling the receiver of the email the following things:
 	- What technologies are in use in terms of the security mechanism: SPF or DKIM
 	- How to validate the sender
 	- What to do if any of the checks fail, providing a reporting method
 		- A failure doesn't mean something malicious is happening - it could be a different type of error
+		- Choose to reject or quarantine messages based on policy
+- [DMARC overview](https://dmarc.org/overview/)
 
 >**S/MIME**
 

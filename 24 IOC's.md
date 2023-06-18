@@ -13,11 +13,11 @@
 - Compromises **availability**
 - An attack aimed at resource exhaustion of a server or load balancer and bringing a service down
 	- Maxing out CPU/RAM/disk
-	- Maxing out bandwidth or the number of simultaneous connections the server can handle
+	- Maxing out **bandwidth consumption** or the number of simultaneous connections the server can handle
 	- Requests are not processed anymore, server needs a breather
 	- Uses synthetic traffic
 - Mitigation/prevention
-	- Continuous monitoring and alerting if traffic spikes
+	- Continuous monitoring and alerting for **unusual traffic spikes**
 	- Either setting a specific threshold, or baselining "normal" network behaviour so any anomalies can be caught
 		- Baseline: if normal server load is 5-6%, then when it goes to 7%, it might be an indication of something suspicious; no need to wait for 99%
 - When a DoS attack is carried out by high number of compromised hosts, all of them under the same attacker's control, it's a **Distributed DoS (DDoS)** attack
@@ -59,7 +59,7 @@
 	- Cloud services can host instructions for a botnet - great uptime, excellent performance!
 	- Media files and documents storing metadata that can include commands. Steganography also possible for images? Security tools don't really look for this kind of stuff in metadata. 
 
-### P2P communication IOC's
+### Peer-to-peer communication IOC's
 
 - P2P traffic is usually already a red flag if you take your security seriously
 - Used for illegal file-sharing
@@ -101,7 +101,7 @@
 - **[List of common ports](https://nmap.org/book/port-scanning.html#most-popular-ports)** - know these!
 - None of the above is set in stone, and any app can technically use any port number. However, clients will connect to 443 for HTTPS because they know that's the port.
 - Frequent usage of the same dynamic port in network traffic is suspicious
-- Mismatched port/application is pretty much an IOC
+- **Common protocols over non-standard ports** are pretty much an IOC
 - Detection:
 	- Tools for deep packet inspection, up to layer 7, to figure out what type of application is generating/receiving traffic on a specific port
 	- Look for suspicious reverse shell traffic (reverse shells are usually easier to set up because outbound traffic wouldn't be blocked, whereas connecting from the outside would likely be disallowed)
@@ -172,13 +172,25 @@
 ### **High resource usage**
 
 - Again, have a baseline of normal resource usage. Anything above it is suspicious, although not necessarily proof of malware running
+	- **Processor consumption**
+	- **Memory consumption**
+	- **Drive capacity consumption**
+	- Come up with "normal" ranges, monitor for spikes - you never know!
 - When in doubt about a certain process, look it up on https://shouldiblockit.com - a resource that describes behaviours of legitimate and malicious processes
+
+### Abnormal process behaviour
+
+- Any abnormal behaviour in core OS processes can be an indicator of a rootkit or other malware exploiting an OS component (exploits that have to do with DLL's - see 43 under "Code injection")
+- Attack tools injected into running legitimate processes - `meterpreter` can do this by taking over such processes
+- Using names that are very similar to system processes for rogue ones
+- DLL execution via `rundll32.exe` to run bad stuff as services thru `svchost`
+- See [[37 Endpoint security - behaviour analysis#Low budget?]] - some good behaviour for Windows processes listed there. Anything other than that behaviour is abnormal and is an IOC.
 
 ### Disk and file system IOC's
 
 - Malware is usually not just a single file on a drive 
 - Fileless malware doesn't get persisted on disk (exists in memory), but it still has some interaction with the FS
-	- Exfiltration IOC's - appear after interaction with the FS, with the usage of the following techniques
+	- **Data exfiltration** IOC's - appear after interaction with the FS, with the usage of the following techniques
 		- Creating temporary folders
 		- Masking data as log files
 		- Archiving/encryption
@@ -245,7 +257,7 @@
 ### Persistence IOCs
 
 - Persistence: a way for malware to survive a logout, reboot, etc.
-- Attackers usually do it by writing to Windows registry 
+- Attackers usually do it via **registry changes** 
 	- Antimalware tools can scan the registry for any deviations from an approved template
 	- No timestamp for registry changes provided by `regedit` 
 	- Autorun is a very common method, and there are registry keys responsible for it (`HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run (or RunOnce`, same for `HKCU`)
@@ -253,7 +265,7 @@
 	- File associations can be used to trick users into launching malware by changing the app associated with a specific file extension
 		- You expect to open a `.txt` file in Notepad, but something totally different opens it instead 
 		- File extension registry entries are in `HKEY_ CLASSES_ROOT (HKCR)` - merges the file extension entries in `HKLM` and `HKCU\SOFTWARE\Classes`
-	- Scheduled tasks - to run whatever the attacker may want every $N$ minutes/hours/days
+	- **Unauthorized scheduled tasks** - to run whatever the attacker may want every $N$ minutes/hours/days
 		- Can be easily displayed using Task Scheduler
 		- Get run history to see previous run attempts, when they were made, and whether they were successful
 		- For Linux, this can be in the `crontab`
@@ -262,6 +274,7 @@
 
 - Have a good baseline in order to study application behaviour and have good results
 	- What does legitimate behaviour look like? How does it interact with the OS, other processes, the network, etc.?
+	- Anything that doesn't look legitimate is potential **anomalous behaviour** and should be alerted on
 	- Includes virtualized applications as well, cloud, mobile device apps
 - Network connections
 	- Start all the open ports locally (`netstat`)
@@ -269,13 +282,13 @@
 	- Look for apps listening on abnormal port numbers or apps with open ports that shouldn't have any open ports
 		- `notepad.exe` does not need to listen on a network port
 	- Look for outbound connections - maybe there's beaconing?
-- Unexpected outputs and errors
+- **Unexpected outputs** and errors
 	- Attempts to exploit an app or to scan it for vulns might produce errors. If it's more errors than usual, it's suspicious. These errors should be logged by the app
 	- For web apps, request-based attacks (code injection, directory traversal, etc.) can be easy to discover as long as all requests and responses are logged
 - Service defacement - pretty obvious, usually relevant to websites
 	- The attacker's own content on your webpage is probably an IOC...
 	- Performed by hacktivists usually
-- Service interruption
+- **Service interruption**
 	- Not every error/crash is a security incident
 	- If happening more often, might be suspicious
 	- Common patterns include manually disabled services, especially security services; compromised processes running malicious code and crashing due to errors because malicious code is often imperfect
@@ -287,7 +300,7 @@
 
 - A goldmine of information
 - Properly analyzing app logs can reveal a lot of useful things
-	- DNS: queries (particularly malformed ones), list of destinations accessed by an internal host (can find stuff with a bad reputation there), anomalies (a very large number of resolution failures can indicate a DoS)
+	- DNS: queries (particularly malformed ones), list of destinations accessed by an internal host (can find stuff with a bad reputation there), anomalies (a very large number of resolution failures can indicate a DoS) and **unexpected outbound connections**
 	- HTTP: status codes for errors
 		- 4xx (client error)
 		- 5xx (server error)

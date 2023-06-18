@@ -136,6 +136,14 @@ $ match end of line (anchor, boundary)
 ##### Command-line utilities for log analysis and string searching
 - Linux:
 	- `grep` to search for a value or a regex
+		- `-c` to count the number of occurrences
+		- `-i` for case-insensitive
+		- `-n` to show matching line and line number
+		- `-v` to show all lines that don't match the string
+		- `-r` to read all files under each directory recursively
+		- `-e` to use a certain pattern (one or more) for a search
+		- `man grep` for more
+		- [Huge massive `grep` tutorial](https://ostechnix.com/the-grep-command-tutorial-with-examples-for-beginners/)
 	- `cut` for returning a specific part of every string in a file where there's a lot of repetition
 		- Can return a specific character or set of characters or a region of every string using a delimiter
 	- `sort`

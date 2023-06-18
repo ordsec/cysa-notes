@@ -11,8 +11,16 @@
 	- Useful for insurance purposes and legal exposure ("we've taken all precautions, but it still happened")
 	- Prove that you've been exercising due diligence, look real good
 
-### Forensic procedure
+### Forensic procedures
 
+- Some general steps (from Sybex):
+	1. Determine what you're trying to find out. Whether it's a compromised system, some actions taken by malware, or investigating unauthorized changes, we need a problem statement that puts what we're doing into specific terms
+	2. Outline relevant locations and types of data, which exists in many forms. Format, accessibility, and volatility are important
+	3. Document and review the plan
+	4. Acquire and preserve evidence, make copies, create the chain of custody
+	5. Perform initial analysis, document all actions, systems, data you're working with, and of course all findings
+	6. Use the initial analysis to guide further work and deeper investigation, map out the data and systems involved, review where initial analysis pointed to additional info, document everything that's missing
+	7. Report on your findings
 - No room for interpretation here when it comes to handling forensics properly
 - The procedure follows a few phases
 
@@ -24,7 +32,7 @@
 - Do we have all necessary authorizations to collect evidence?
 - Collection must be conducted using the right tools and following the right protocols - otherwise it's inadmissible
 
-##### Analyis
+##### Analysis
 - Starts with making copies of everything you've gathered - **never** work on the original
 - Disk images have to be hashed to prove that the integrity of contents was not compromised
 - Collect any memory dumps that might still be available
@@ -43,11 +51,24 @@
 - Taking stuff "as evidence"
 - Orgs and their cybersecurity personnel have to make sure someone with strong legal knowledge is appointed as the contact for the forensics/IR team so that everybody is aware of legal instructions that must be followed
 
-### Endpoint forensics
+### Chain of custody
+
+- Keeping track of how evidence is handled
+- Who has handled it
+- All in order, with a timeline, highly detailed, documented in a special form, updated every time the evidence changes hands
+- There can be no gaps in this narrative - ever
+- All the way from acquisition to presentation in court
+- The purpose is to prove that the integrity of evidence has been preserved from the moment it was collected
+- [Sample CoC form](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fwww.nist.gov%2Fsystem%2Ffiles%2Fdocuments%2F2017%2F04%2F28%2FSample-Chain-of-Custody-Form.docx&wdOrigin=BROWSELINK)
+- Sometimes it has to be preserved for years - not all investigations wrap up quickly... The process is much older than digital forensics
+
+---
+
+## Endpoint forensics
 
 - Most security incidents involve a certain endpoint that was compromised
 - All data must be collected from this endpoint as a clean physical copy
-- This data acquisition has to follow the **order of volatility**
+- This **data acquisition** has to follow the **order of volatility**
 	- Some data can be lost when the computer is powered off
 	- Other data can only be gathered when the computer is powered off
 	- We must begin data acquisition with what's most volatile, i.e. most likely to be lost
@@ -116,23 +137,27 @@
 	- *So...* what carving tools to is look for useful content in those unallocated regions of drives and try to piece that info together in an attempt to rebuild deleted data.
 	- Pretty simple! :D
 
-### Chain of custody
-
-- Keeping track of how evidence is handled
-- Who has handled it
-- All in order, with a timeline, highly detailed, documented in a special form, updated every time the evidence changes hands
-- There can be no gaps in this narrative - ever
-- All the way from acquisition to presentation in court
-- The purpose is to prove that the integrity of evidence has been preserved from the moment it was collected
-- [Sample CoC form](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fwww.nist.gov%2Fsystem%2Ffiles%2Fdocuments%2F2017%2F04%2F28%2FSample-Chain-of-Custody-Form.docx&wdOrigin=BROWSELINK)
-- Sometimes it has to be preserved for years - not all investigations wrap up quickly... The process is much older than digital forensics
+---
 
 ### Network forensics
 
 - Capturing traffic from a host or a network segment
-	- For a host, use some sort of a packet capture tool like Wireshark
+	- For a host, use some sort of a packet capture tool like `tcpdump` or Wireshark
 	- For a network segment, use port mirroring, SPAN, TAP, etc., whatever is appropriate
 	- Sniffing is usually done behind the firewall
+
+### Cloud forensics
+
+- This type of forensics has to be planned for in advance
+	- Examine all relevant agreements with the CSP, be in touch with them to discuss all post-incident activity and evidence collection in case something goes awry
+	- Know what you can and cannot gather, and how you can gather it
+	- Determine what legal recourse you have with the cloud vendor
+	- Identify data you need and whether it's available via methods under your and your org's control
+	- Work with the vendor to identify a course of action is you don't control the data
+- Forensic investigations on cloud services is very challenging if not impossible
+- Shared tenant models, various regions - your data can be anywhere, and it's much more volatile than on prem
+- More likely than not the CSP will have to participate in the investigation
+- Chain of custody is also more tricky
 
 ### Mobile device forensics
 
@@ -147,9 +172,21 @@
 ### Virtualization forensics
 
 - Easier than physical computers - hypervisor software can read the memory inside VM's it's managing
+- IR evidentiary requirements are typically less than those for a legal case
 - Disk data is already in an image format
 - Downside: this type of storage can be highly fragmented due to thin allocation of virtual machines, which means allocating storage space as needed, piecemeal. Space doesn't get pre-allocated in large amounts
 	- This is another thing to keep in mind for file carving practices where VM's are concerned
+- Understand limitations of what your capture and copying methods can do
+- Consider the virtualization environment itself - what if it's part of your investigation?
+
+### Container forensics
+
+- Containers are very common
+- Forensics can create some unique issues
+- Containers are designed to be disposable - they're deployed and destroyed via automation, and most of the time there's very little reason to keep a "broken" container around
+- Ephemeral nature - artifacts can be easily lost, so treat them as highly volatile
+- Inter-container environment is also tricky - SDN's also change frequently, security contexts are dynamically modified
+- **Plan ahead** to capture the data you may need
 
 ---
 
