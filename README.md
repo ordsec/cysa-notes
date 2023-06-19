@@ -14,4 +14,8 @@ Please note that the CS0-002 version of the exam is being retired in December 20
 
 There's likely some repetition insofar as one concept may be explained in more than one note. I don't see it as a problem as we like redundancy! But I'm also trying to keep things as organized thematically as possible.
 
+### Objectives PDF
+
+I've added the PDF file with official CS0-002 exam objectives from CompTIA. For each objective in each domain, I am adding a mapping to a note that will have definitions and context for each listed term. Sometimes different terms under one objective will be in different notes, sometimes an entire objective will be in one note - it should be pretty easy to tell.
+
 That's all for now - enjoy, and I apologize in advance for any typos :)
