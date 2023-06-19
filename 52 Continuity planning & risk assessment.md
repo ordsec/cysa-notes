@@ -4,7 +4,13 @@
 
 ### Enterprise risk management
 
-- To keep us safe, we need to identify what risks we're facing
+- To keep us safe, we need to identify what risks we're facing - this is **risk identification**
+	- What vulnerabilities exist in our operating environment
+	- Putting the pieces together:
+		- Threat intelligence from internal and external sources, threat modeling (see 01-07)
+		- Vulnerability management (see 08-13)
+	- If there's a vulnerability and a threat, there is risk
+	- If the vulnerability is there but no threat, or vice versa, there's no risk
 - In an enterprise setting, risk is much more difficult to identify
 - The process of this identification is what's known as **enterprise risk management**
 - The goal is to protect our assets - so where do we start?
@@ -15,6 +21,7 @@
 	- Need some well-established policies and test procedures to make sure this redundancy is in place and continuously maintained - otherwise our high availability only exists on paper, and that's no good
 - **Legal**: if an incident happens and your assets are compromised, you may be prosecuted (whether criminal or civil) - which always leads to loss of business 
 - **Reputation**: even if you don't use your business and don't become legally liable, your reputation can be hurt as a result of an incident - and this again leads to losses, and it's hard to recover from
+- Qualitative and quantitative risk assessments (below) for the ultimate purpose of clear **communication of risk factors** to all stakeholders
 
 ### Business Continuity Plan (BCP)
 
@@ -31,10 +38,9 @@
 ### Calculating risk
 
 - Risk can be described in terms of the probability of a threat being realized and the impact on the business if that threat is realized
-- In other words, $R = P \times I$ (R for risk, P for probability, I for impact)
+- In other words, $R = P \times I$ (R for risk, P for probability, I for impact, also referred to as magnitude)
 	- The impact depends on the value of assets being impacted and indirect implications of losing those assets
 - Even though risk management is a complicated process, calculating each individual risk is really quite simple!
-
 
 ### Quantitative risk assessment
 
@@ -143,6 +149,8 @@
 	- Conduct a BIA, determine losses in case of an incident
 	- Create and communicate procedures, assign responsibilities, make sure everybody knows who to call. **Make sure your entire team is responsive not reactive**, make sure there's enough awareness, conduct presentations and workshops
 	- Test procedures: tabletop exercises, walk-throughs, simulations. Be open to ideas from everybody - what if you've missed something?
+		- **Tabletop exercises** gather participants in the same room to walk through the response procedures in a given security incident scenario
+		- **Red team**
 
 ---
 

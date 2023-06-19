@@ -7,17 +7,19 @@
 - We can assume that whatever we buy is safe, but it may not be enough for some orgs and especially governments
 	- They always have to make sure that hardware and software that comes in doesn't include something undesirable: backdoors, spyware, etc.
 - [A pretty horrific example of supply chain compromise](https://www.zdnet.com/article/microsoft-fireeye-confirm-solarwinds-supply-chain-attack/)
-- Vendor assessment and due diligence. Check the following at the very least:
+- **Vendor assessment and due diligence**. Check the following at the very least:
 	- Vendor's risk management protocols with regards to development and shipping
 	- How well the products are supported during their lifetime - can we expect security patches down the line?
 	- The presence of forensic assistance in incident investigations if necessary
 	- Historic reliability - have they been around for a while? Have they been good that whole time?
 - Just because you trust a vendor, it doesn't mean you can trust the second-hand/grey market
 	- It's a totally different supply chain, and it has nothing to do with the official one
+- Perform **hardware source authenticity** assessments in order to validate that the hardware we've received was not tampered with after leaving the vendor
 - **Trusted foundry**
 	- Set up by the US DoD
 	- A list of accredited suppliers who have proven that they have a secure supply chain, all the way down to manufacturing
 	- Established to keep out vendors that can't or won't prove this
+- This is part of the risk assessment process - see 52 for the rest
 
 ### Hardware root of trust
 

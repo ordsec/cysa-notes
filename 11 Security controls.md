@@ -112,6 +112,17 @@
 		- Encryption
 		- Auditing
 		- Firewalls
+- **Responsive**
+	- Measures that responds to events or conditions
+	- Usually after a certain threshold has been crossed or specific criteria were met
+	- Triggered as a **reaction** to an event, such as a detected security incident or anomaly
+	- Examples (basically stuff that can take action in response to something):
+		- IPS
+		- AV
+		- FW
+		- SOAR
+		- Backup and disaster recovery procedures
+		- User access controls (such as account lockouts to respond to a potential brute force attack)
 - **Compensating**
 	- If we can't afford to protect it the *right* way, what can we do instead that will still do some of the job?
 	- A feasible substitution in case the main control can't be implemented

@@ -60,9 +60,13 @@
 			- Framework profiles: an actual list of statements about what we already have and what we still need
 		- These are much more closely representative of the real life
 
+### Audits and assessments
+
+- 
+
 ### Framework contents
 
-- In general, frameworks discuss the following aspects
+- In general, frameworks discuss the following **policies and procedures**
 - **AUP (Acceptable Use Policy)**, aka Fair Use Policy
 	- How company resources should and should not be used
 	- Computers, the internet connection, phones, etc. - everything the company owns
@@ -83,15 +87,26 @@
 		- With all existing surveillance documented, and not just in fine print
 	- Surveillance can be performed to ensure security, and it may involve monitoring data or physical monitoring
 		- We need to keep an eye on the whole operation so we can see right away if there's an incident
-- **Ownership**
-	- This is about data; if you create the data, then you own the data
+- **Data ownership policy**
+	- Clearly states the ownership of information created or used by the org
+	- If you create the data, then you own the data
 	- Data is used in workflows, so it has to be classified by sensitivity level before it can be used; what do we have access to, can we use it, and if so, how can we use it?
 	- Another policy that keeps privileged users in check
 	- Power -> responsibility
-- **Backup policy**
+- **Data classification policy**
+	- Describes the classification structure used by the org and the process used to properly assign classifications to data
+	- More in 50
+- **Backup policy** aka **retention policy**
 	- Short-term: versioning; we need to be able to revert to a previous version if necessary, also helps recover from accidental file deletion or even ransomware
 	- Long-term: for legal requirements
 	- Should summarize the destruction process - it should be adequate to the sensitivity of the data we hold
+	- What data should be retained
+- **Account management policy**
+	- Describes the account lifecycle from provisioning to disablement (more in 31)
+- **Password policy**
+	- See 31
+- **Continuous monitoring policy**
+	- Describes the org's approach to monitoring, informs employees that their activities are subject to this monitoring
 - **Job-related security policies**
 	- Separation of duties (high-impact tasks should be performed by more than 1 person)
 	- Job rotation (rotating multiple people in the same role, preventing collusion or exclusive knowledge)
@@ -120,8 +135,10 @@
 
 - Quite simply, a procedure is a list of steps, like a recipe
 - Examples:
-	- Compensating controls: when you can't afford to have the actual control in place, you substitute it with alternatives that achieve the same task for the most part
+	- **Compensating controls**: when you can't afford to have the actual control in place, you substitute it with alternatives that achieve the same task for the most part
 		- If you can't protect it, you have to be able to rely on people following the right procedures
+		- Document these
+		- See also: 11, 12, 14
 	- Continuous monitoring
 	- Documentation of all updates and changes to systems and security policies
 	- Testing controls before implementation and how it's performed

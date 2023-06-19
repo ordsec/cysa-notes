@@ -18,9 +18,15 @@
 	- Files and folders: access control is implemented in the file system (read, write, execute, etc.). Applies in a similar manner to databases, except in a more granular fashion - it can be down to which SQL statements someone is allowed to run, what tables/rows they can access, and what permissions they have
 	- **Least privilege** applies here big time! Users must get just enough access and nothing more than that
 		- Manage this properly, prevent "privilege creep", etc.
-- Context-based ACL's (sorta like multi-factor)
+- **Context-based authentication** and ACL's (sorta like multi-factor)
 	- Not just who accesses what, but also where they are, what time of day, do they have a certificate, etc. Security posture of the device is also looked at
 	- NGFW solutions offer this type of functionality
+	- User roles and group memberships
+	- IP address and/or reputation, whether the remote IP is known for malicious activity (part of a botnet perhaps?)
+	- Time of day
+	- Location-based info: IP location, GPS, etc.
+	- Frequency of access, can be combined with behavioural data (typing speed, browsing habits, etc. - see 37 for UEBA)
+	- Device-based: what kind of device, what user-agent, other device info such as IP, time zone, screen resolution, cookies and their settings, installed fonts, language, etc.
 
 ### File system permissions
 
@@ -71,7 +77,7 @@
 
 ### Encryption controls
 
-- Ensuring confidentiality and also integrity as a side effect
+- Ensuring **confidentiality** and also integrity as a side effect
 - It's best to assume that encrypted data can be viewed by anyone - so if it falls in the hands of bad actors, given that it's encrypted properly with a good algorithm, the real contents will never be revealed
 - **Data at rest** - encryption when data exists in any type of storage 
 - **Data in transit** - encryption as data travels across the wire or the wireless signal
@@ -114,6 +120,11 @@
 - De-identification attacks exist - they aim at reversing these techniques
 	- Correlating incomplete sets of data to determine the original data
 	- You may not be able to get all of it, but by putting enough pieces together you can draw more specific conclusions about the data
+
+### Geographic access requirements
+
+- Limiting access by authorized user to certain locations
+- Part of context-based authentication - see under [[#Access control]]
 
 ### DRM (Digital Rights Management)
 
