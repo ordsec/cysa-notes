@@ -141,6 +141,8 @@
 - Hard to follow? That's because this model was designed for automatic processing by software security solutions designed for threat modeling
 	- E.g. ThreatConnect for Splunk
 
+---
+
 ### Exam
 
 Remember attack frameworks, be able to discuss them in detail: CKC, Diamond Model, MITRE ATT&CK. Be able to talk about defenses at each phase of the CKC.

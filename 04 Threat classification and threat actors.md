@@ -16,7 +16,7 @@
 
 - Known knowns - we know the threat, we understand it, we know what to do about it
 - Known unknowns - we know about the threat, but we don't understand it completely, and therefore we don't have a clear course of action
-- Unknown knows - things we could understand, but unfortunately we're not aware of them (e.g. a 0-day that someone discovers)
+- Unknown knowns - things we could understand, but unfortunately we're not aware of them (e.g. a 0-day that someone discovers)
 - Unknown unknowns - we don't even know how much we don't know (e.g. attacks/0-days that exist, but no one's aware of them yet)
 
 ### Bug bounties
@@ -96,6 +96,8 @@
 - [Go create your own malware - Empire Project](https://github.com/EmpireProject/Empire/wiki/Quickstart) (it uses templates, though, so mostly it'll be known)
 - Buy it from the dark web
 - APT groups begin their attacks (in recon phase for instance) using commodity malware, before moving on to cool custom stuff
+
+---
 
 ### Exam
 

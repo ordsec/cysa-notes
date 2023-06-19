@@ -17,7 +17,7 @@ If every org had to look for CTI and secint on their own, they'd have no time fo
 	- Financial sector: [fs-isac](https://fsisac.com), focused on companies that are obvious fraud targets
 	- Aviation: [a-isac.com](https://a-isac.com), focuses on intelligence concerning terrorist attacks
 	- Federal gov-t: MS-ISAC (multistate ISAC), EI-ISAC (elections infrastructure)
-	- Utilities: **[CISA](https://cisa.gov)** (Cybersecurity & Infrastructure Security Agency), guidance for a lot of industry sectors
+	- Utilities and critical infrastructure: **[CISA](https://cisa.gov)** (Cybersecurity & Infrastructure Security Agency), guidance for a lot of industry sectors
 - All this info sharing fits very well within the **dissemination** phase of the Threat Intelligence Cycle!
 	- Use cases:
 		- Risk management and security engineering
@@ -61,6 +61,8 @@ If every org had to look for CTI and secint on their own, they'd have no time fo
 - **Scan for vulnerabilities**
 	- Fix ASAP
 	- Do not procrastinate!
+
+---
 
 ### Exam
 

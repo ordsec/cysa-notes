@@ -35,6 +35,8 @@ Encompasses all of the below.
 		- Make it report good things back to an antivirus
 		- This is very difficult to pull off, of course - lots of money and time expenditure is needed
 
+## Indicator management
+
 ### IOCs
 
 - Time to think like a cybersecurity analyst again...
@@ -58,11 +60,12 @@ Encompasses all of the below.
 	- Security policy changes
 	- And many many more
 	- Don't forget mobile devices and IoT
+- See 24 for details on all types of IOC's necessary for the exam
 
 #### A shift in perspective
 
 - Some things to keep in mind
-- Manual investigation/detection is good, but automted is even better!
+- Manual investigation/detection is good, but automated is even better!
 	- IDPS, host/network-based
 	- SIEM - correlation! A single IOC may not be enough to prove the breach - a single anomaly can be open to interpretation, but when it's a clear pattern, it's a different story
 	- We need to know what's good and what's bad. Computers create files/processes/connections of their own all the time
@@ -124,14 +127,14 @@ Encompasses all of the below.
 
 ### Communicating threat modeling data
 
-How do we describe all this stuff in a structured and meaningful way? How do we write it down and share it? We need a protocol of some sort...
+- How do we describe all this stuff in a structured and meaningful way? How do we write it down and share it? Standardization of tooling would be great - we need a protocol of some sort...
 
 >**STIX**
 
 **Structured Threat Information eXpression**
 
 - A standardized way of describing all findings in threat intel
-- STIX v1 was based on XML, STIX v2 is based on JSON (both are data serialization formats)
+- STIX v1 was based on XML, STIX v2 is based on JSON (both are data serialization formats) and now managed by OASIS (Organization for the Advancement of Structured Information Standards)
 - Consists of **SDO**'s to maintain structure
 
 >**SDO**
@@ -162,16 +165,26 @@ How do we describe all this stuff in a structured and meaningful way? How do we 
 		- Once you've subscribed, you get your threat intel automatically, whenever it's sent out
 - Freely available IOC definitions:
 	- [OpenIOC](https://www.mandiant.com/resources/blog/openioc-basics) **by Mandiant**
+		- Uses Mandiant's indicators for its base framework
 		- XML format, logical statements
 		- IOC Editor: Windows utility compatible with OpenIOC
 			- Much nicer interface
 			- Look over all observables with logical connections between them
 			- Add your own
+		- Metadata includes:
+			- Author
+			- Name of the IOC
+			- Description
+			- References to investigation/case
+			- Maturity info
+			- Definition, possibly with details of the actual compromise
 	- [MISP](https://www.misp-project.org/)
 		- Works with SDO's and OpenIOC
 	- [IBM X-Force](https://exchange.xforce.ibmcloud.com/)
 		- Works with TAXII
 		- Automatic exports of known threats using the STIX standard
+
+---
 
 ### Exam
 
