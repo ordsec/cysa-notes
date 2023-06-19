@@ -62,7 +62,18 @@
 
 ### Audits and assessments
 
-- 
+- **Audits** are formal reviews of an org's security program or compliance
+	- Conducted by a 3rd party
+	- Rigorous, formal testing of controls
+	- Results come in the form of a statement by the auditor summarizing the org's compliance or lack thereof
+	- Can be conducted by internal audit groups at the request of the management or by external audit firms - typically at the request of the org's governing body or a regulator
+	- **Regulatory**: ensuring the org follows specific laws/regulations relevant to its industry or operations (such as HIPAA for all healthcare organizations or FERPA for educational institutions); these are often mandatory, and failing to meet requirements will result in legal consequences (fines and sanctions)
+	- **Compliance**: designed to verify if an org is following its internal policies and procedures and has appropriate controls in place
+		- But also has to do with compliance with external rules/standards/regulations that may not be prescribed by law, such as PCI DSS compliance - getting audited based on that is an example of a compliance audit
+	- Regulatory and compliance audits are often used interchangeably as terms, but specifics are important
+- **Assessments** are less formal reviews of security controls
+	- Typically requested by the the security organization itself in an effort to engage in process improvement
+	- The process usually involves gathering information by interviewing employees and taking them at their word rather than performing the rigorous independent testing usually associated with an audit
 
 ### Framework contents
 
