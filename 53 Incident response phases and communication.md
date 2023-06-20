@@ -212,7 +212,7 @@ Know all phases of the incident response process and what's involved in each. Be
 - Two key measures to determine severity:
 	- **Scope of impact**: depends on the degree of impairment an incident causes the org, the effort required to recover
 	- **Types of data involved**
-- **Functional impact**: what services are impacted and how, based on the criticality of the data (see [[#Data involved in the incident]]). Four categories per NIST
+- **Functional impact**: what services are impacted and how, based on the criticality of the data (see [Data involved in the incident](https://github.com/ordsec/cysa-notes/blob/master/53%20Incident%20response%20phases%20and%20communication.md#data-involved-in-the-incident)). Four categories per NIST
 	- None
 	- Low - critical services still provided
 	- Medium - can't provide a critical service to some users

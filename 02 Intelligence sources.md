@@ -17,7 +17,7 @@
 		- build new features
 		- configure stuff on our network (e.g. when scaling up)
 	- Lots of manual effort!
-- **Treat feeds**
+- **Threat feeds**
 	- Online source of data designed to be queried automatically
 	- When more automation is needed
 	- Continuous flow of info

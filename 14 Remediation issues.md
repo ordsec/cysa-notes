@@ -1,6 +1,7 @@
 - So you've done the scanning, you've found some vulns, and it's time to fix them
 - This is the **remediation phase**
 - But it may not always go as planned...
+- All concepts discussed below are **inhibitors to remediation**
 
 ### Legacy systems
 
@@ -28,7 +29,7 @@
 	- What if our high availability/fault tolerance solutions aren't properly implemented or aren't in place at all? 
 	- And if they are in place, when they kick in, how will it affect everything?
 	- Bringing it back online may cause issues as well
-	- All these issues should be covered under Business Process Interruption, with processes and procedures clearly described
+	- All these issues should be covered under **Business Process Interruption**, with processes and procedures clearly described
 		- Have a maintenance window
 		- Implement change management
 - You've introduced encryption into the workflow of your app or network or for your data at rest

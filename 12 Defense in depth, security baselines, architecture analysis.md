@@ -116,6 +116,17 @@
 		- [Microsoft Endpoint Confugiration Manager](https://learn.microsoft.com/en-us/mem/configmgr/core/understand/introduction)
 		- [Solarwinds Network Configuration Manager](https://www.solarwinds.com/network-configuration-manager)
 
+### Verification of mitigation
+
+- Patched your vulns? Reduced your risks? Good job! Now make sure you didn't forget anything.
+- Confirming that steps taken to mitigate or reduce the risk of a security threat or vuln have been successfully implemented and are effective
+- In the context of IR (more in [53](https://github.com/ordsec/cysa-notes/blob/master/53%20Incident%20response%20phases%20and%20communication.md)), once a vuln or a threat has been detected and dealt with, it's essential to verify that all measures taken are working as as intended
+- It's a multi-step process:
+	- Testing is carried out to make ensure that the vuln has been properly addressed (pentesting, further vuln scanning, etc.)
+	- Review: looking over system logs, network traffic data, other relevant info to confirm that mitigation measures are functioning properly
+	- Monitoring: keeping an eye on all relevant systems and networks, making sure the vuln doesn't re-appear / threat doesn't re-emerge
+	- Documentation of the mitigation process, its verification, any new controls in place - everything involved in mitigation as it may come in handy later on, particularly in an audit
+
 ---
 
 ### Exam

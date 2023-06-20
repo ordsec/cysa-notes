@@ -115,7 +115,7 @@
 - **Account management policy**
 	- Describes the account lifecycle from provisioning to disablement (more in 31)
 - **Password policy**
-	- See 31
+	- See [31](https://github.com/ordsec/cysa-notes/blob/master/31%20Identity%20and%20Access%20Management.md)
 - **Continuous monitoring policy**
 	- Describes the org's approach to monitoring, informs employees that their activities are subject to this monitoring
 - **Job-related security policies**

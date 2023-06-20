@@ -109,9 +109,21 @@
 ### Likelihood
 
 - Is it a real threat or a probable one?
-	- Is something out there definitely threatning us, or is it just in theory?
+	- Is something out there definitely threatening us, or is it just in theory?
 - Has it happened to us before? Has it happened to anyone else before, whether in our industry or in general?
 - Really this is just an educated guess. We can take all these things into account, but no one can predict the future. Historic results don't guarantee future success!
+
+### Impact
+
+- Potential consequences or damage that could occur if a threat is realized
+- Financial loss, reputational damage, regulatory penalties, operational disruption, even physical harm
+- Questions to ask when assessing impact:
+	- Could the threat impact physical safety and well-being of people? **Human life is always first!**
+	- What's the potential financial loss?
+	- How much downtime or disruption could occur?
+	- Could sensitive data be compromised?
+	- What would be the effect on the org's reputation?
+- This ties with risk assessment if you think about it - [see 52 for more](https://github.com/ordsec/cysa-notes/blob/master/52%20Continuity%20planning%20%26%20risk%20assessment.md)
 
 ### Final threat modeling questions
 

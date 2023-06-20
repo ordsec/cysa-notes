@@ -19,29 +19,41 @@ If every org had to look for CTI and secint on their own, they'd have no time fo
 	- Federal gov-t: MS-ISAC (multistate ISAC), EI-ISAC (elections infrastructure)
 	- Utilities and critical infrastructure: **[CISA](https://cisa.gov)** (Cybersecurity & Infrastructure Security Agency), guidance for a lot of industry sectors
 - All this info sharing fits very well within the **dissemination** phase of the Threat Intelligence Cycle!
-	- Use cases:
-		- Risk management and security engineering
-			- Upgrade yourself!
-			- Choose the right security controls (hardware, software, etc)
-			- Reduce your attack surface
-			- Software development security - make sure secure code is written while weak code is not used
-			- Incident response - what do we do when under attack? How do we respond? We need secint for this, sharing comes into play here
-		- Vulnerability management
-			- This is on the **strategic** (big-picture) level
-			- Keeping a close eye on the infrastructure, identifying any new vulns/weaknesses ASAP
-				- Either due to changes or due to a newly discovered threat/attack
-			- Vuln management is **proactive**: fixing gaps before something bad has a chance to happen
-				- Integrating secint into the org and its processes
-				- Always up to date on the security posture
-				- Yes, it's time-consuming, but it saves money by avoiding very costly breaches
-		- Detection and monitoring
-			- Using secint to improve our own ability to detect future threats
-			- More info is better!
-			- Beefing up our firewalls, IPS's and EDR systems to better match real threats
-			- **Avoid false positives as much as possible** - fine-tune your defenses, remember the boy who cried wolf
-			- **Avoid false negatives too**
-			- Keep it running and up to date - this is ongoing, not "set it and forget it"
-			- Everything should be monitored
+
+### Threat intelligence sharing - use cases
+
+- **Risk management** and **security engineering**
+	- Upgrade yourself!
+	- Choose the right security controls (hardware, software, etc)
+	- Reduce your attack surface
+	- Software development security - make sure secure code is written while weak code is not used
+	- Incident response - what do we do when under attack? How do we respond? We need secint for this, sharing comes into play here
+- **Vulnerability management**
+	- This is on the **strategic** (big-picture) level for now
+	- Keeping a close eye on the infrastructure, identifying any new vulns/weaknesses ASAP
+		- Either due to changes or due to a newly discovered threat/attack
+	- Vuln management is **proactive**: fixing gaps before something bad has a chance to happen
+		- Integrating secint into the org and its processes
+		- Always up to date on the security posture
+		- Yes, it's time-consuming, but it saves money by avoiding very costly breaches
+- **Detection and monitoring**
+	- Using secint to improve our own ability to detect future threats
+	- More info is better!
+	- Beefing up our firewalls, IPS's and EDR systems to better match real threats
+	- **Avoid false positives as much as possible** - fine-tune your defenses, remember the boy who cried wolf
+	- **Avoid false negatives too**
+	- Keep it running and up to date - this is ongoing, not "set it and forget it"
+	- Everything should be monitored
+- **Incident response** (more details on IR in [53](https://github.com/ordsec/cysa-notes/blob/master/53%20Incident%20response%20phases%20and%20communication.md))
+	- Threat intel is a crucial part of IR as it allows us to respond to threats more effectively and efficiently
+	- Sharing info about threats with other orgs and communities
+	- Helping others prepare for and maybe even prevent similar attacks
+	- Ways threat intel can be used in IR:
+		- Contextualizing incidents: comparing an incident against shared threat intel, understanding the nature of the attack and who might be behind it, TTP's, motives, targets; helps inform the response strategy
+		- Identifying IOC's - see [05](https://github.com/ordsec/cysa-notes/blob/master/05%20Threat%20Research%2C%20IOC's%2C%20TTPs.md) and [24](https://github.com/ordsec/cysa-notes/blob/master/24%20IOC's.md)
+		- Prioritizing responses: determining the severity of an incident, allowing for better prioritization of of IR efforts. Example: if a piece of malware detected in the network is known to be part of widespread ransomware campaign, it would have to be prioritized over less significant incidents
+		- Updating defenses: using threat intel to update preventative controls and defenses to protect against known threats. Got word of a new vuln being exploited that's relevant to the org? Go beef up your defenses!
+		- Enhancing predictive capabilities: over time, threat intel can help us identify trends and patterns in cyber threats, allowing us to try and predict what future attacks might involve
 
 ### Vulnerability management - the process
 

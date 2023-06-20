@@ -85,6 +85,8 @@
 	- Usually happens if Windows falls back to another type of name resolution other than DNS (DNS -> LLMNR -> NetBIOS), then attacker can intercept those requests and inject spoofed responses - this is what Responder does!
 	- Sounds like a type of downgrade attack?
 
+---
+
 ### Exam
 
 Know `nmap` and `hping` flags, for `nmap` know about SYN, connect, and decoy scans. Be able to discuss active vs passive scanning and footprinting vs fingerprinting, know general info about Responder. This stuff is 95% likely to be on the exam!
