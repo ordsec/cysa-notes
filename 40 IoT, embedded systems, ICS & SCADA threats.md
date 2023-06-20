@@ -55,7 +55,7 @@
 
 - It's like your smart home with the cool internet-enabled thermostat, but on the enterprise level
 - Much more complex, handling a lot more systems
-- Physical access control, lights, climate control, fire suppression, video monitoring, etc.
+- **Physical access control**, lights, climate control, fire suppression, video monitoring, etc.
 - Similar to an ICS (also rely on embedded controllers and sensors with centralized monitoring)
 - Often overlooked from the security perspective
 	- Installed and maintained by 3rd parties, often ignored in a security assessment
@@ -130,3 +130,29 @@
 ### Exam
 
 Lots to know here: what IoT is and what the implications are; embedded devices and their aspects: embedded OS, SoC, RTOS, FPGA, BAS; how embedded devices in cars work (ECU's, CAN, OBD); details about ICS and SCADA and underlying aspects such as Modbus and PLC's. Be able to discuss whether or not these can be secured, and if so, how. General awareness is enough - the exam doesn't go into too much detail.
+
+---
+
+### GPT explains workflow and process automation system threats and vulnerabilities
+
+Workflow and process automation systems, which are increasingly powered by technologies like robotic process automation (RPA) and artificial intelligence (AI), can bring tremendous efficiency gains to an organization. However, like all technologies, they also come with their own set of potential threats and vulnerabilities:
+
+1. **Unauthorized Access:** If an attacker gains access to an automated system, they can potentially manipulate it for their own purposes. This could include modifying workflows to create fraudulent transactions, or to create backdoors for future access.
+
+2. **Data Leakage:** Automated systems often process sensitive data, such as financial details, personal data, or proprietary business information. If these systems are not secured properly, this data could potentially be exposed.
+
+3. **Lack of Oversight and Control:** Automated processes can make decisions and perform actions at speeds far beyond human capability. This can sometimes lead to situations where errors or malicious actions go unnoticed until significant damage has been done.
+
+4. **Software Vulnerabilities:** Like all software, automation systems can contain bugs or vulnerabilities that can be exploited by attackers. This could be in the automation software itself, or in any third-party libraries or components it uses.
+
+5. **Insufficient Logging and Monitoring:** Automation systems may not have adequate logging or monitoring, making it difficult to audit their actions or detect malicious activity.
+
+6. **Chain of Trust Vulnerabilities:** Automated systems often interact with multiple other systems, each of which may have its own vulnerabilities. An attacker who compromises one system in the chain could potentially use it to attack others.
+
+7. **Weak Authentication:** If the automation system does not implement strong authentication, it may be possible for attackers to impersonate legitimate users or systems.
+
+8. **Bypassing of Traditional Controls:** By their nature, automated systems are often able to perform actions more quickly and on a larger scale than humans. This means they can potentially bypass controls that were designed with human users in mind.
+
+9. **Lack of Updates:** Failure to keep automation systems and their underlying software environments up-to-date can leave them vulnerable to known exploits.
+
+To mitigate these risks, it's important to secure automation systems just as rigorously as any other part of an organization's IT infrastructure. This includes hardening the systems, implementing strong access controls, logging and monitoring their activity, regularly updating and patching them, and including them in the organization's overall security planning and risk assessments.

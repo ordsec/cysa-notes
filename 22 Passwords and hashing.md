@@ -23,7 +23,7 @@
 	- Medusa: works with a bunch of different services
 	- Hydra: supports tons of protocols and services, supports login/password lists, etc.
 	- John the Ripper: brute force utility for password cracking
-	- Hashcat: also for password cracking, has charsets for bruteforce and a pretty intelligent approach to the brute force process, can leverage GPU power to perform more operations per second
+	- **Hashcat**: also for password cracking, has charsets for bruteforce and a pretty intelligent approach to the brute force process, can leverage GPU power to perform more operations per second
 - Approaches:
 	- Charsets (just combinations of characters)
 	- Dictionaries (predefined lists of passwords)

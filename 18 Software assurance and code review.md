@@ -213,13 +213,13 @@ Just know all of the above, pretty much. Be able to explain the ideas behind sta
 	- Error messages giving up too much info
 	- In general, a crash can give an attacker some info even if no further data is disclosed
 - **Dereferencing**
-	- See 19
+	- See [19](https://github.com/ordsec/cysa-notes/blob/master/19%20Attack%20mitigation%20-%20buffer%20overflows%2C%20race%20conditions.md)
 - **Insecure object references**
 	- When an app discloses information about internal objects
 	- Attackers can see how an object is identified and stored on the back end
 	- Then they may be able to find out about other objects
 - **Race conditions**
-	- See 19
+	- See [19](https://github.com/ordsec/cysa-notes/blob/master/19%20Attack%20mitigation%20-%20buffer%20overflows%2C%20race%20conditions.md)
 - **Broken authentication**
 	- Allowing users to view restricted areas of an app without authenticating or proper authorization
 - **Sensitive data exposure**
@@ -266,7 +266,7 @@ Just know all of the above, pretty much. Be able to explain the ideas behind sta
 ### Web app vuln scanning
 
 - Nessus, Nexpose, OpenVAS can test web apps to a certain extent
-- Nikto, Arachni, Burp Suite - see 32
+- Nikto, Arachni, Burp Suite - see [32](https://github.com/ordsec/cysa-notes/blob/master/32%20Web%20application%20scanners.md)
 - Other tools: Acunetix WVS, HCL AppScan, WebInspect by Micro Focus, Netsparker, Qualys Web Application Scanner, W3AF
 - Manual scanning and review is important - not all problems can be identified by automated solutions
-	- This is where *interception proxies* shine - see 32
+	- This is where *interception proxies* shine - see [32](https://github.com/ordsec/cysa-notes/blob/master/32%20Web%20application%20scanners.md)
