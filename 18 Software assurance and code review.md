@@ -237,6 +237,19 @@ Just know all of the above, pretty much. Be able to explain the ideas behind sta
 - **Use of insecure functions, `strcpy`**
 	- See 19
 
+### Mitigations for the above (thank you GPT!)
+
+- **Improper Error Handling:** Implement clear, secure error handling that avoids leaking sensitive information and provides meaningful, non-exploitable error feedback.
+- **Dereferencing:** Use safeguards such as null pointer checks before dereferencing to avoid null pointer dereference issues, and make sure to correctly manage memory to avoid dangling pointer dereference.
+- **Insecure Direct Object Reference (IDOR):** Implement proper access control checks to verify the authenticated user has the appropriate permissions to access the specific resource.
+- **Race Condition:** Use synchronization mechanisms (like mutexes or semaphores) to ensure that shared resources are accessed by only one thread or process at a time.
+- **Broken Authentication:** Implement multi-factor authentication, session timeouts, and secure password policies to ensure robust authentication mechanisms.
+- **Sensitive Data Exposure:** Encrypt sensitive data at rest and in transit, and minimize the amount of data you collect and store.
+- **Insecure Components:** Regularly update all software components and libraries to their latest, secure versions and remove any unnecessary components.
+- **Insufficient Logging and Monitoring:** Implement comprehensive logging and monitoring, and regularly review these logs to identify and respond to suspicious activities.
+- **Weak or Default Configurations:** Change default configurations to secure settings, including changing default usernames/passwords and disabling unnecessary services.
+- **Use of Insecure Functions (like `strcpy`):** Use secure alternatives to risky functions (like `strncpy` instead of `strcpy` in C), and always validate and sanitize input data.
+
 ### Code review
 
 - **Exam**: the term itself is mentioned without going into more detail, but it's worth knowing the below models

@@ -28,7 +28,7 @@
 	- Puppet - similar to Chef, also agent server architecture 
 	- Docker - developing and shipping applications in containers, which are isolated, self-sufficient instances with all dependencies included that can run on any system that has the Docker engine installed. Some orchestration is included (`docker compose`).
 	- Kubernetes - the real master of container orchestration, introduces a whole new level of managing container-based apps and the infrastructure behind them (storage, networking, external access) with lots of flexibility
-- **SOAR** - see 42
+- **SOAR** - see [42](https://github.com/ordsec/cysa-notes/blob/master/42%20SIEM%20%26%20event%20correlation%3B%20SOAR.md)
 
 ### Cloud automation methods
 

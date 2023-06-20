@@ -138,6 +138,28 @@
 		- `SAMEORIGIN`: prevents any site except the same page from framing content
 		- `ALLOW-FROM`: permits framing only for certain pages
 
+### Remote Code Execution (RCE) - thank you GPT!
+
+Remote Code Execution (RCE) is a type of security vulnerability that allows an attacker to execute arbitrary commands or code on a target system over a network connection, typically without any form of authentication or user interaction.
+
+Here's a simplified explanation: Let's imagine your computer is a house. Normally, you have control over what happens in your house. In a remote code execution attack, an attacker found a way to get into your house without your knowledge and started to control what happens inside, like turning on your TV, opening your fridge, etc. In computer terms, they could access data, install malware, create user accounts, or perform any action that the system's legitimate user could.
+
+This vulnerability can exist due to several reasons, such as software bugs, system misconfigurations, or weak security controls. For example, a web application might have a bug that allows an attacker to manipulate inputs in a way that the server interprets as commands, which are then executed.
+
+To mitigate the risk of RCE vulnerabilities, here are some strategies:
+
+1. **Regular Patching and Updates:** Software vendors frequently release patches and updates to fix known vulnerabilities. Regularly updating and patching all software, including operating systems, applications, and libraries can significantly reduce the risk of RCE attacks.
+
+2. **Secure Coding Practices:** Developers should follow secure coding practices such as input validation, output encoding, and use of parameterized queries to reduce the risk of RCE vulnerabilities in their code.
+
+3. **Least Privilege Principle:** Systems and applications should run with the least privileges necessary to perform their functions. This can limit the potential impact of an RCE attack.
+
+4. **Firewall and IDS/IPS:** A properly configured firewall and intrusion detection/prevention system can help identify and block RCE attacks.
+
+5. **Security Scanning and Penetration Testing:** Regularly conducting security scanning and penetration testing can help identify and fix potential RCE vulnerabilities.
+
+Remember, dealing with RCE vulnerabilities requires a multi-layered security approach that includes secure design and coding, regular updates and patches, use of security tools, and user education.
+
 ---
 
 ### Exam

@@ -94,6 +94,9 @@ $128 \times 1 + 64 \times 1 + 32 \times 0 + 16 \times 1 + 8 \times 1 + 4 \times 
 - Different types:
 	- **Reflected XSS**: getting the user to click a link with malicious code (it can be embedded right there in the link - with all sorts of encoding/obfuscation)
 	- **Stored XSS**: the malicious code somehow gets persisted in the victim app, particularly in its database. No need for a link, the code will fire every time a user goes to a page that pulls data that includes injected code
+	- **DOM-based XSS**: occurs within a database maintained by the user's web browser, therefore never seen by the remote web server because it happens on the user's computer entirely
+		- Delivered via the URL such as `www.example.com/welcome?user=<script>malicious_code_here</script>`
+		- If the web app directly inserts the `user` parameter value into the page's DOM without properly validating/encoding it, the malicious script will be executed by the browser
 - Can be directed towards admin functionality in an app
 - It's a dangerous attack because JS is a powerful language, and code can be written to pursue a variety of malicious goals: stealing credentials, scanning a network, compromise a machine, even set up remote access
 - Mitigation:
@@ -103,6 +106,10 @@ $128 \times 1 + 64 \times 1 + 32 \times 0 + 16 \times 1 + 8 \times 1 + 4 \times 
 	- Whitelist approach to input sanitization - just specify which characters are allowed
 	- Dedicated modules in Apache, IIS, and other web server solutions
 	- Keep server/clients updated
+	- Output encoding, which means encoding user data before inserting it into the HTML document, especially for "dangerous" symbols such as `<` and `>`. For instance, you might replace `<` with `&lt;`, `>` with `&gt;`, etc.
+	- Content Security Policy restricting execution of scripts, which will prevent inline scripts and limit scripts in general to those from trusted sources
+	- Use the DOM and `document` API safely
+	- Regular code review and vuln scanning
 
 ### SQL Injection
 

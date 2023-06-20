@@ -32,6 +32,7 @@
 
 ### Man-in-the-Middle (MitM) attacks
 
+- CompTIA uses a different term: **on-path attacks**
 - Affects networks
 - Involves traffic interception
 	- Attacker is able to inspect traffic and make changes to requests and responses
