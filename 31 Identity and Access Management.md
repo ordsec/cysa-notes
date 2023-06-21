@@ -252,7 +252,7 @@
 	- Very useful for correlation
 	- Needs lots of disk space and time to analyse
 - We need to quickly react to unauthorized/compromised accounts and other incidents
-- **Exam!** Manual review: reviewing accounts and permissions by hand
+- **Exam!** **Manual review**: reviewing accounts and permissions by hand
 	- Useful and sometimes necessary as part of access control schemes
 	- Can require a significant amount of effort and time
 	- Not necessarily error-proof

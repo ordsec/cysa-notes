@@ -205,3 +205,33 @@ Know the different types of cloud infrastructures (public/private/hybrid) and wh
 - Unifies software development and technology operations
 - Cloud enables DevOps by offering IaC capabilities through their API's
 - We must understand how to secure these API's (encryption, securing keys, etc. - see 46)
+
+### Cloud vs on-premises security solutions (courtesy of GPT)
+
+**Cloud Security Solutions:**
+
+1. **Ease of Use and Scalability:** Cloud security solutions are typically easier to scale as they don't require additional hardware to handle increased usage or capacity.
+
+2. **Managed Security:** Many cloud providers offer managed security services, reducing the workload of internal IT teams.
+
+3. **Cost:** Cloud solutions often have a lower upfront cost, as they typically follow a subscription-based model (pay-as-you-go) versus large initial investment in hardware and software.
+
+4. **Automatic Updates:** Cloud security services often include automatic updates, ensuring you always have the latest security features and updates.
+
+5. **Geographical Distribution:** Cloud services can provide security benefits through geographical distribution, reducing the risk associated with physical disasters.
+
+However, with cloud solutions, your security is, to some extent, in the hands of a third-party provider. Data privacy and compliance may also be more complex in a cloud environment due to data residency issues.
+
+**On-Premises Security Solutions:**
+
+1. **Control:** With on-premises solutions, you have complete control over your security infrastructure.
+
+2. **Customizability:** On-premises solutions can be highly customized to meet specific requirements of the organization.
+
+3. **Compliance and Data Sovereignty:** Keeping data on-premises can simplify compliance with regulations about data storage and transmission.
+
+4. **Physical Access:** On-premises solutions offer more control over who has physical access to servers, storage, and network devices.
+
+However, on-premises solutions require a larger upfront investment in hardware and software. They may also require more specialized IT personnel to manage and maintain the security systems. Updates to security features may not be as frequent or automatic as with cloud solutions.
+
+In reality, many businesses use a hybrid approach, taking advantage of the benefits of both cloud and on-premises solutions, depending on their specific needs and circumstances.

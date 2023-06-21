@@ -74,6 +74,8 @@
 - Versioning - keep track of it for software and firmware
 - Use dedicated software for this
 
+---
+
 ### Exam
 
 Understand the importance of asset management and tracking, be able to talk about change management, its purpose and risks, remember configuration management's purpose and benefits.
