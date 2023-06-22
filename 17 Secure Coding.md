@@ -176,7 +176,7 @@
 ### Database security
 
 - Input validation, output encoding - displaying what's returned from the DB in a safe manner
-- Parameterized queries, prepared statements (aka **stored procedures**), precompiled statements - all to defend against SQLi
+- **Parameterized queries**, prepared statements (aka **stored procedures**), precompiled statements - all to defend against SQLi
 	- Instead of concatenating what the user sends into an SQL statement, treat what the user sends as plain text
 	- Use placeholders for parameters that come from the user side
 	- This way it's not actually interpreted as SQL

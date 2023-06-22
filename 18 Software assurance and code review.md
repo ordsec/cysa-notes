@@ -235,7 +235,7 @@ Just know all of the above, pretty much. Be able to explain the ideas behind sta
 	- Apps/services improperly set up, default configurations used
 	- Default passwords for a DB connection for instance
 - **Use of insecure functions, `strcpy`**
-	- See 19
+	- See [19](https://github.com/ordsec/cysa-notes/blob/master/19%20Attack%20mitigation%20-%20buffer%20overflows%2C%20race%20conditions.md)
 
 ### Mitigations for the above (thank you GPT!)
 
@@ -283,3 +283,90 @@ Just know all of the above, pretty much. Be able to explain the ideas behind sta
 - Other tools: Acunetix WVS, HCL AppScan, WebInspect by Micro Focus, Netsparker, Qualys Web Application Scanner, W3AF
 - Manual scanning and review is important - not all problems can be identified by automated solutions
 	- This is where *interception proxies* shine - see [32](https://github.com/ordsec/cysa-notes/blob/master/32%20Web%20application%20scanners.md)
+
+---
+
+### Platform best practices (thank you Dion!)
+
+- Client/Server Applications
+	- An application where part of the application is a client software program that is installed and run on separate hardware to the server application code and interacts with the server over a network 
+	- Attacks can be directed at the local client code, at the server application, or at the network channel between 
+	- Server-side code should always utilize input validation 
+- Web Applications 
+	- An application which uses a generic web browser as a client and standard network protocols (HTTP/HTTPS) to communicate with the server 
+	- Web applications use a multi-tier architecture where the server part is split between application logic and data storage and retrieval 
+	- Modern web applications also use microservices and serverless designs 
+- Mobile Applications
+	- An application which is deployed and run on a smartphone, tablet, or other mobile operating system 
+	- Mobile applications are more susceptible to the unsecure use of authentication, authorization, and confidentiality controls 
+- Embedded Applications 
+	- An application which is designed to run on a dedicated hardware platform 
+	- Embedded applications have traditionally not focused on security during development and deployment 
+- Firmware 
+	- Generally considered a type of embedded application that contains the block of embedded code that runs first at startup, performing "low-level" input/output device functions, plus bootstrapping of an OS or application 
+	- Firmware has complete control over the hardware and system memory, thereby making it a lucrative target 
+- System-on-a-Chip (SoC) 
+	- A type of embedded application commonly used in mobile devices which contains integrated CPU, memory, graphics, audio, network, storage controllers, and software on one chip 
+	- SoC manufacturers often reuse code by selecting IP blocks for certain functions made up of FPGAs 
+
+### And to drill it in further... best practices from GPT! :D
+
+**Mobile:**
+
+1. **Secure Coding Practices:** Adhere to the latest secure coding practices and guidelines for the specific mobile platform (iOS, Android, etc.)
+
+2. **Encryption:** Implement encryption for any data at rest and in transit.
+
+3. **Permission Management:** Minimize the permissions your app requests, and only request permissions as they are needed.
+
+4. **Secure Authentication and Authorization:** Implement strong user authentication and ensure that access controls are in place and effective.
+
+**Web Application:**
+
+1. **Input Validation:** Validate, filter, and sanitize all inputs to prevent attacks such as Cross-Site Scripting (XSS) or SQL Injection.
+
+2. **Session Management:** Implement secure session management to protect against session hijacking or session fixation attacks.
+
+3. **Updated Components:** Ensure all components, such as libraries and frameworks, are kept up-to-date and free of known vulnerabilities.
+
+4. **Implement HTTPS:** Secure communications with HTTPS and ensure data is encrypted in transit.
+
+**Client/Server:**
+
+1. **Secure Communication:** Implement secure communication protocols between the client and server.
+
+2. **Authentication and Authorization:** Use strong authentication mechanisms and ensure proper authorization checks are performed on the server side.
+
+3. **Principle of Least Privilege:** Ensure both client and server operate under the principle of least privilege, limiting the potential damage of a breach.
+
+4. **Server Hardening:** Protect the server by disabling unnecessary services, keeping it patched and up-to-date, and configuring it securely.
+
+**Embedded Systems:**
+
+1. **Secure Boot:** Implement secure boot mechanisms to prevent unauthorized modification of the system software.
+
+2. **Memory Protection:** Use memory protection techniques to prevent buffer overflows and similar vulnerabilities.
+
+3. **Secure Communication:** Use encryption and secure protocols for any network communication.
+
+4. **Periodic Security Testing:** Conduct regular security assessments as embedded systems can be difficult to update, and thus vulnerabilities can persist for longer.
+
+**System-On-A-Chip (SoC):**
+
+1. **Hardware-Based Security Features:** Utilize hardware-based security features, like secure boot, Trusted Execution Environment (TEE), and Physical Unclonable Function (PUF).
+
+2. **Isolation:** Implement strong isolation between different execution environments and applications.
+
+3. **Secure Design and Testing:** Follow a secure design process, including threat modeling and security testing at all stages of the development lifecycle.
+
+**Firmware:**
+
+1. **Secure Update Process:** Ensure firmware updates are securely delivered to prevent injection of malicious firmware.
+
+2. **Minimal Functionality:** Keep the functionality of firmware to the minimum necessary to limit the potential attack surface.
+
+3. **Secure Coding Practices:** Follow secure coding practices to minimize vulnerabilities in the firmware.
+
+4. **Encryption:** Use encryption for sensitive data, and verify the integrity of data and code.
+
+Please note that these are high-level best practices and the actual implementation may vary based on specific project requirements and constraints.
