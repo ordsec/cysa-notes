@@ -19,3 +19,12 @@ There's likely some repetition insofar as one concept may be explained in more t
 I've added the PDF file with official CS0-002 exam objectives from CompTIA. For each objective in each domain, I am adding a mapping to a note that will have definitions and context for each listed term. Sometimes different terms under one objective will be in different notes, sometimes an entire objective will be in one note - it should be pretty easy to tell.
 
 That's all for now - enjoy, and I apologize in advance for any typos :)
+
+---
+
+#### Resources used
+
+- Ciorba, A. (n.d.). _Comptia CySA+ Full Course (CS0-002)_. YouTube - Certify Breakfast. https://www.youtube.com/playlist?list=PLMYSjEaGLw_vGxGsAIUgmkbEm52QR02tx
+- Chapple, M. (2021). _Comptia CySA+ study guide with online labs: Exam CS0-002, 2nd edition. Sybex.
+- Dion, J. (n.d.). _Online course: Comptia Cysa+ (CS0-002) Complete Course & Practice Exam from Udemy_. Class Central. https://www.classcentral.com/course/udemy-comptiacsaplus-23893
+- ChatGPT by OpenAI
