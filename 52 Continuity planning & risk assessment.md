@@ -113,14 +113,14 @@
 	- Vector: people and systems affected, how long it lasted, is it still happening
 	- Severity (but it's subjective)
 - Scope-based classification of an incident:
-	- Organizational vs local: how much was affected. Organizational likely affects mission-critical assets, local means it's a department, or a group of users, or just one user
+	- **Organizational** vs **localized**: how much was affected. Organizational likely affects mission-critical assets, local means it's a department, or a group of users, or just one user
 		- Can be tricky to draw the line here. It may be just one server, but what if the resulting fallout affects the overall function of the business? 
 	- Was anything critical affected?
 	- Number of systems affected - but it may not accurately reflect the impact. You may have 100 machines affected by a worm, but that would only result in a temporary loss of performance
 - How difficult is recovery?
 	- Consider the complexity of all the steps required to recover; business may not function at all until you do recover
 	- What is the financial and time expenditure to get back up?
-- Immediate vs total impact:
+- **Immediate** vs **total** impact:
 	- Immediate impact is the direct cost of the incident: damage, downtime, costs, fees, fines if applicable. Anything we can calculate
 	- Total impact: costs that arise after the incident: reputation, loss of clients, loss of partners
 

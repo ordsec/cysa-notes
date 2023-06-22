@@ -34,6 +34,14 @@
 	- Entire netblocks can be blacklisted by orgs because of one address' malicious behaviour, but it's not always a good practice
 	- Because of VPN/proxy/cloud services, attackers can pretty easily source an address that won't be so easy to block
 
+### SIEM dashboard
+
+- Instead of 1000 words...
+
+![siem-dashboard.png](img/siem-dashboard.png)
+
+- Where alerts are represented as all sorts of widgets for stats and quick reference
+
 ### Use case matching
 
 - When a matching event is found, the SIEM should capture the following, at least:
@@ -116,7 +124,7 @@
 	- Unified `AND`/`OR` operations - combine results
 - Sometimes similar to SQL queries:
 	- `select <field> where <condition> sort by <field>;`
-- String searching - filtering text information in logs
+- **String searching** - filtering text information in logs
 	- Doing it manually is a very important skill
 - Regular expressions - **might be on the exam (evaluating something)**
 - Understand and be able to recognize what's below, learn more using a regex cheatsheet

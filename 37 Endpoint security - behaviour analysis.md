@@ -9,7 +9,7 @@
 
 ### Endpoint security solutions
 
-- Smarter solutions for lesser known threats are based on heuristics
+- Smarter solutions for lesser known threats are based on **heuristics**
 - We don't exactly know what to look for when malware becomes very advanced
 - Attackers know about signatures and try to evade them
 
@@ -125,4 +125,3 @@ Compare and contrast signature and behaviour analysis, know solutions for each, 
 	- Encryption either for files/folders or FDE
 	- File integrity monitoring
 	- Logging
-- 
