@@ -25,6 +25,6 @@ That's all for now - enjoy, and I apologize in advance for any typos :)
 #### Resources used
 
 - Ciorba, A. (n.d.). _Comptia CySA+ Full Course (CS0-002)_. YouTube - Certify Breakfast. https://www.youtube.com/playlist?list=PLMYSjEaGLw_vGxGsAIUgmkbEm52QR02tx
-- Chapple, M. (2021). _Comptia CySA+ study guide with online labs: Exam CS0-002, 2nd edition. Sybex.
+- Chapple, M. (2021). *Comptia CySA+ study guide with online labs: Exam CS0-002, 2nd edition*. Sybex.
 - Dion, J. (n.d.). _Online course: Comptia Cysa+ (CS0-002) Complete Course & Practice Exam from Udemy_. Class Central. https://www.classcentral.com/course/udemy-comptiacsaplus-23893
 - ChatGPT by OpenAI
