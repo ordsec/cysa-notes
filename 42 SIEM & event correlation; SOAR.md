@@ -187,3 +187,23 @@ Know what a SIEM does and how it does it; be familiar with related concepts such
 - SIEM vendors usually also offer SOAR solutions: Splunk, Rapid7, IBM (QRadar)
 - SOAR-specific tools such as [ServiceNow](https://www.servicenow.com/products/itsm.html)
 - **Exam**: know what SOAR is, but technical questions are unlikely
+
+### Threat feed combination (thank you GPT!)
+
+Threat feed combination refers to the process of aggregating and integrating multiple threat intelligence feeds into a single system or framework. The goal of this is to provide a more comprehensive picture of the threat landscape and improve the ability to detect, prevent, and respond to cybersecurity threats.
+
+Threat intelligence feeds are sources of data provided by cybersecurity firms, organizations, or open-source initiatives that contain information about known threats, vulnerabilities, Indicators of Compromise (IoCs), and Tactics, Techniques, and Procedures (TTPs) used by threat actors.
+
+Here's a bit more detail about how threat feed combination works:
+
+1. **Aggregation:** Multiple threat feeds are collected from various sources. These can be public or private feeds, free or paid, and may come in different formats.
+
+2. **Normalization:** Because different feeds might use different formats or structures for their data, the feeds are normalized, meaning they're transformed into a common format that can be easily processed and analyzed.
+
+3. **De-duplication:** Redundant or duplicate data from different feeds is identified and removed to streamline the data and improve processing efficiency.
+
+4. **Correlation:** The data from different feeds is correlated, identifying connections or relationships between different pieces of data. For example, an IP address found in one feed might be connected to a known malware hash found in another.
+
+5. **Integration:** The aggregated, normalized, de-duplicated, and correlated data is then integrated into the organization's security systems, such as a Security Information and Event Management (SIEM) system, for use in threat detection and prevention.
+
+By combining multiple threat feeds, organizations can gain a broader and more complete view of the threat landscape, making it easier to identify threats and respond more effectively. However, it's also important to ensure that the feeds being used are reliable and accurate to avoid false positives or other issues.

@@ -17,7 +17,7 @@
 ### ML and deep learning uses in cybersecurity
 
 - Smart SIEM: figuring out that malware is present in the network simply by analyzing hundreds of data points from network devices without any explicit prior training
-- Data enrichment: a single alert that hasn't yet been marked as a security incident gets enriched with data from an ML system by correlating events that happened at the same time on different systems (user activity, active connections, etc.)
+- **Data enrichment**: a single alert that hasn't yet been marked as a security incident gets enriched with data from an ML system by correlating events that happened at the same time on different systems (user activity, active connections, etc.)
 - Signature creation: learning the behaviour of malware and creating signatures based on observed current and historical data; refining existing signatures
 - SOAR: incident response and threat hunting, mitigating the TMI problem (too many alerts, not enough eyes to look at them)
 	- Storing security baselines and threat intel in a database
