@@ -46,6 +46,12 @@
 		- Weak passwords
 		- Brute force attempts
 - Maintaining compliance - especially with regulations that have to do with personal data
+- Five ways to claim an identity:
+	- Usernames
+	- Certificates
+	- Tokens
+	- SSH keys
+	- Smart cards
 
 ### Two big problems
 
