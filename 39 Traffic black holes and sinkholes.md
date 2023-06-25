@@ -3,7 +3,7 @@
 - This is where sinkholes come in - simply dropping traffic based on some fairly simple conditions
 - This functionality can be configured on the routing device, but in this case matching bad traffic becomes difficult, and this approach is not effective against DDoS
 
-### Blackhole
+### Black hole
 
 - Dropping traffic we don't want
 - Mitigating DoS, DDoS if matching is possible

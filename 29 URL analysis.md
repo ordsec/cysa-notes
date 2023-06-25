@@ -29,9 +29,13 @@ This is a way of getting around static IP/domain blacklists through generating c
 		- Can help disguise malicious systems by leveraging the very short TTL for records and a round-robin DNS that points to different systems as the record is called
 	- **Double flux** is more complex, but uses a similar technique to register and de-register DNS servers for the DNS zone, adding another layer of confusion when attempting to pin down malicious systems
 	- Commonly used as part of botnets
+- **DGA indicators**
+	- Requests to domains with random names
+	- `NXDOMAIN` errors
 
 ### DGA mitigation
 
+- Secure recursive DNS resolver
 - Maybe the algorithm the hacker is using isn't that good? 
 	- A "bad" algorithm has predictable patterns and sequences, resulting in too many domain names that basically can't be pronounced
 	- DG may not sync that quickly, producing a lot of NXDOMAIN errors (non-existing domains) - but this isn't foolproof because this is generally a common error

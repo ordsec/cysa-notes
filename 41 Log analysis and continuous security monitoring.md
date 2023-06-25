@@ -114,6 +114,7 @@
 - "IPS without eyes is useless" - someone has to monitor this type of system
 - Alerts usually ingested by a SIEM
 - **Snort** is a very well-known IDS/IPS solution, its engine often embedded in commercial IPS sollutions
+	- Others are Zeek and Security Onion
 - Be able to identify a Snort rule, here's an example signature:
 
 ```python

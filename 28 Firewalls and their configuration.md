@@ -101,6 +101,10 @@
 	- Inbound aka **ingress filtering** - traffic that is about to enter the high-security area of the network
 	- Outbound aka **egress filtering** - traffic that is about to leave that area
 - Traditionally, we focus on ingress filtering - keeping the nasty stuff out and preventing it from entering our beautiful shiny network
+- There are other things to block on the ingress side as well
+	- Block incoming requests from internal or private, loopback, and multicast IP addresses
+	- Block incoming requests from protocols that should only be used locally (ICMP, DHCP, OSPF, SMB, STP)
+	- IPv6 traffic should only be allowed to authorized hosts/ports, or it should be blocked altogether
 - With more advanced threats, egress filtering has become important also
 	- What if malware has somehow entered and it wants to communicate back to the attacker? We have to contain the damage.
 	- C2 comes to mind
