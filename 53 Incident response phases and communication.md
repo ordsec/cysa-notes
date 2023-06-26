@@ -137,6 +137,7 @@
 	- Keep in mind that adversaries may be on the inside, and they may be in contact with CSIRT
 	- Especially make sure nothing gets leaked to the press
 - Out-of-band communication - if our internal channels are compromised, we have to use **secure methods of communication** that cannot be intercepted or maliciously altered; this something else needs to be part of the IR plan. In fact, *assume* that our internal channels are compromised
+- Preventing targets of ongoing internal investigations from becoming aware of said investigations
 
 ### External communication
 

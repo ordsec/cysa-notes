@@ -32,7 +32,8 @@
 ##### iOS
 - Closed environment, no 3rd-party app stores, everything is controlled solely by Apple
 - Much less customization, iOS is iOS on every iPhone
-- Fewer opportunities for attackers to try and compromise it
+	- Due to this, many people choose to jailbreak their iPhones, which makes them much more vulnerable and voids warranty
+- Fewer opportunities for attackers to try and compromise it - unless jailbroken
 - Updates are rolled out promptly
 
 ### Centralized management

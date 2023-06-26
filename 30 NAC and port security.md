@@ -2,10 +2,17 @@
 - NAC is the same concept - except for a network
 - It's a broad topic, with many vendors providing many ways of implementing it
 - Sometimes referred to as NAP (Network Access Prevention) or **port security**, which was coined by Cisco and is used for their switches
+- Security measures below are aimed at preventing **rogue devices** - but also many other bad things
+
+### Network device best security practices
+
+- Use ACL's to restrict access to designated host devices (limited number of laptops/desktops that can access network device management areas, access only from certain places)
+- Monitor how many designated interfaces you have, limit that number
+- No internet access to remote management - either via LAN, or remotely through VPN
 
 ### Physical security
 
-- NAC is about the physical security of your network
+- Port security is about the physical security of your network
 	- Deciding whether someone plugging a cable to your ethernet port can actually use the network
 - A simple fact that's often overlooked is that a malicious actor can theoretically plug in to one of your ports, and all of your fancy security measures will be worth zilch 
 - Implement these fairly basic controls:
@@ -15,7 +22,7 @@
 
 ### Technical security
 
-- NAC is also about controls you can apply logically
+- Controls you can apply logically
 - Pre-admission and post-admission access control (checking systems before or after connecting to network)
 - Port security, **MAC filtering**: which MAC addresses are allowed to send traffic on each switch port?
 	- Simple, but not highly secure as MAC addresses can be spoofed pretty much by anyone; there's also a lot of administrative overhead here
