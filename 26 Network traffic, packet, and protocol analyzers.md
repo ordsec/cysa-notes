@@ -131,3 +131,31 @@
 ### Exam
 
 Understand the importance of capturing traffic, explain how it can be done (`tcpdump`, Wireshark). Discuss the difference between packet and protocol analysis, what goes into each, what the limitations are. Define flow information, what it's for, and what tools are used to collect it.
+
+---
+
+### Important `tcpdump` flags to know (thank you GPT!)
+
+TCPdump is a powerful command-line network analyzer tool that allows you to capture or "sniff" network packets and display them in a way that you can understand what's going on in your network. Here are some of the important TCPdump flags that might come up in the CompTIA CySA+ exam:
+
+1. `-i`: Interface. This flag specifies the network interface that TCPdump should capture packets on. For example, `tcpdump -i eth0`.
+
+2. `-c`: Count. This flag specifies the number of packets to capture before stopping. For example, `tcpdump -c 100`.
+
+3. `-w`: Write. This flag specifies a file to write the packet data to, for later analysis. For example, `tcpdump -w myfile.pcap`.
+
+4. `-r`: Read. This flag specifies a file to read packet data from. This is typically used in conjunction with the `-w` flag. For example, `tcpdump -r myfile.pcap`.
+
+5. `-n`: Don't resolve hostnames. This flag tells TCPdump not to resolve hostnames from IP addresses, which can speed up the output.
+
+6. `-v`, `-vv`, `-vvv`: Verbose. These flags increase the amount of detail shown in the output. The more `v`s, the more verbose the output.
+
+7. `-X` or `-XX`: These flags print the data of each packet (minus its link level header) in hex and ASCII. `-XX` also prints the link-level header in hex.
+
+8. `-s`: Snarf. This flag sets the amount of each packet to save. `tcpdump -s 0` will save the entire packet.
+
+9. `-port`, `src`, `dst`: These options can be used to filter the traffic based on port number, source, or destination.
+
+10. `-tcp`, `-udp`, `-icmp`: These options can be used to filter by protocol.
+
+Remember, the actual flags used can vary slightly depending on the specific version of TCPdump and the operating system. Always check the man page (`man tcpdump`) to see the options available on your system. Also, be aware that to run TCPdump, you generally need superuser or administrative rights on the system.

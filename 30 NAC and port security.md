@@ -83,3 +83,42 @@
 ### Exam
 
 Know what port security/NAC/NAP are, be familiar with the 802.1X workflow (and the roles of the three entities) and how EAPoL fits in, remember about physical port security and all its aspects. Be able to provide examples of posture validation methods.
+
+---
+
+### GPT explains: NAC vs ACL
+
+**Network Access Control (NAC)** and **Access Control Lists (ACL)** are two security measures that help regulate who or what can access networks and resources within those networks. While they share some similarities, they serve distinct functions and are applied in different contexts.
+
+**NAC - Network Access Control:**
+
+Network Access Control is a comprehensive solution that enforces policy on a network to prevent unauthorized access. NAC controls access to the network by not allowing devices to join unless they meet predefined security rules or policies. These rules can involve the status of antivirus software, system updates, and many other parameters.
+
+*Use Cases for NAC:*
+
+- Controlling access to a network based on the device's compliance with security policies.
+- Enforcing policies such as requiring up-to-date antivirus software, system patches, and other security measures on a device before it can access the network.
+- Managing guest access to a network. For example, a company may want to allow visitors to access the internet but not internal resources.
+
+**ACL - Access Control List:**
+
+An Access Control List is a table that an operating system or network device uses to control access. It contains a list of permissions associated with a specific object, such as a file or network router. Each entry in an ACL specifies a subject and an operation. For instance, it might allow one IP address to access another IP address using a specific protocol.
+
+*Use Cases for ACL:*
+
+- Regulating which users or devices can access a specific network resource.
+- Controlling traffic flow on a network. For example, an ACL on a router might be used to prevent traffic from certain IP addresses from reaching certain network segments.
+- Securing sensitive files or resources by specifying which users or processes can access them.
+
+**Comparison:**
+
+While both NAC and ACL control access, NAC is primarily used for determining whether devices can join a network based on their compliance with security policies, while ACLs are used to control what a device or user can do once they have accessed a network or system.
+
+For instance, a NAC solution might prevent a device with outdated antivirus software from joining a network, while an ACL might prevent a user on the network from accessing a specific file or server. Hence, NAC can be thought of as a first line of defense (controlling "network admission"), while ACLs provide more granular control over resources ("access control").
+
+#### Example scenario
+
+Acme, Inc. allows its visiting business partners from CompTIA to use an available Ethernet port in their conference room to establish a VPN connection back to the CompTIA internal network. The CompTIA employees should obtain internet access from the *Ethernet port* in the conference room, but nowhere else in the building. Additionally, if any of the Acme employees use the same Ethernet port in the conference room, they should access Acme's secure internal network. Which of the following technologies would allow you to configure this port and support both requirements?
+
+NAC is the answer here, not ACL. NAC uses a set of protocols to define and implement a policy that describes how to secure access to network nodes whenever a device initially attempts to access the network. NAC can utilize an automatic remediation process by fixing non-compliant hosts before allowing network access. Network Access Control can control access to a network with policies, including pre-admission endpoint security policy checks and post-admission controls over where users and devices can go on a network and what they can do. In this scenario, implementing NAC can identify which machines are known and trusted Acme assets and provide them with access to the secure internal network. NAC could also determine unknown machines (assumed to be those of CompTIA employees) and provide them with direct internet access only by placing them onto a guest network or VLAN.
+

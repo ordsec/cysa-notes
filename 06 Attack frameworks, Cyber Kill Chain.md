@@ -23,8 +23,10 @@
 	- Based on all this, attacker decides how to ruin your day
 - **Weaponization**: when recon is successful and weaknesses were discovered, attacker chooses an exploit and/or starts developing their own tools to wreck you
 - **Delivery**: choosing and preparing a delivery method. How exactly can a weakness be exploited?
+	- Sending an email with a malicious attachment
 - **Exploitation**: gaining first access to the system, executing the exploit code once it has been set in place, can happen automatically or in a remotely controlled fashion depending on the delivery method. 
 	- Can be an unaware employee, or it can be an insider threat!
+	- Waiting for the target to open the malicious attachment from the email
 - **Installation**: gaining persistence and direct access (no need to deliver malware anymore); backdoor is the keyword
 - **C2**: establishing a data channel back to the attacker. Malware calls back home. Attacker can send commands and remotely control the compromised system. Connections are usually initiated from inside the company (which is usually allowed by firewalls)
 	- On the defensive side, identifying evidence of C2 in network/DNS logs is the first proof that indicates compromised systems; one of the first methods of detecting an APT

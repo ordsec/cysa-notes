@@ -76,6 +76,7 @@
 
 ![order-of-volatility-1.png](img/order-of-volatility-1.png)
 
+- L1, L2, L3 cache is the CPU - so highest in the order
 - The Windows Registry mostly exists on the disk, but parts of it are stored in memory
 - Collect free space as well - it may not be free after all since deleting files from a drive really only means severing pointers that once pointed to those files
 - Look for remote logging and monitoring (usually applies to business settings) - it's all pertinent

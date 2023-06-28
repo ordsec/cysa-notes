@@ -141,6 +141,7 @@
 - Management has to approve all changes
 - Should state clearly what the goals and responsibilities are for each department (execs create the policy, HR distributes it and provides necessary training, ops workers are tasked with implementing necessary controls, employees abide)
 - Should be on the need-to-know as much as possible so this info doesn't leak to potential attackers
+- Obviously must be followed. Conflicts in settings, for instance, should be resolved based on what the corporate policy dictates. Corporate policy takes precedence over frameworks because it is (supposedly) based on a framework and some best practices.
 
 ### Procedures
 

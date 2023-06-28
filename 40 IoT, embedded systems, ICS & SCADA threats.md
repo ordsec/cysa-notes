@@ -23,6 +23,7 @@
 - Usually static: can't be changed by the user, only by the manufacturer (makes vuln detection VERY difficult)
 - Updates may or may not be available, sometimes there's no way to update at all
 - **Embedded systems**: computers integrated into the operation of another device (vehicle, camera, MFP, etc.); very simple, one function per system
+	- MFP: multifunction printer; related ports are 631 (CUPS) and 9100 (RAW aka direct-IP port); if found in a scan, then the device is likely a printer
 
 >**PLC**
 
@@ -55,6 +56,8 @@
 
 - It's like your smart home with the cool internet-enabled thermostat, but on the enterprise level
 - Much more complex, handling a lot more systems
+- PLC's can be found in this setting too - for instance, elevator controllers
+	- To remediate vulns in these, isolation is likely the best answer since replacement/disconnection can trap someone in an elevator or create other major problems
 - **Physical access control**, lights, climate control, fire suppression, video monitoring, etc.
 - Similar to an ICS (also rely on embedded controllers and sensors with centralized monitoring)
 - Often overlooked from the security perspective
