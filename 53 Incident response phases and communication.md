@@ -185,6 +185,12 @@
 - **High Value Assets (HVA)**: critical information systems; if the C, I, or A is affected or compromised, the business will face a dangerously high risk of closure; must be prioritized in the IR process
 	- [CISA HVA documentation](https://www.cisa.gov/sites/default/files/publications/CISAInsights-Cyber-SecureHighValueAssets_S508C.pdf)
 
+### Asset value vs financial value
+
+- The asset value depends on how the data tied to that asset is classified (PII/PHI/IP, etc.)
+- The financial value is cost of acquisition/repair/replacement and depreciation
+- Prioritizing systems can be performed based on the criticality of data those systems handle, so more expensive gear may not get as high a priority as something with less financial value but containing highly sensitive data
+
 ### And finally...
 
 - **Train your people!** The human factor often plays a crucial role in a successful attack. Encourage curiosity. This will only work in an environment where employees care about the company because they are treated well. Train them against any attacks that may involve them personally: phishing, social engineering; train them on security measures at their disposal

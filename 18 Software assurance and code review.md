@@ -34,7 +34,9 @@
 - Completely automated
 - A type of software verification that relies on mathematical inputs to track code execution
 - Which code paths are being used, which ones are unreachable? Potential infinite loops perhaps?
+- All edge cases must absolutely be eliminated
 - Mostly used for complex projects where there can be many branches and execution paths - too many to keep in mind for human testers
+	- Such as self-driving car systems
 - Static analysis requires automated tools to understand the programming language the code is written in
 - Formal method requires that tools understand the application itself and how it's supposed to be used
 - Need a well-defined formal model

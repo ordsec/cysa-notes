@@ -83,7 +83,7 @@
 		- `userinit.exe` should not persist - it launches `explorer.exe` and then exits, so if it keeps running, there's something fishy
 			- `explorer.exe` is the file manager but also the parents process for any other processes manually launched by the current user
 - Use [Sysinternals](https://learn.microsoft.com/en-us/sysinternals/) for all sorts of Windows monitoring
-	- ProcMon is great for exploring the process tree
+	- ProcMon is great for exploring the process tree, also tracks FS and registry changes
 
 ##### Examining suspicious process behaviour by hand
 - Use the **Process Explorer (Sysinternals)**
@@ -125,3 +125,23 @@ Compare and contrast signature and behaviour analysis, know solutions for each, 
 	- Encryption either for files/folders or FDE
 	- File integrity monitoring
 	- Logging
+
+### Windows tools
+
+- `wmic` (WMIC - Windows Management Instrumentation Command-line)
+	- Managing and interacting with various components of Windows
+	- Provides a scripting interface for automated administrative tasks and system management
+	- Querying system settings, managing services and processes, obtaining system info
+	- Can be used locally or remotely - no need for GUI
+- `sc`
+	- Command-line tool for communicating with the Service Control manager and services
+	- Managing services (creating new one, stopping/starting/deleting existing ones)
+	- Querying status information for services
+- `services.msc`
+	- Microsoft Management Console (MMC) snap-in
+	- GUI for managing services - pretty much the same functionality as `sc`
+- `secpol.msc`
+	- MMC snap-in for configuring local security policies and settings
+	- Password/audit policies, user rights assignments
+	- Typically used for computers that are not part of a domain (otherwise it's under Group Policy)
+	- Does **not** manage services unlike everything above!

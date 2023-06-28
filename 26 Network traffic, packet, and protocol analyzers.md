@@ -158,4 +158,6 @@ TCPdump is a powerful command-line network analyzer tool that allows you to capt
 
 10. `-tcp`, `-udp`, `-icmp`: These options can be used to filter by protocol.
 
+11. `-e`: Gather Ethernet frames
+
 Remember, the actual flags used can vary slightly depending on the specific version of TCPdump and the operating system. Always check the man page (`man tcpdump`) to see the options available on your system. Also, be aware that to run TCPdump, you generally need superuser or administrative rights on the system.

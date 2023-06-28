@@ -88,6 +88,7 @@
 	- Google's `dig` service
 	- `host`
 	- zone transfers
+	- Banner grabbing can be performed with `nc`, `wget`, `telnet` (`ftp` cannot grab a banner)
 - Dedicated OSINT tools also
 	- FOCA (document metadata)
 	- theHarvester (searches for emails, domain names, IP addresses, etc - all from public info)

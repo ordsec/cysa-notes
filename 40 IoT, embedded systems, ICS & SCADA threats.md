@@ -17,13 +17,13 @@
 
 ### Embedded OS
 
-- What IoT devices are largely based on
-- A type of OS designed for a device that only performs one specific function
+- A type of OS designed for a device that only performs one specific, dedicated function
 	- From a heart rate monitor to a system that controls metal casting
-- Usually static: can't be changed by the user, only by the manufacturer (makes vuln detection VERY difficult)
+- Usually static: **can't be changed by the user**, only by the manufacturer (makes vuln detection VERY difficult)
 - Updates may or may not be available, sometimes there's no way to update at all
 - **Embedded systems**: computers integrated into the operation of another device (vehicle, camera, MFP, etc.); very simple, one function per system
 	- MFP: multifunction printer; related ports are 631 (CUPS) and 9100 (RAW aka direct-IP port); if found in a scan, then the device is likely a printer
+- An embedded system can be a very simple device or it can be a full-fledged computer with an OS like Android or Linux - in which case one of the methods of securing it is disabling unnecessary services in addition to segmentation if it's part of a network
 
 >**PLC**
 
@@ -36,6 +36,7 @@
 - **SoC**: System on a Chip
 	- Tiny computer that saves space and power, has its own CPU and memory, connectivity, storage, and so on
 	- Arduino, Raspberry Pi - not so much IoT anymore, but still SoC
+	- Multiple embedded systems on one chip
 - **RTOS**: Real-Time Operating System
 	- Limited functions, extremely time-dependent execution
 	- Focused on executing operations at a very specific point in time
@@ -49,8 +50,88 @@
 	- Can only execute operations from pre-defined, pre-programmed sets
 	- Can involve **ASIC's** (Application-Specific Integrated Circuits): non-programmable chips that come hard-coded from the manufacturer
 	- Can be used for packet encryption and decryption, packet switching (within switches)
+	- Unlike embedded systems, which are coded by the manufacturer, FPGA's are coded by the user (sorta like embedded system as a service)
 	- Vulnerable not just to physical access, but also to supply chain attacks
 	- [FPGA vulnerability example](https://www.eenewseurope.com/en/starbleed-vulnerability-revealed-in-xilinx-fpgas/) - bug cannot be patched, all you can do is replace the chips
+
+### ICS
+
+- Industrial Control Systems: automating control machinery such as assembly lines, managing critical infrastructure: power, health, nuclear, communications, water, etc.
+- Mission-critical for any country
+- Availability and integrity are prioritized over confidentiality
+- ICS describes a larger set of industrial sites
+	- **DCS** (Distributed Control System) is a single site
+- These systems run software on regular computers on PLC's
+	- PLC's gather data from outside sensors and controllers called **field devices**
+	- PLC's are linked by a **fieldbus**: an industrial network system for real-time distributed control
+	- PLC's can also be linked via ethernet connections to actuators that operate the actual engines and to all necessary sensors
+- **HMI** (Human-Machine Interface): an interface used by us humans to configure and monitor the output of a PLC
+- **Data historian**: software that aggregates and catalogs data from multiple sources within an ICS
+
+### SCADA
+
+- **Supervisory Control and Data Acquisition**
+- Controls large-scale ICS's with multiple sites
+- Most often deployed on an air-gapped network
+- Run on general-purpose computers
+- Very strict requirements, updates are very rare and sometimes impossible - hence the air-gapping
+- Lots of legacy hardware and software involved
+- Sooo... security much?
+	- Document and monitor all links and connections, whether existing or possible
+	- Try to stay away from legacy OS's
+	- If not possible, air-gap, air-gap, air-gap
+	- Secure web-app-based interfaces: OWASP Top 10 applies
+	- Physical security: all removable media has to go through security procedures to make sure there's no malware (remember [Stuxnet](https://en.wikipedia.org/wiki/Stuxnet)?)
+		- USB, CD, floppy disks...
+	- Audit periodically, hire good technicians who understand industrial security
+	- Security solution examples:
+		- [Cisco Cyber Vision](https://www.cisco.com/c/en/us/products/collateral/se/internet-of-things/datasheet-c78-743222.html)
+		- [Data diodes](https://www.ciberseguridadlogitek.com/en/ot-networks-segmentation-and-fortification-the-data-diode/)
+
+### Modbus
+
+- A protocol used in OT networks (SCADA/ICS) to read and update PLC configurations
+- Old as mammoth turds - no security whatsoever until recently
+- Originally designed for fieldbus (pre-dates Ethernet)
+- Evolved now to use Ethernet and TCP/IP
+- Modbus vulns: [paper 1](https://imt.uoradea.ro/auo.fmte/files-2015-v1/Gabor%20JAKABOCZKI%20-%20VULNERABILITIES%20OF%20MODBUS%20RTU%20PROTOCOL%20-%20A%20CASE%20STUDY.pdf), [paper 2](https://dione.lib.unipi.gr/xmlui/bitstream/handle/unipi/11394/Evangeliou_1508.pdf?sequence=1&isAllowed=y)
+- It's not all grim, improvements have been made:
+	- TLS has been introduced
+	- [An article documenting some improvements](https://blog.se.com/industry/machine-and-process-management/2018/08/30/modbus-security-new-protocol-to-improve-control-system-security/)
+
+### How it's all tied together together...
+
+- Hierarchy from the largest to the smallest component
+- **SCADA**
+	- **ICS**
+		- **Fieldbus**
+			- **SoC**
+				- **Embedded system**
+					- **Embedded OS** / **RTOS**
+				- **Embedded system**
+					- **Embedded OS** / **RTOS**
+			- **PLC**
+				- **Embedded system**
+					- **Embedded OS** / **RTOS**
+					- **HMI**
+			- **PLC**
+				- **Embedded system**
+					- **Embedded OS** / **RTOS**
+					- **HMI**
+	- **ICS**
+		- Etc...
+
+### Security summary for ICS/SCADA
+
+1. Establish administrative control over OT networks by recruiting staff with relevant expertise
+2. Implement minimum network links by disabling unnecessary connections (especially between IT and OT), services, and protocols
+3. Develop and test a patch management system for your OT networks and their components
+4. Perform regular audits of logical and physical (hello Stuxnet) access to systems to detect possible vulns and intrusions
+	- **Important**: conventional vuln scanning systems will not work on OT and are likely to cause damage! There's no active scanning in this environment - only passive with some packet capturing involved (Wireshark)
+
+---
+
+# Premise systems
 
 ### BAS: Building Automation Systems
 
@@ -84,49 +165,6 @@
 - These days it's also possible to access the CAN remotely since many cars now have cellular connections (think remote start functionality)
 	- Cars can also create mobile WiFi hotspots - another gateway for attacks
 	- [Kill a Jeep's engine while being outside of the car](https://www.cnbc.com/2015/07/21/hackers-remotely-kill-jeep-engine-on-highway.html)
-
-### ICS
-
-- Industrial Control Systems: automating control machinery such as assembly lines, managing critical infrastructure: power, health, nuclear, communications, water, etc.
-- Mission-critical for any country
-- ICS describes a larger set of industrial sites
-	- **DCS** (Distributed Control System) is a single site
-- These systems run software on regular computers on PLC's
-	- PLC's gather data from outside sensors and controllers called **field devices**
-	- PLC's are linked by a **fieldbus**: an industrial network system for real-time distributed control
-	- PLC's can also be linked via ethernet connections to actuators that operate the actual engines and to all necessary sensors
-- **HMI** (Human-Machine Interface): an interface used by us humans to configure and monitor the output of a PLC
-
-### SCADA
-
-- **Supervisory Control and Data Acquisition**
-- Controls large-scale ICS's with multiple sites
-- Most often deployed on an air-gapped network
-- Run on general-purpose computers
-- Very strict requirements, updates are very rare and sometimes impossible - hence the air-gapping
-- Lots of legacy hardware and software involved
-- Sooo... security much?
-	- Document and monitor all links and connections, whether existing or possible
-	- Try to stay away from legacy OS's
-	- If not possible, air-gap, air-gap, air-gap
-	- Secure web-app-based interfaces: OWASP Top 10 applies
-	- Physical security: all removable media has to go through security procedures to make sure there's no malware (remember [Stuxnet](https://en.wikipedia.org/wiki/Stuxnet)?)
-		- USB, CD, floppy disks...
-	- Audit periodically, hire good technicians who understand industrial security
-	- Security solution examples:
-		- [Cisco Cyber Vision](https://www.cisco.com/c/en/us/products/collateral/se/internet-of-things/datasheet-c78-743222.html)
-		- [Data diodes](https://www.ciberseguridadlogitek.com/en/ot-networks-segmentation-and-fortification-the-data-diode/)
-
-### Modbus
-
-- A protocol used in ICS to read and update PLC configurations
-- Old as mammoth turds - no security whatsoever until recently
-- Originally designed for fieldbus (pre-dates Ethernet)
-- Evolved now to use Ethernet and TCP/IP
-- Modbus vulns: [paper 1](https://imt.uoradea.ro/auo.fmte/files-2015-v1/Gabor%20JAKABOCZKI%20-%20VULNERABILITIES%20OF%20MODBUS%20RTU%20PROTOCOL%20-%20A%20CASE%20STUDY.pdf), [paper 2](https://dione.lib.unipi.gr/xmlui/bitstream/handle/unipi/11394/Evangeliou_1508.pdf?sequence=1&isAllowed=y)
-- It's not all grim, improvements have been made:
-	- TLS has been introduced
-	- [An article documenting some improvements](https://blog.se.com/industry/machine-and-process-management/2018/08/30/modbus-security-new-protocol-to-improve-control-system-security/)
 
 ---
 
