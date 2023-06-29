@@ -175,6 +175,7 @@
 - Easier than physical computers - hypervisor software can read the memory inside VM's it's managing
 - IR evidentiary requirements are typically less than those for a legal case
 - Disk data is already in an image format
+- Best practice for capturing a VM's memory: the "freeze it in time" approach. Suspend the machine, grab everything from its folder on the host computer.
 - Downside: this type of storage can be highly fragmented due to thin allocation of virtual machines, which means allocating storage space as needed, piecemeal. Space doesn't get pre-allocated in large amounts
 	- This is another thing to keep in mind for file carving practices where VM's are concerned
 - Understand limitations of what your capture and copying methods can do

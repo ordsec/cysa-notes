@@ -84,6 +84,10 @@
 			- `explorer.exe` is the file manager but also the parents process for any other processes manually launched by the current user
 - Use [Sysinternals](https://learn.microsoft.com/en-us/sysinternals/) for all sorts of Windows monitoring
 	- ProcMon is great for exploring the process tree, also tracks FS and registry changes
+- As far as Linux:
+	- Monitor `/etc/passwd`, `/etc/shadow`, `.ssh` folders (FIM solution?)
+	- `/etc/xinetd.conf`, which is what older versions use to initialize processes - should be monitored for backdoors
+	- Newer systems use `initd` and `systemd` - the latter has logs that can be viewed via `journalctl`
 
 ##### Examining suspicious process behaviour by hand
 - Use the **Process Explorer (Sysinternals)**

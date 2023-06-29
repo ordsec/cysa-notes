@@ -16,10 +16,21 @@
 	- Maxing out **bandwidth consumption** or the number of simultaneous connections the server can handle
 	- Requests are not processed anymore, server needs a breather
 	- Uses synthetic traffic
+- **Indicators**:
+	- An unexpected surge in traffic on the local network
+	- Excessive numbers of `TIME_WAIT` connections in a load balancer's or web server's state table
+	- High numbers of HTTP 503 Service Unavailable log events
+	- Large amounts of outbound traffic can indicate that some hosts on our network are compromised and used to DDoS someone else
+- Metrics
+	- Bandwidth consumption (bytes sent/received, % of the link utilization)
 - Mitigation/prevention
 	- Continuous monitoring and alerting for **unusual traffic spikes**
 	- Either setting a specific threshold, or baselining "normal" network behaviour so any anomalies can be caught
 		- Baseline: if normal server load is 5-6%, then when it goes to 7%, it might be an indication of something suspicious; no need to wait for 99%
+	- Real-time log analysis
+	- Using geolocation and IP reputation data to redirect or ignore suspicious traffic. Geolocation has to be decided based on what places the org is relevant for
+	- Aggressively close slower connections by reducing timeouts on affected servers
+	- Use caching and backend infrastructure to offload processing to other servers
 - When a DoS attack is carried out by high number of compromised hosts, all of them under the same attacker's control, it's a **Distributed DoS (DDoS)** attack
 	- The set of compromised hosts sending requests is a **botnet**
 	- The attacker controlling it is a **bot herder**
@@ -44,9 +55,12 @@
 
 - Remember that a **botnet** is a network of compromised machines under one attacker's control, all of them likely infected with the same malware
 - **C&C** aka **C2** is **Command and Control**: infrastructure used by the attacker to control the botnet, send commands to it, and commence attacks using the botnet
-- Beaconing IOC's look for this type of traffic, which is called **beaconing**: attacker is sending commands, and hosts that are part of a botnet are reporting to C2 that they're still up
-- In theory, this traffic is pretty regular (like a heartbeat pulse) and has a minimal footprint, perhaps just a SYN. It goes out to an unknown IP address or to a changing variety of IP addresses. Key detail: traffic going out from a bunch of hosts. 
-- In practice, it's quite difficult to detect beaconing traffic. There are legitimate protocols and services that perform their own beaconing: NTP, cluster sync protocols, periodic checks for updates. We need a reputation list for IP addresses to identify C2 traffic. 
+- Beaconing IOC's point to this type of traffic, which is called **beaconing**: attacker is sending commands, and hosts that are part of a botnet are reporting to C2 that they're still up
+- In theory, this traffic is pretty regular (like a heartbeat pulse) and has a minimal footprint, perhaps just a SYN. It goes out to an unknown IP address or to a changing variety of IP addresses (fast-flux/DGA - see [29](https://github.com/ordsec/cysa-notes/blob/master/29%20URL%20analysis.md)). Key detail: traffic going out from a bunch of hosts. 
+- In practice, it's quite difficult to detect beaconing traffic. There are legitimate protocols and apps/services that perform their own beaconing: NTP, cluster sync protocols, periodic checks for updates. We need a reputation list for IP addresses to identify C2 traffic. 
+	- Apply the baseline approach, know what's normal in order to recognize abnormalities
+- Attackers can also use **jitter**, which is a random delay aimed at frustrating indicators based on regular connection attempt intervals
+- **Exam**: look for stuff happening at **regular intervals** if given an example (outbound traffic sent every 3, 5, 10, 15 seconds, every midnight, etc)
 - Protocols and services that can be involved in C2 beaconing:
 	- IRC (sometimes automatically flagged by security devices since it's old and also most people don't need it for work)
 	- HTTP/S: makes it easier to hide in plain sight, especially when using encrypted traffic
@@ -57,17 +71,25 @@
 		- This is absolutely normal web traffic to a social network (as long as the org allows them) - what could go wrong?
 		- **Blackgear** does this by posting magnet links for bots to read
 	- Cloud services can host instructions for a botnet - great uptime, excellent performance!
-	- Media files and documents storing metadata that can include commands. Steganography also possible for images? Security tools don't really look for this kind of stuff in metadata. 
+	- Media files and documents storing **metadata** that can include commands. Steganography also possible for images? Security tools don't really look for this kind of stuff in metadata. 
+- **Indicators, summarized**:
+	- Same query is repeated several times when a bot is checking into a control server for more orders
+	- Commands sent within request or response queries will be longer and more complicated than normal (but we have to know what's normal)
+	- Fragmented queries for evasion purposes
+- Mitigation: just don't get hacked ;-P
 
 ### Peer-to-peer communication IOC's
 
+- P2P: hosts within a network establish connections over unauthorized ports and data transfers
 - P2P traffic is usually already a red flag if you take your security seriously
 - Used for illegal file-sharing
 - Easy to identify - always happens within the network; worms work the same way
-- Unfortunately, this type of traffic can be hidden within SMB or IPP (Internet Printing Protocol), which is used inside of a network to connect to a local printer and send documents there to print
+- Unfortunately, this type of traffic can be hidden within SMB, SPOOLSS (Microsoft print system protocol) or IPP (Internet Printing Protocol), which is used inside of a network to connect to a local printer and send documents there to print
 	- We don't expect this type of traffic to be malicious, so it can be easily overlooked
+	- For SPOOLSS, normal traffic can include executables (look for MZ in the hex), which means a client needs the driver to use the printer
 - ARP gets a special mention here because it is essentially a P2P protocol. It is also used in MitM attacks (ARP poisoning/flooding), so it does need to be inspected
 	- Baseline its behaviour, look for anything weird
+	- Use an IDS to catch this by identifying suspicious patterns caused by ARP poisoning generating far more ARP traffic than usual
 
 ### Rogue device IOC's
 
