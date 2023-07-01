@@ -27,6 +27,11 @@
 - **TOGAF**
 	- Enterprise security architecture modeling
 	- How to design policies and procedures
+	- Four domains of enterprise architecture:
+		- **Technical architecture** describes the infrastructure needed to support the other architectural domains
+		- **Business architecture** defines governance and organization and explains the interaction between enterprise architecture and business strategy
+		- **Applications architecture** includes the applications and systems an organization deploys, the interactions between those systems, and their relation to the business processes
+		- **Data architecture** provides the organization’s approach to storing and managing information assets
 - **SABSA**
 	- Information assurance, risk analysis
 - **COBIT**
@@ -41,7 +46,7 @@
 	- SOC 2: focuses on security controls that are essential for all service orgs, including CSP's
 		- Type I: organization system & controls at a specific point in time, with the focus on security
 		- Type II: ditto, over a longer period of time, provides high-level opinions on design and operating effectiveness of controls
-		- SOC 2 reports are private - only shared with customers and and prospects under an NDA
+		- SOC 2 reports are private - only shared with customers and prospects under an NDA
 	- SOC 3: public, general-use reports on a company's internal controls for ensuring CIA
 - So there's a lot of frameworks and there's no exact science in this area
 	- A lot of people had a many different ideas about how to govern the process of managing IT and cybersecurity

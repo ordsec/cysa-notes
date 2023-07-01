@@ -201,22 +201,22 @@ Know what ACL's and ACE's are, be very familiar with the different types of file
 - Like, who exactly? Not just a department, but a specific person
 - Ownership policies define various **roles**:
 	- **Data owner**
-		- Responsible for the CIA of the data
+		- **Responsible for the CIA** of the data
 		- The ultimate authority, executive power
-		- Labels data, determines how sensitive it is
+		- **Labels assets and data**, determines how sensitive they are
 		- Usually upper-level management, C-suite, etc.
 		- In really big companies, the org can be the owner (so not just a single person, but a group of people specifically appointed to represent the org as the owner)
 	- **Data steward**
-		- Focused on data quality
-		- Handles labelling and classification
+		- Focused on **data quality**
+		- Handles labelling and classification, identification with appropriate metadata
 		- Ensure proper collection and storage (e.g. minimization, de-identification, formats, etc.)
 	- **Data custodian**
-		- Manages all systems that store the data
+		- **Manages all systems** that store the data
 		- The technical role
 		- Enforces access control and encryption - so technical controls
 		- Ensures all necessary redundancy is in place for the purposes of data storage: primarily backups
 	- **Privacy officer**
-		- Handles - you guessed it - privacy
+		- Oversees - you guessed it - privacy
 		- Ensures that all PII/PHI/financial data is handled correctly, in a secure fashion
 		- This is a lot of responsibility with legal implications if mistakes are made
 

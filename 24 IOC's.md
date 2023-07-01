@@ -76,6 +76,7 @@
 	- Same query is repeated several times when a bot is checking into a control server for more orders
 	- Commands sent within request or response queries will be longer and more complicated than normal (but we have to know what's normal)
 	- Fragmented queries for evasion purposes
+	- Look at intervals, persistence (if it remains after a reboot of a system), remove known traffic from the equation. Don't bother with protocols - there's too many that beaconing can rely on
 - Mitigation: just don't get hacked ;-P
 
 ### Peer-to-peer communication IOC's

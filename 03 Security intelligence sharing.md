@@ -3,7 +3,7 @@ If every org had to look for CTI and secint on their own, they'd have no time fo
 ### Information sharing communities
 
 - Governments worldwide have been gathering cybersecurity knowledge in the fields of utilities, healthcare, finance, air transport, and others, in order to be able to intervene if cyber attacks happen against these industries - this can endanger lives
-- **IMPORTANT**: human life is the #1 priority! As far as CompTIA exams are concerned, and everywhere else of course. There may be questions about saving lives - and saving lives is the best answer.
+- **IMPORTANT**: human life is the #1 priority! As far as CompTIA exams are concerned, and everywhere else of course. There may be questions about saving lives - and saving lives is the best answer. This is also an overall mindset we have to adopt when dealing with systems where people's physical safety is an aspect - we always have to keep people's safety in mind when making changes or fixing a problem.
 
 > **ISACs**
 
@@ -42,7 +42,7 @@ If every org had to look for CTI and secint on their own, they'd have no time fo
 	- Beefing up our firewalls, IPS's and EDR systems to better match real threats
 	- **Avoid false positives as much as possible** - fine-tune your defenses, remember the boy who cried wolf
 	- **Avoid false negatives too**
-	- Keep it running and up to date - this is ongoing, not "set it and forget it"
+	- Keep it running and up to date using threat feeds - this is ongoing, not "set it and forget it"
 	- Everything should be monitored
 - **Incident response** (more details on IR in [53](https://github.com/ordsec/cysa-notes/blob/master/53%20Incident%20response%20phases%20and%20communication.md))
 	- Threat intel is a crucial part of IR as it allows us to respond to threats more effectively and efficiently

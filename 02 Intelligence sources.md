@@ -30,7 +30,7 @@
 
 - Info from the past
 - Logs are a good source
-- Look it and search for patterns
+- Look at it and search for patterns
 	- And this is where we can learn from mistakes
 - Correlation is key - build cause/effect chains between different types of events
 
@@ -107,7 +107,7 @@
 		- ...and many others - [Google Hacking Database](https://www.exploit-db.com/google-hacking-database)
 		- Use Advanced Search also
 - Follow OPSEC principles, don't give up more info about the company than needed!
-	- This includes job descriptions - make them secure
+	- This includes job descriptions - make them secure, don't disclose your tech stack
 
 ### Confidence levels
 
@@ -131,6 +131,33 @@
 
 - **A method of evaluating the reliability of a source and the credibility of information it provides**
 - Governments are more in touch with this than the private sector, but this is on the exam.
+- The rest is explained by GPT:
+
+The Admiralty System (also known as the Admiralty Code) is a method used in intelligence circles for evaluating the reliability of the information or intelligence gathered. It's a two-dimensional system evaluating both the reliability of the source and the credibility of the information itself. 
+
+This system originated from the British Navy and is commonly used by NATO and other military or intelligence organizations.
+
+It generally consists of a two-letter grading system:
+
+1. **Reliability of Source:**
+    - A: Completely reliable
+    - B: Usually reliable
+    - C: Fairly reliable
+    - D: Not usually reliable
+    - E: Unreliable
+    - F: Reliability cannot be judged
+
+2. **Credibility of Information:**
+    - 1: Confirmed by other sources
+    - 2: Probably true
+    - 3: Possibly true
+    - 4: Doubtful
+    - 5: Improbable
+    - 6: Truth cannot be judged
+
+For example, an intelligence piece with a rating of "A1" would mean that it came from a completely reliable source and the information itself has been confirmed by other sources. Conversely, a piece of intelligence rated "E5" would be considered unreliable and improbable. 
+
+This evaluation system provides a quick way to assess the potential validity and trustworthiness of intelligence. It can be especially useful in scenarios where decision-makers need to make quick judgements based on the available information.
 
 ---
 

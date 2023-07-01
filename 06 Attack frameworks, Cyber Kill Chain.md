@@ -2,7 +2,7 @@
 
 - Used to describe what happens before, during, and after an attack
 	- Who is the attacker?
-	- What resources they have?
+	- What resources do they have?
 	- How did they conduct the attack?
 - It helps us with threat modeling
 - Take one attack and split it into stages, zero in on details for each stage
@@ -21,7 +21,7 @@
 
 - **Reconnaisance**: where the attacker gets to know you (a bit too well). What are your weaknesses and what are your defenses like? Usually done in a stealthy manner.
 	- Based on all this, attacker decides how to ruin your day
-- **Weaponization**: when recon is successful and weaknesses were discovered, attacker chooses an exploit and/or starts developing their own tools to wreck you
+- **Weaponization**: when recon is successful and weaknesses are discovered, attacker chooses an exploit and/or starts developing their own tools to wreck you
 - **Delivery**: choosing and preparing a delivery method. How exactly can a weakness be exploited?
 	- Sending an email with a malicious attachment
 - **Exploitation**: gaining first access to the system, executing the exploit code once it has been set in place, can happen automatically or in a remotely controlled fashion depending on the delivery method. 
@@ -34,7 +34,7 @@
 
 #### Some disadvantages
 
-- The Cyber Kill Chain mainly focuses on outside threats and pretty much ignores insider issues
+- The Cyber Kill Chain mainly focuses on the perimeter and outside threats while pretty much ignoring insider issues
 - Or what if they exploit and then just cover their tracks and remain hidden for many months? APT's operate this way. 
 	- Or they perform their actions on objectives immediately and erase all trace
 - The Cyber Kill Chain is therefore not a one-size-fits-all solution
@@ -57,6 +57,7 @@
 	- Install some new technical controls as necessary - detective, preventive
 - **Delivery**
 	- Restrict the use of mass storage devices
+	- Monitor and analyze emails
 	- Filter internet traffic
 	- IDPS
 	- User training - humans are always the weakest link
@@ -123,7 +124,6 @@
 	- Confidence levels assigned to each feature (based on an assumption)
 - **One diamond per event!**
 - So we would need at least two for a malicious outcome (a recon phase + attack/exploit phase)
-- Which is why the Diamond Model is used to describe...
 - Example (by ThreatConnect): the destruction of the Death Star:
 
 ![death-star-diamond-model.png](img/death-star-diamond-model.png)

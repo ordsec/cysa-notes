@@ -31,6 +31,7 @@
 		- Upper management
 		- C suite if something threatens the entire business
 	- Make sure everybody understands
+		- Read the room!
 		- Tech speak with technical audiences
 		- Make it clear for non-technical personnel
 		- Your audiences may have different objectives and priorities in mind

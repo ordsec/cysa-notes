@@ -19,7 +19,7 @@
 	- Do we know for sure that there's a specific exploit/attack we're vulnerable to?
 	- Or are we just worried that there *might* be something?
 	- Prioritize what we need to be prepared for. A meteorite strike isn't very likely, so maybe we don't have to worry about it?
-- What defense capabilities do we have?
+- What **defense capabilities** do we have?
 	- I.e. what is our current security posture? What can we use to defend ourselves right this moment? Can it be improved? If so, then how?
 	- Your defenses are your assets too - inventory them!
 	- Repurpose currently existing security controls if need be
@@ -42,7 +42,7 @@
 ### Adversary capabilities, according to MITRE
 
 - **Acquired**
-	- Beginner hacker, not a lot of experties or resources at their disposal
+	- Beginner hacker, not a lot of expertise or resources at their disposal
 	- Uses commodity malware (i.e. tools developed by others)
 	- Plays by the book, follows a standard recipe, barely any creativity or innovation
 	- Does not rely on human deception or social engineering, except for maybe some basic email scams
@@ -98,7 +98,6 @@
 		- Locks
 		- Access cards
 		- Surveillance
-		- Don't forget bollards
 	- **Human**
 		- Impersonation
 		- Phishing
@@ -157,7 +156,7 @@
 ### Threat hunting methodology
 
 - You **start from scratch** - there's no proof of compromise yet!
-- If you start with proof (IDPS alerts, an endpoint exhibiting strange behaviour), it's no longer threat hunting - it's incident response because 
+- If you start with proof (IDPS alerts, an endpoint exhibiting strange behaviour), it's no longer threat hunting - it's now incident response since we're now responding to a threat that has somehow already manifested itself
 - **Establish a hypothesis**
 	- A valid assumption
 	- What's typical for our business? Are we most likely to be attacked?
@@ -197,7 +196,7 @@ Integrated intelligence allows threat hunters to correlate events across differe
 
 ### Justifying threat hunting
 
-- The caveat is that we're spending a lot of time and money on something that may or may not be real, so how do we justify it? Here's what we can tall the upper management if they're in doubt:
+- The caveat is that we're spending a lot of time and money on something that may or may not be real, so how do we justify it? Here's what we can tell the upper management if they're in doubt:
 	- We may have already been compromised!
 	- We'll discover new, unknown attack surfaces
 		- The bigger the company, the more we're not aware of

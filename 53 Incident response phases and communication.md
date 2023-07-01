@@ -26,6 +26,7 @@
 	- **Training** the staff, building up awareness, **testing** existing IR procedures
 	- Putting a CSIRT together and taking time to prepare it carefully, providing a good foundation of appropriate policies and procedures
 	- Assembling all the hardware and software that's dedicated to IR and subsequent investigations
+	- Make sure all devices that join the org's network can be accessed. If BYOD is in place, make sure there's a clause that allows the org to investigate personal devices in case of an incident - otherwise personnel can refuse, and there's nothing you can do!
 	- An IR toolkit should include, at the minimum:
 		- Digital forensic workstations
 		- Backup devices
@@ -137,7 +138,7 @@
 	- Keep in mind that adversaries may be on the inside, and they may be in contact with CSIRT
 	- Especially make sure nothing gets leaked to the press
 - Out-of-band communication - if our internal channels are compromised, we have to use **secure methods of communication** that cannot be intercepted or maliciously altered; this something else needs to be part of the IR plan. In fact, *assume* that our internal channels are compromised
-- Preventing targets of ongoing internal investigations from becoming aware of said investigations
+- Preventing inadvertent disclosure, where targets of ongoing internal investigations become aware of said investigations because the info leaked somehow. An escalation list doesn't directly prevent this.
 
 ### External communication
 
