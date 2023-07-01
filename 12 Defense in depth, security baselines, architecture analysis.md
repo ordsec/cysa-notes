@@ -51,7 +51,7 @@
 	- Security as a Service - outsourcing the security effort (not responsibility or liability as that's still on your org!) 
 - Network
 	- Constantly review the network design
-	- Come up with a clear layout of the network: which departments need to communicate with each other, what traffic flows are required, 
+	- Come up with a clear layout of the network: which departments need to communicate with each other, what traffic flows are required
 	- Segmentation - separate anything that requires extra care into a different segment, which sets up another line of defense. Use VLANs, access rules, firewall rules, dedicated firewall devices, what users need access to what devices
 	- Always be in control of how the traffic is flowing within the org
 	- In case of an incident, a well-designed network will help isolate what's compromised and stop the attacker 
@@ -101,8 +101,9 @@
 - A lot of exploits target known vulns that should've been patched since patches are available
 	- All you had to do was patch it! Don't let these things slide
 	- Example of how the human factor creates the biggest vulnerabilities
-- Patch management should be an integrate configuration management process in every single company
-- In a company with a large network, include a testing environment for patches to avoid breaking stuff that's been working before the patch
+- Patch management should be an integrated configuration management process in every single company
+	- Regression testing - make sure your shiny new patch hasn't broken something else!
+	- In a company with a large network, include a separate regression testing environment
 - **Exam**: know automated patching solutions
 	- Windows Update
 	- [Windows Server Update Services (WSUS)](https://learn.microsoft.com/en-us/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus)
@@ -160,7 +161,7 @@ Understand the importance of configuration baselines - how are they important fo
 		- Limiting the scope of regulatory compliance - if everything that has to be compliant is separated from the rest of the systems (and then split up within that separated unit for better organization and security), then the rest doesn't need to be audited
 		- Helps increase availability by limiting the impact in case of an attack
 		- Increases network efficiency, reduces congestion by using network segments with fewer endpoints in each
-- See 25 for secure network design and segmentation, DMZ's, jumpboxes and all that fun stuff
+- See [25](https://github.com/ordsec/cysa-notes/blob/master/25%20Network%20architecture%20and%20segmentation.md) for secure network design and segmentation, DMZ's, jumpboxes and all that fun stuff
 
 ### Analyzing security architecture
 

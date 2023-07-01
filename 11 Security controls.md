@@ -18,7 +18,7 @@
 	1. **Asset inventory and classification**
 		- What exactly do we want to protect?
 		- Evaluate the assets - with actual numbers
-		- Are they worth protecting? Every security control is an investment.
+		- Are they worth protecting? Every security control is an investment - so think about what the returns are.
 	2. **Risk management**
 		- Evaluate all the potential risks that can affect you
 		- How likely are these risks to materialize?
@@ -26,7 +26,7 @@
 		- What hardware/software solutions can we implement to improve our security posture now that we know exactly what needs protecting?
 		- A security control is something you can install/implement/apply to protect one or more aspects of the CIA triad in the org. Same goes for non-repudiation, though it's more environment-specific.
 		- No silver bullet, lots of ways to approach designing controls
-		- The swiss cheese analogy: one slice has many holes, but when you stack slices, there are fewer holes! *Now give Edgar some 1's :)*
+		- The Swiss cheese analogy: one slice has many holes, but when you stack slices, there are fewer holes! *Now give Edgar some 1's :)*
 		- Controls complement each other
 
 # Security Controls
@@ -90,7 +90,7 @@
 		- BCP, security policies
 - **Physical**
 	- Deals with physical access - prevent direct contact with systems
-	- Overlaps with preventive
+	- Overlaps with preventative
 	- Examples:
 		- Guards, fences, motion detectors, guard dogs
 		- **Bollards**, how could we forget...
@@ -113,7 +113,7 @@
 		- Auditing
 		- Firewalls
 - **Responsive**
-	- Measures that responds to events or conditions
+	- Measures that respond to events or conditions
 	- Usually after a certain threshold has been crossed or specific criteria were met
 	- Triggered as a **reaction** to an event, such as a detected security incident or anomaly
 	- Examples (basically stuff that can take action in response to something):
@@ -131,7 +131,7 @@
 	- Has to be thoroughly documented and formally approved - **remember for the exam**
 	- Can overlap with deterrent, but you have to really think about it!
 	- Examples:
-		- Warning signs, such as "beware of dog"
+		- Warning signs, such as "beware of dog" (doesn't mean there's an actual dog!)
 		- Fake CCTV cameras (should look real)
 		- Security policies
 		- Personnel supervision
@@ -184,4 +184,4 @@
 
 ### Exam
 
-Understand what a security control is, be able to discuss NIST categories of controls and the 6 control purposes, be able to put examples of controls into the right bucket(s). Be able to talk about audits and assessments.
+Understand what a security control is, be able to discuss NIST categories of controls and the 6 (7 if responsive controls are included) control purposes, be able to put examples of controls into the right bucket(s). Be able to talk about audits and assessments.

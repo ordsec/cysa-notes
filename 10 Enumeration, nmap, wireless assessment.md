@@ -99,7 +99,7 @@ Aircrack-ng is a suite of tools for auditing wireless networks. The primary role
 
 Reaver is a tool specifically designed to exploit a vulnerability in the WPS (Wi-Fi Protected Setup) feature found in many routers. With this tool, you can:
 
-- **Brute Force WPS Pins:** It performs brute force attacks against WPS registrar PINs to recover WPA/WPA2 passphrases.
+- **Brute Force WPS PINs:** It performs brute force attacks against WPS registrar PINs to recover WPA/WPA2 passphrases.
 - **Attack WPS-Enabled Routers:** Reaver has been designed to be a robust and practical attack against WPS, and has been tested against a wide variety of access points and WPS implementations.
 
 Please note that the WPS vulnerability exploited by Reaver has been patched in many modern routers, limiting its effectiveness.
