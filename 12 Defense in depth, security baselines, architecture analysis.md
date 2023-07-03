@@ -176,10 +176,10 @@ Understand the importance of configuration baselines - how are they important fo
 			- Success (installation prevented if it's known malware or behaves in such a way that antimalware catches it)
 			- Failure (not detecting software that's not permitted by the org but also isn't malware)
 			- Failure (not preventing unknown malware or malware that doesn't act all sus)
-	- Attribute-based testing is as part of a risk or control assessments
+	- Attribute-based testing is part of a risk or control assessment
 	- Can be applied to each control by determining its goal and reviewing whether the goal is met
 - Reviewing architecture
-	- Formal architectural models relying on views aka viewpoints from which architecture and controls can be reviewed
+	- Formal architectural models relying on **views** aka viewpoints from which architecture and controls can be reviewed
 	- Common views:
 		- Operational: how a function is performed, what it accomplishes. Shows information flow, but doesn't capture technical details about how data is transmitted, stored, and captured
 		- Technical aka service-oriented aka systems-based: technologies, settings, configurations in an architecture. Helps identify incorrect configs and insecure design decisions. Example: looking at the TLS version used in a connection, looking at password policies
@@ -197,7 +197,7 @@ Understand the importance of configuration baselines - how are they important fo
 			- Validate integrity - hashing
 			- Implement processes to verify data in an automated or manual fashion
 			- Profile and boundary-check data based on its known attributes
-		- For any kind of app development, **input validation** is crucial - see 17
+		- For any kind of app development, **input validation** is crucial - see [17](https://github.com/ordsec/cysa-notes/blob/master/17%20Secure%20Coding.md)
 		- For data flows, storage, and usage, look for places where data issues could cause high-impact failures - not all of these places are the same
 	- User issues: human error can cause many bad things, whether accidental or deliberate
 		- Mistakes, malfeasance, social engineering attacks all jeopardize security designs
@@ -205,18 +205,18 @@ Understand the importance of configuration baselines - how are they important fo
 		- To limit these issues:
 			- Use automated monitoring and alerting systems to detect human error
 			- Constrain interfaces to only allow permitted activities
-			- Implement procedural checks and balances - see 51
+			- Implement procedural checks and balances - see [51](https://github.com/ordsec/cysa-notes/blob/master/51%20Security%20policies%20and%20procedures.md)
 			- Put together employee training and awareness programs
 			- Proactively look for gaps in monitoring, think about where else issues can occur
 	- Authentication/authorization security and process issues: concerns user credentials and privileges as a potential source of security design issues
 		- Common problems:
-			- Inappropriate or overly broad sets of privileges - use least privilege, conduct privilege audits, prevent privilege creep, monitor privilege creep
+			- Inappropriate or overly broad sets of privileges - use least privilege, conduct privilege audits, prevent privilege creep, monitor privilege distribution
 			- Poor credential security and management - use centralized solutions
 			- Embedded/stored secrets - just don't do that
 			- Reliance on passwords as a single factor to protect critical systems - use MFA
 		- A lot of these can be remediated by effective user training activities
 		- Always know exactly where authentication occurs, how authorization is performed, and what privileges are needed and granted to users
-		- More on this in 31
+		- More on this in [31](https://github.com/ordsec/cysa-notes/blob/master/31%20Identity%20and%20Access%20Management.md)
 - Security designs are even more complex in the cloud
 	- [NIST SP 800-145](https://csrc.nist.gov/publications/detail/sp/800-145/final)
 - Reviewing a security architecture requires a step-by-step analysis of security needs that influenced that design and of controls that are in place

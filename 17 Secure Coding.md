@@ -24,7 +24,7 @@
 		- Sanitising HTML
 		- And much, much more...
 - Find every single point of entry in your app
-	- All interfaces, all potential inputs
+	- All interfaces, all potential inputs, API endpoints
 	- That includes third-party connections! Attackers can craft requests, so we have to validate those too.
 	- Every single place where user input is accepted
 - **NEVER** stop at client-side validation - this can be easily circumvented by an attacker (by crafting requests that come from the browser)

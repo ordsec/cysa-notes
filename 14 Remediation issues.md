@@ -86,6 +86,8 @@
 - **Exam**: SLA's have to be **measurable**, and the way they're measured has to be explicitly stated in the SLA documentation
 - If provider doesn't comply with what's in the SLA, they can be held legally and financially responsible
 
+---
+
 ### Exam
 
 Be able to discuss risks an org can face while remediating vulnerabilities. Remember the aspects here: legacy systems, performance degradation, proprietary systems, approval requirements, be able to provide examples or answer questions in a scenario. Know what an MOU and an SLA is and what the key differences are between the two.

@@ -21,7 +21,7 @@
 ### Change management
 
 - Every company goes through changes, whether they're small upgrades/updates or fundamental changes such as network structure
-- Ideally, for every asset, there should be a record for what its initial state was when purchased and a record of every change made to this asset (installations, upgrades, replacements, etc) - this is the process of change management
+- Ideally, for every asset, there should be a record of what its initial state was when purchased and a record of every change made to this asset (installations, upgrades, replacements, etc) - this is the process of change management
 - Change can bring in risk, and one of the goals of change management if minimizing this risk
 	- Performing changes without adversely impacting operations
 - Proactive or reactive
@@ -47,7 +47,7 @@
 - **Increased attack surface**
 	- An update can reset previously configured security settings, including resetting to default
 	- Exposing more of the application/service than previously intended
-	- Replacing a network device with a new one requires bring it up to speed security wise, make sure all firewall rules are up to speed
+	- Replacing a network device with a new one requires bringing it up to speed security wise, making sure all firewall rules are up to speed
 	- Make sure all assets are still covered by general security policies that apply everywhere else
 - **Planning vs reactive change**
 	- Proactive: plan for bad things to happen; prepare for war if you want peace. Try and predict what can go wrong, reduce the "surprise surface"

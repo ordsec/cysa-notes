@@ -130,13 +130,14 @@
 - Get the code from devs, run it through a bunch of automated tests
 - All functionality must be thoroughly tested
 - Think of all possible edge cases, make sure they're covered
+	- Use the formal method if necessary
 - Fuzz it, throw unexpected inputs at it
 - **Security**:
 	- Start looking at the app from an attacker's point of view, test for vulns
 	- When (not if) you break your code, figure out why, make sure it fails properly
 	- Static analysis
 	- Dynamic analysis
-	- Gray-box/black-box testing: use partial knowledge or no knowledge when testing the app - how can we break it from these standpoints?
+	- Gray-box/black-box testing: use partial knowledge or no knowledge when testing the app; how can we break it from these standpoints?
 		- Hire outside testers if necessary (securely of course - NDA's and whatnot)
 
 ### Deployment
@@ -217,7 +218,7 @@
 		- Introduces quite a bit of anxiety
 	- Not good for projects that might require changes after the initial design was established
 		- Which pretty much descibes every single medium+ sized project out there
-	- Major code changes are next to impossible - a big enough changes triggers the entire process to start over
+	- Major code changes are next to impossible - a big enough change triggers the entire process to start over
 - Due to these cons, it remains more of a theoretical model
 - In the world of software development, it's extremely difficult to follow a specific plan step by step - surprises can happen at any point
 - In the real world, even under this model, we should assume that we can go back at least one step
@@ -311,6 +312,6 @@ Here are a few examples:
 
 3. **Performance vs Security**: Some security measures can impact system performance. For instance, full disk encryption can provide significant security benefits, but it may also slow down system performance. Organizations need to balance the need for security with the need for efficient operations.
 
-4. **Complexity vs Manageability**: Systems with high levels of security can often be complex to manage. Increased complexity might lead to higher chances of misconfiguration, which could introduce new security vulnerabilities. Simplifying systems can often make them easier to manage, but may also lead to reduced functionality or security.
+4. **Complexity vs Manageability**: Systems with high levels of security can often be difficult to manage. Increased complexity might lead to higher chances of misconfiguration, which could introduce new security vulnerabilities. Simplifying systems can often make them easier to manage, but may also lead to reduced functionality or security.
 
 In each of these examples, an engineering trade-off must be made. No system can maximize all aspects simultaneously - there will always be some degree of compromise. Security professionals need to understand these trade-offs to make informed decisions that align with the organization's risk tolerance and business objectives. It's also important to involve relevant stakeholders in these decisions, as trade-offs can have wide-ranging implications for an organization.

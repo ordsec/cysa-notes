@@ -11,7 +11,7 @@
 - Don't forget about people 
 	- Here's a trend: how well are your employees trained? 
 	- This is fluid - people come and go, threat landscape changes
-	- Train and test periodically, for instance a phishing campaign
+	- Train and test periodically, for instance running a phishing campaign to see how the personnel handles it
 		- Run a few of these over a longer period of time, see what the trend is and how training affects it
 - First, we need to collect some metrics
 
@@ -30,7 +30,7 @@
 	- How many events (access, system, etc.) are logged per day?
 	- What's the normal volume of traffic in a given timeframe?
 	- If logs grow in volume faster than usual, there may be an anomaly
-- Collect information, then normalize it, group events together, correlate
+- Collect information, then normalize it, group events together, correlate - SIEM!
 - Then look for suspicious events and **statistical deviations**
 
 ### Monitoring
