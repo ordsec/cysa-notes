@@ -63,7 +63,7 @@ $128 \times 1 + 64 \times 1 + 32 \times 0 + 16 \times 1 + 8 \times 1 + 4 \times 
 	- Can be detected by a WAF
 	- Disallow `../` and all of its obfuscated/encoded derivatives in the address bar
 	- Disallow directory access from query strings
-	- Route things in such a way as to throw a 404 whenever a page isn't accessed **from** another specific pagej
+	- Route things in such a way as to throw a 404 whenever a page isn't accessed **from** another specific page
 	- Make sure the app and its users have no permissions to access anything outside of the app
 
 ### File inclusion
@@ -134,7 +134,7 @@ $128 \times 1 + 64 \times 1 + 32 \times 0 + 16 \times 1 + 8 \times 1 + 4 \times 
 	- Designing apps securely
 	- Never assume your users will take the same steps as you're planning for them to take
 		- Is there any way to circumvent the process? Think of every scenario
-	- Ensure authentication and authorization are always there - users should only be able to access what they're allowed to access
+	- Ensure authentication and authorization are always there - users should only be able to access what they're allowed to access. Always check if a user is authenticated
 	- Locking mechanisms - checking for permissions
 
 ### XML attacks

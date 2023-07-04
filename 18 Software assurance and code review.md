@@ -18,7 +18,7 @@
 - Manual code review, peer review
 	- Another human being next to you, working through the same process
 	- Could be a programmer, but could be a security analyst!
-	- But unfortunately security is usually an afterthought - and this needs to change
+	- But unfortunately security is often an afterthought - and this needs to change
 	- Focus on communication, accept the limitations of your brain, admit when you're wrong
 	- You're looking for flaws in someone else's work - they may take it personally (although they shouldn't)
 	- Managers and team leads should train developers from early on about basic security concepts so that many issues can be avoided
@@ -122,7 +122,7 @@
 		- Protocol - how does app handle traffic that's not normal for the protocol it uses? Unexpected values in headers? Many attacks can be detected at the protocol level (this is one of the things IDPS solutions look for)
 		- File format for uploads - can we trick the app into executing a payload with an `.jpeg` extension? Can it handle unexpected formats? How does a resume parser behave when given a Word file with macros in it?
 	- Design your test cases carefully, don't automate them too much, be creative, be crafty
-	- Devise testing mechanisms that kick in after fuzzing is completed to determine whether the app processed inputs properly or not. Has it crashed? Has it reached an undesireable state?
+	- Devise testing mechanisms that kick in after fuzzing is completed to determine whether the app processed inputs properly or not. Has it crashed? Has it reached an undesirable state?
 	- Fuzzing for web apps: Burp Suite (Intruder mode for automation)
 	- Users shouldn't be able to do this stuff at all - once app is deployed, it needs to have limited request rates on the server side, captcha checks, etc.
 - **Fault injection**
@@ -134,7 +134,7 @@
 	- Typically performed using automated tools since human error is possible
 - **Mutation testing**
 	- Related to fuzzing and fault injection, but we're not throwing bad inputs or errors into the app - instead we're making small modifications to the program itself
-	- Altered versions, or *mutants*, are tested and rejected if the cause failures
+	- Altered versions, or *mutants*, are tested and rejected if they cause failures
 	- Mutations are guarded by some rules intended to create common errors or replicate the types of errors devs may introduce while programming
 	- Like fault injection, this helps identify issues with code that's rarely used
 	- Can identify problems with test data and scripts by finding places where scripts do not fully test for issues
@@ -161,7 +161,7 @@
 	- Don't list the types of characters allowed/disallowed for passwords
 - **Encryption**
 	- At rest - including storing on users' devices
-	- In transit - whenever transferring data between user/app or between app/3rd party app
+	- In transit - whenever transferring data between user/app or between app/3rd-party app
 - **Auditing/logging**
 	- Keep good records of user and app activity
 	- Keep logs secure - users shouldn't be able to access them
@@ -246,7 +246,7 @@ Just know all of the above, pretty much. Be able to explain the ideas behind sta
 - **Insecure Direct Object Reference (IDOR):** Implement proper access control checks to verify the authenticated user has the appropriate permissions to access the specific resource.
 - **Race Condition:** Use synchronization mechanisms (like mutexes or semaphores) to ensure that shared resources are accessed by only one thread or process at a time.
 - **Broken Authentication:** Implement multi-factor authentication, session timeouts, and secure password policies to ensure robust authentication mechanisms.
-- **Sensitive Data Exposure:** Encrypt sensitive data at rest and in transit, and minimize the amount of data you collect and store.
+- **Sensitive Data Exposure:** Encrypt sensitive data at rest and in transit, and minimize the amount of dweesaata you collect and store.
 - **Insecure Components:** Regularly update all software components and libraries to their latest, secure versions and remove any unnecessary components.
 - **Insufficient Logging and Monitoring:** Implement comprehensive logging and monitoring, and regularly review these logs to identify and respond to suspicious activities.
 - **Weak or Default Configurations:** Change default configurations to secure settings, including changing default usernames/passwords and disabling unnecessary services.
@@ -288,30 +288,7 @@ Just know all of the above, pretty much. Be able to explain the ideas behind sta
 
 ---
 
-### Platform best practices (thank you Dion!)
-
-- Client/Server Applications
-	- An application where part of the application is a client software program that is installed and run on separate hardware to the server application code and interacts with the server over a network 
-	- Attacks can be directed at the local client code, at the server application, or at the network channel between 
-	- Server-side code should always utilize input validation 
-- Web Applications 
-	- An application which uses a generic web browser as a client and standard network protocols (HTTP/HTTPS) to communicate with the server 
-	- Web applications use a multi-tier architecture where the server part is split between application logic and data storage and retrieval 
-	- Modern web applications also use microservices and serverless designs 
-- Mobile Applications
-	- An application which is deployed and run on a smartphone, tablet, or other mobile operating system 
-	- Mobile applications are more susceptible to the unsecure use of authentication, authorization, and confidentiality controls 
-- Embedded Applications 
-	- An application which is designed to run on a dedicated hardware platform 
-	- Embedded applications have traditionally not focused on security during development and deployment 
-- Firmware 
-	- Generally considered a type of embedded application that contains the block of embedded code that runs first at startup, performing "low-level" input/output device functions, plus bootstrapping of an OS or application 
-	- Firmware has complete control over the hardware and system memory, thereby making it a lucrative target 
-- System-on-a-Chip (SoC) 
-	- A type of embedded application commonly used in mobile devices which contains integrated CPU, memory, graphics, audio, network, storage controllers, and software on one chip 
-	- SoC manufacturers often reuse code by selecting IP blocks for certain functions made up of FPGAs 
-
-### And to drill it in further... best practices from GPT! :D
+### Platform best practices (thank you GPT!)
 
 **Mobile:**
 

@@ -7,7 +7,7 @@
 		- It's also very noisy and you'll get locked out or otherwise limited in some fashion
 	- Hack the server, steal the passwords
 		- Not likely to work either - passwords are usually not stored in cleartext, but they're stored as hashes instead
-	- Hack the server, steal the passwords, crack their hashes
+	- Hack the server, steal hashed passwords, crack the hashes
 		- Performed offline, where no one can stop you
 		- Still relies on low-entropy passwords
 		- But more likely to succeed!
@@ -23,7 +23,7 @@
 	- Medusa: works with a bunch of different services
 	- Hydra: supports tons of protocols and services, supports login/password lists, etc.
 	- John the Ripper: brute force utility for password cracking
-	- **Hashcat**: also for password cracking, has charsets for bruteforce and a pretty intelligent approach to the brute force process, can leverage GPU power to perform more operations per second
+	- **Hashcat** (formerly **oclHashcat**): also for password cracking, has charsets for brute force and a pretty intelligent approach to the brute force process, can leverage GPU power to perform more operations per second
 - Approaches:
 	- Charsets (just combinations of characters)
 	- Dictionaries (predefined lists of passwords)
@@ -44,7 +44,7 @@
 		- You only need 23 people in the room for a 50% chance that two of them will have the same birthday
 		- It's no specific birthday - just any birthday as long as they both share it
 		- 70% chance for 30 people!
-		- 99.9% chance for 70 people!
+		- **99.9%** chance for 70 people!
 	- The more inputs you try, the better the chances that you'll find a collision 
 	- A system will technically accept any password as long as it creates the correct hash
 	- This deprecated a lot of older hashing algorithms because they are inherently vulnerable to these attacks

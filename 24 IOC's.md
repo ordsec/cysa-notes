@@ -1,3 +1,5 @@
+- This is a big one! :-D
+
 >**IOC** or IoC
 
 **Indicator of Compromise**
@@ -55,7 +57,7 @@
 
 - Remember that a **botnet** is a network of compromised machines under one attacker's control, all of them likely infected with the same malware
 - **C&C** aka **C2** is **Command and Control**: infrastructure used by the attacker to control the botnet, send commands to it, and commence attacks using the botnet
-- Beaconing IOC's point to this type of traffic, which is called **beaconing**: attacker is sending commands, and hosts that are part of a botnet are reporting to C2 that they're still up
+- Some IOC's point to this type of traffic, which is called **beaconing**: attacker is sending commands, and hosts that are part of a botnet are reporting to C2 that they're still up
 - In theory, this traffic is pretty regular (like a heartbeat pulse) and has a minimal footprint, perhaps just a SYN. It goes out to an unknown IP address or to a changing variety of IP addresses (fast-flux/DGA - see [29](https://github.com/ordsec/cysa-notes/blob/master/29%20URL%20analysis.md)). Key detail: traffic going out from a bunch of hosts. 
 - In practice, it's quite difficult to detect beaconing traffic. There are legitimate protocols and apps/services that perform their own beaconing: NTP, cluster sync protocols, periodic checks for updates. We need a reputation list for IP addresses to identify C2 traffic. 
 	- Apply the baseline approach, know what's normal in order to recognize abnormalities
@@ -67,6 +69,10 @@
 	- DNS: because it's most likely allowed by default for outbound connections; sometimes not even inspected
 		- Tools like **`dnscat`** allow one to create encrypted C2 channels over the DNS protocol
 		- It'll likely bypass any defenses - most companies don't expect anything to go through DNS other than harmless nameserver traffic
+		- IOC's:
+			- Same query repeated several times when a bot is checking in with C2
+			- Commands sent within request/response queries are longer and more complicated than normal
+		- Evasion: attackers fragment control messages into several different query chunks so that sensors are not tripped
 	- Social media can be used to issue commands to botnets by uploading certain comments or pictures that are automatically read by compromised machines
 		- This is absolutely normal web traffic to a social network (as long as the org allows them) - what could go wrong?
 		- **Blackgear** does this by posting magnet links for bots to read
@@ -78,6 +84,7 @@
 	- Fragmented queries for evasion purposes
 	- Look at intervals, persistence (if it remains after a reboot of a system), remove known traffic from the equation. Don't bother with protocols - there's too many that beaconing can rely on
 - Mitigation: just don't get hacked ;-P
+	- Use an intercepting proxy at the network edge
 
 ### Peer-to-peer communication IOC's
 
@@ -95,14 +102,20 @@
 ### Rogue device IOC's
 
 - A rogue device is any device on a network that is either unaccounted for (we didn't plug that AP in, so who did?) or unwanted (i.e. a device we wouldn't normally allow)
-- Examples include USB sticks, WiFi adapters and AP's, smartphones, printers, etc.
+- Examples include USB sticks, WiFi adapters and AP's, smartphones, printers, VM's, servers, network taps, etc.
+- An adversary may try to set up a server as a honeypot to harvest network credentials or other data
+- A user might take the cable out of their workstation and plug it to a personal device - which is now a rogue device as it's likely unauthorized if the user does something like this
+- An authorized client device can be used in an unauthorized way (scanning networks, tethering a smartphone to it, SSH'ing into a server) - this should be covered by the AUP
+- Smart devices/IoT can be rogue devices as well
 - Detection and prevention:
-	- Physical - keep your eyes open
-	- Run network mapping regularly (attackers can rely on a lack of this type of monitoring)
+	- Track your assets strictly - anything outside of that list, if found on the corporate network, is likely unauthorized
+	- Physical - keep your eyes open; visual inspection of ports and switches
+	- MAC address reporting from a source device such as a router or a switch - given that we have a management system or an inventory process to capture authorized MAC addresses, the report will show everything that's connected to the network, and this info can be used to track down rogue devices.
+	- Run network mapping and host discovery regularly (attackers can rely on a lack of this type of monitoring)
 	- Wireless monitoring - pretty tricky to hide on this side of things since wireless signals go everywhere in their range
 		- Use specialized tools for finding rogue APs
 		- Use existing APs to find sources of interference (any new device emitting in the same spectrum/channel will cause some interference that can be detected). Fancier solutions from Cisco can even show where sources of interference are located
-	- Traffic sniffing - this requires a baseline, but also some regular monitoring
+	- Traffic flow, packet sniffing - this requires a baseline, but also some regular monitoring
 	- NAC - configured at switch port level so that no devices from outside the company's control can connect in the first place
 	- IDS - analyzes traffic patterns and who's generating traffic, from which VLAN to which destination, and figuring out if a particular source of traffic may be malicious
 	- IP address management - keeping track of all IP addresses in the network. DHCP servers with dynamic allocation necessitate tools that track what addresses have been given out in the last days/weeks. This is especially important for restricted networks
@@ -111,8 +124,14 @@
 
 - Sweeping - checking which hosts are up
 - Scanning/fingerprinting - figuring out what services are running based on open ports
+- Footprinting - attacker or tester gathers information about the target (meaning an org) before attacking it
+	- Fingerprinting - one machine
+	- Footprinting - multiple machines
+- Rogue devices can be involved in this
+- Scanning traffic should come from machines authorized to do so (perhaps a group of administrative workstations used specifically for this) - otherwise it's an IOC
+- A scan does not mean there's gonna be an attack, so always keep cool about it
 - Detection:
-	- IDPS solutions based on known patterns that suggest sweeping/scanning activity, especially from outside the network. Normally this is easy to detect because a lot of IP addresses receive traffic in a short period of time, and all that traffic looks the same, especially when addresses/ports are scanned in a consecutive manner
+	- IDPS solutions based on known patterns that suggest sweeping/scanning activity, especially from outside the network. Normally this is easy to detect because a lot of IP addresses receive traffic in a short period of time, and all that traffic looks the same, especially when addresses/ports are scanned in a consecutive manner; another thing these look out for is a statistical imbalance of SYN, SYN/ACK, and FIN packets
 
 ### Nonstandard port usage IOCs
 
@@ -120,12 +139,19 @@
 - Well-known ports: TCP/UDP 0-1023
 - Registered ports: TCP/UDP 1024-49151
 - Dynamic and private range (anyone can use these): TCP/UDP 49152-65535
+- **Know thy ports! [Here's a cheat sheet](https://packetlife.net/media/library/23/common_ports.pdf)**
 - All assigned by IANA
-- **[List of common ports](https://nmap.org/book/port-scanning.html#most-popular-ports)** - know these!
-- None of the above is set in stone, and any app can technically use any port number. However, clients will connect to 443 for HTTPS because they know that's the port.
-- Frequent usage of the same dynamic port in network traffic is suspicious
+- **[Another list of common ports](https://nmap.org/book/port-scanning.html#most-popular-ports)**
+- None of the above is set in stone, and any app can technically use any port number. However, clients will connect, for instance, to 443 for HTTPS because they know that's the port.
+- Frequent usage of the same **dynamic** port in network traffic is suspicious
 - **Common protocols over non-standard ports** are pretty much an IOC
-- Detection:
+- Other IOC's:
+	- Use of a non-standard port when a well-known or registered port is already established for that protocol
+	- Mismatched port/application traffic where non-standard traffic is communicated over a well-known/registered port
+- Detection/mitigation:
+	- Configure FW's to allow only whiltelisted ports to communicate on ingress/egress interfaces
+	- Configuration documentation should also show which server ports are allowed on any given host type
+	- Configure detection rules to detect mismatched protocol usage over a standard port
 	- Tools for deep packet inspection, up to layer 7, to figure out what type of application is generating/receiving traffic on a specific port
 	- Look for suspicious reverse shell traffic (reverse shells are usually easier to set up because outbound traffic wouldn't be blocked, whereas connecting from the outside would likely be disallowed)
 		- `netcat` 
@@ -140,16 +166,20 @@
 - Usually the goal of a cyber attack
 - You can't always encrypt everything, and if the attacker gains high enough privileges, they can easily decrypt it anyway
 - Data can only be used by apps/services while unencrypted (unless homomorphic encryption is used), so somewhere, at some point, sensitive data will have to be in plaintext
-- So how can we lose data?
+- So how can we lose data? Here are some ways and IOC's:
+	- Spikes in requests to PHP files or other scripts, unusually large HTTP response packets
 	- HTTP/S channels with public storage services (Google Drive, OneDrive, Dropbox) - attacker can either compromise the user account on that service or compromise a workstation and make it upload sensitive files to the attacker's own Google Drive
 		- DLP solutions can prevent this - they inspect outbound traffic for this type of stuff
 	- Web app attacks (SQLi and such) - a lot of data is hidden behind those apps. Any successful attack can potentially give the threat actor access to sensitive data
 		- We must look at web app attacks from the perspective of data loss as well
-	- DNS can be used as a data exfiltration channel! A compromised DNS server can be configured to hide confidential information (in TXT records, for instance), then someone simply requests it. The DNS protocol itself can be used to create an encrypted tunnel
-	- Instant Messaging, P2P, email, FTP - any type of connection, as long as it's allowed within the company, can create a data exfiltration channel
-	- Encrypted tunnels (IPSec, SSL) - the worst one. These are often required for off-site employees as well as customers and partners for remote access, support, assistance, etc. These encrypted connections are a necessity. 
+	- DNS can be used as a data exfiltration channel! A compromised DNS server can be configured to hide confidential information (in TXT/MX/CNAME records, for instance), then someone simply requests it. The DNS protocol itself can be used to create an encrypted tunnel. Requests for records mentioned above that carry a payload are likely an IOC
+	- Overt channels: Instant Messaging, P2P, email, FTP - any type of connection, as long as it's allowed within the company, can create a data exfiltration channel
+	- Encrypted tunnels (SSH, IPSec, SSL) - the worst one. These are often required for off-site employees as well as customers and partners for remote access, support, assistance, etc. These encrypted connections are a necessity. 
 		- Unfortunately, an attacker can use these to steal data upon successful compromise, and there would be no way to inspect that traffic and identify what's leaving the company via those channels
 		- Host-based solutions exist for some inspection as long as sensitive data can be found in cleartext before being sent via encrypted channels
+	- Atypical endpoints involved in tunnels due to their geographic location
+- Remember: just because you've found a C2 channel doesn't mean you've found an exfiltration channel - they can be different!
+- Best mitigation: strong encryption of data at rest and in transit
 
 ### Covert channel IOCs
 
@@ -160,10 +190,12 @@
 	- If it is filtered and inspected, attackers can still come up with some techniques:
 		- Encoding data in protocol headers, using protocols beyond their intended purposes (e.g. hiding it in TXT records of DNS services)
 		- Fragmentation - sending data in multiple sessions, separate channels, in smaller chunks, over a longer period of time. "Low and slow" approach - good luck catching that
-		- Encoding - simply for obfuscation, converting the data to a different charset so that it doesn't match signatures in place
+		- Encoding - simply for obfuscation (using hex for instance), converting the data to a different charset so that it doesn't match signatures in place
 		- Encryption - tools looking for that traffic won't be able to figure it out what it is. Sometimes even a password-protected archive is enough
-		- Steganography and security by obscurity - hiding data within metadata or whitespace in an image or even a text file
+		- Steganography and security by obscurity - hiding data within metadata or whitespace in an image or even a text file. Can circumvent DLP quite easily
 		- Storage and timing channels. One process writes to a location, another one reads from it, no direct communication between the two, sort of like a dead drop. Example: using ping as morse code. NO ONE can detect this. Also a "low and slow" approach that requires a lot of time.
+- Mitigation: 
+	- Advanced IDPS and UEBA tools are the best option, but even those may not be able to detect everything
 
 ---
 
@@ -174,23 +206,36 @@
 
 ### **Malicious processes**
 
+- A process executed without proper authorization from the system owner for the purpose of damaging or compromising the system
 - It helps to have a predefined baseline for these - what do we expect to run and when? How do running services behave?
 - Processes that don't match the baseline may be IOC's
 - Scan running processes for malicious code - DLL's can be loaded in after code injection
 	- This is hard to detect - processes don't give away the presence of a malicious library. We need to look at behaviours
 - Unexpected changes to Windows registry
 - Open files you normally don't see
-- Unexpected network activity coming from processes that normally don't generate any traffic
+- Unexpected network activity coming from processes that normally don't generate any traffic (`notepad.exe` does not normally need to establish a network connection)
 - How do we look for it?
 	- Windows:
-		- Task Manager
-		- Sysinternals Process Explorer
+		- Task Manager/`tasklist`
+		- Sysinternals:
+			- Process Explorer
+			- Process Monitor
+		- PE Explorer
 	- Linux:
-		- `ps`, `top`, `htop`
+		- `ps`, `top`, `htop`, `pstree`
 	- MacOS:
 		- Activity Monitor
 		- All the UNIX stuff
 	- Other devices such as a NAS can run a Linux distro and can also be compromised, so monitoring is necessary
+
+### Memory forensics
+
+- Fileless malware executes from memory without persisting on disk
+- Fileless detection:
+	- Techniques that require analysis of memory contents and process behaviour rather than scanning the system
+	- Memory analysis tools allowing us to reverse-engineer the code used by processes, discover how processes interact with the file system (handles) and registry, examine network connections, retrieve crypto keys, and extract strings
+	- FTK and EnCase include memory analysis modules
+- More about memory forensics in [49](https://github.com/ordsec/cysa-notes/blob/master/49%20Digital%20forensics.md#memory-acquisition)
 
 ### **High resource usage**
 
@@ -200,10 +245,18 @@
 	- **Drive capacity consumption**
 	- Come up with "normal" ranges, monitor for spikes - you never know!
 - When in doubt about a certain process, look it up on https://shouldiblockit.com - a resource that describes behaviours of legitimate and malicious processes
+- Memory overflow
+	- A means of exploiting a vulnerability in an application to execute arbitrary code or to crash the process (or with an ongoing memory leak to crash the system)
+	- Run the code in a sandboxed debugging environment to find the process exploiting a buffer overflow condition
+	- An analyst may identify a buffer overflow attack by a signature created by the exploit code
+- DoS
+	- Shutting down a machine/server, rendering it inaccessible
+	- Causing an application to overrun its memory buffer and crash
+- Tools to look for this stuff: `free`, `top`
 
 ### Abnormal process behaviour
 
-- Any abnormal behaviour in core OS processes can be an indicator of a rootkit or other malware exploiting an OS component (exploits that have to do with DLL's - see 43 under "Code injection")
+- Any abnormal behaviour in core OS processes can be an indicator of a rootkit or other malware exploiting an OS component (exploits that have to do with DLL's - see [43](https://github.com/ordsec/cysa-notes/blob/master/43%20Malware%20analysis.md) under "Code injection")
 - Attack tools injected into running legitimate processes - `meterpreter` can do this by taking over such processes
 - Using names that are very similar to system processes for rogue ones
 - DLL execution via `rundll32.exe` to run bad stuff as services thru `svchost`
@@ -212,7 +265,7 @@
 ### Disk and file system IOC's
 
 - Malware is usually not just a single file on a drive 
-- Fileless malware doesn't get persisted on disk (exists in memory), but it still has some interaction with the FS
+- Fileless malware doesn't get persisted on disk (exists in memory), but it still has some interaction with the FS, and it can leave metadata behind
 	- **Data exfiltration** IOC's - appear after interaction with the FS, with the usage of the following techniques
 		- Creating temporary folders
 		- Masking data as log files
@@ -222,7 +275,17 @@
 		- Unexpected changes in metadata
 		- MITRE ATT&CK has this under Archive Collected Data and Data Staged
 - File system analysis - FS can store much more info than visible files (for instance, metadata, access control lists)
-	- Run `dir /AH` or `ls -la` (Windows and Linux respectively) to show all folders/files, including hidden. `dir /Q` will show who owns each file. 
+	- We can search the file system for keywords quickly, including system areas such as the Recycle Bin and NTFS shadow copy and system volume information
+- FS analysis tools - Windows
+	- `dir` lists folder contents, can take a path as an argument
+	- `dir /A<x>` - filters all file/folder types matching the `x` parameter (e.g. `dir /AH` to see only hidden files/folders) 
+	- `dir /Q` - displays who owns each file
+	- `dir /R` - displays alternate data streams for each file, which comes in handy for uncovering malware that relies on different data streams
+- FS analysis tools - Linux
+	- `lsof` - get a list of all files currently open on the OS, with an option to see all resources a process is currently using
+		- `-u` to specify the user
+	- `df` - retrieves how much disk space is being used by all mounted file systems and how much space is available for each
+	- `du` - enables you to retrieve how much disk space each directory is using based on the specified directory, e.g. `du /var/log`
 - Disk space usage IOCs
 	- Attackers could be storing data for exfiltration
 	- Generating excessive log information (brute force attempts, scanning, etc.)
@@ -254,6 +317,7 @@
 		- Investigate any such activity when it's unexpected
 	- Security policy and access list changes
 		- Monitor the integrity of those very closely. If an attacker can change these lists/policies, the rest of their activity may end up being completely undiscoverable and it won't trigger any alerts
+- SysInternals: AccessChk, AccessEnum - analyze privileges applied to a file or a resource
 
 ### Unauthorized software IOCs
 
@@ -268,6 +332,8 @@
 		- Finding gaps in this data might indicate suspicious behaviour (malware covering its tracks)
 		- Prefetch is disabled by default on SSD
 	- App use info can be extracted from the registry on Windows (can either be opened with `regedit` or examined with forensic tools)
+	- Shimcache: an application usage cache that is stored in the Registry as the key `HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\AppCompatCache\AppCompatCache`
+	- Amcache: an application usage cache that is stored as a hive file at `C:\Windows\appcompat\Programs\Amcache.hve`
 
 ### Unauthorized changes and hardware IOCs
 
@@ -283,11 +349,11 @@
 - Attackers usually do it via **registry changes** 
 	- Antimalware tools can scan the registry for any deviations from an approved template
 	- No timestamp for registry changes provided by `regedit` 
-	- Autorun is a very common method, and there are registry keys responsible for it (`HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run (or RunOnce`, same for `HKCU`)
+	- Autorun is a very common method, and there are registry keys responsible for it (`HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run` (or `RunOnce`, same for `HKCU`)
 	- Services (`HKLM\SYSTEM\CurrentControlSet\Services`) - suspicious entries under this key can indicate that malware is running hidden as a background service, very often masquerading as Windows services such as `lsass`
 	- File associations can be used to trick users into launching malware by changing the app associated with a specific file extension
 		- You expect to open a `.txt` file in Notepad, but something totally different opens it instead 
-		- File extension registry entries are in `HKEY_ CLASSES_ROOT (HKCR)` - merges the file extension entries in `HKLM` and `HKCU\SOFTWARE\Classes`
+		- File extension registry entries are in `HKEY_CLASSES_ROOT (HKCR)` - merges the file extension entries in `HKLM` and `HKCU\SOFTWARE\Classes`
 	- **Unauthorized scheduled tasks** - to run whatever the attacker may want every $N$ minutes/hours/days
 		- Can be easily displayed using Task Scheduler
 		- Get run history to see previous run attempts, when they were made, and whether they were successful
@@ -377,7 +443,7 @@
 - Sometimes very difficult to look for IOCs in these
 - Mobile devices hide stuff really well these days - not just a black rectangle, but also a black box
 - Storage is soldered on board of the device - can't extract it, sometimes can't even access it without 3rd-party tools
-- Bypassing phone security measures (like a screen lock) is very difficult]
+- Bypassing phone security measures (like a screen lock) is very difficult
 - Devices are encrypted by default and have been for a while
 	- JTAG interface may come in useful for reading contents
 - Cloud data

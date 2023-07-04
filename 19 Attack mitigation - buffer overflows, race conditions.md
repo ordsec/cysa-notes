@@ -111,7 +111,7 @@ int main(int argc, char *argv[]) {
 - Use safe functions and programming languages if possible
 - If using unsafe functions, perform checks to make sure incoming input is truncated or simply disallowed if too long
 	- aka boundary checking
-- If using "unsafe" languages like C/C++, which leave memory management in the programmer's hands, remember that with great power comes great responsibility
+- If using "risky" languages like C/C++, which leave memory management in the programmer's hands, remember that with great power comes great responsibility
 	- Be aware of memory usage - at all times
 - **ASLR**
 	- **Address Space Layout Randomization**
@@ -151,7 +151,7 @@ int main(int argc, char *argv[]) {
 
 **Time-of-Check / Time-of-Use**
 
-- When a program tries to modify a resource, but it checks the corresponding memory address and modify what's written there in two different operations
+- When a program tries to modify a resource, but it checks the corresponding memory address and modifies what's written there in two different operations
 - We fail to connect the check and use operations - both should be executed in the same function, otherwise the app's state is misrepresented
 - Leads to corrupted execution, crashes, exploitable vulns
 

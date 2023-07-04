@@ -34,12 +34,13 @@
 - Encrypt them in transit
 - Encrypt them at rest - this is up to the developer as browsers store them in cleartext by default
 - Attributes/headers for further security:
-	- **Secure**: an HTTP header that tells the browser to only ever send cookies over HTTPS
-	- **HttpOnly**: another header that ensures that cookies cannot be accessed by client-side scripts - mostly JS
-	- **SameSite**: requires that the request and the cookie come from the same domain - helps against fake requests forged by attackers
-	- **Expiration**: the longer we store cookies, the higher the risk of compromise. 
+	- **`Secure`**: an HTTP header that tells the browser to only ever send cookies over HTTPS
+	- **`HttpOnly`**: another header that ensures that cookies cannot be accessed by client-side scripts - mostly JS
+	- **`SameSite`**: requires that the request and the cookie come from the same domain - helps against fake requests forged by attackers
+	- **`Expiration`**: the longer we store cookies, the higher the risk of compromise. 
 
 ---
+
 # Session-related attacks
 
 ### Session hijacking
@@ -50,7 +51,7 @@
 	- One common way is to just intercept all session info as part of a MitM attack
 		- Intercepting traffic, repackaging it, sending it to the resource
 	- Compromised browser: less common, just as dangerous
-		- A browser that has been hacked can reveal everything it receives, including passwords and session information
+		- A browser that has been hacked can reveal everything it receives, including passwords and session information (man-in-the-browser)
 	- Predictable session IDs
 		- A bad algorithm
 		- An ID that can be deduced from another ID
@@ -78,7 +79,7 @@
 	- Expiration - make sure logout functionality is there
 		- And log them out occasionally anyway
 		- No one boycotts an app just because they have to log in again
-		- Clear cookies from the webserver
+		- Clear cookies from the web server
 
 ### Cross-site Request Forgery (CSRF)
 
@@ -116,7 +117,7 @@
 		- CAPTCHA
 			- Warn the user they're about to execute a special request
 			- Validating the user is a human
-			- Attacker can't sit there all day and wait for you to visit the web app again and then synchronize their forged request perfectly - this happens programmatically, and there's no way to validate a CAPTCHA that way - it's for humans only!
+			- Attacker can't sit there all day and wait for you to visit the web app again and then synchronize their forged request perfectly; this happens programmatically, and there's no way to validate a CAPTCHA that way - it's for humans only!
 		- Cookie protection
 			- It helps, but it's not enough for anti-CSRF
 			- HttpOnly, Secure, Path, expiration, etc
@@ -133,8 +134,8 @@
 	- Frame busting
 		- `if (top !== self) { self.location = top.location; }`
 		- Forces the page content to be the topmost element, disallowing these overlays
-	- X-Frame-Options header decides if and what type of framed content is acceptable:
-		- `DENY` prevents any site for framing content
+	- `X-Frame-Options` header decides if and what type of framed content is acceptable:
+		- `DENY` prevents any site from framing content
 		- `SAMEORIGIN`: prevents any site except the same page from framing content
 		- `ALLOW-FROM`: permits framing only for certain pages
 
@@ -152,7 +153,7 @@ To mitigate the risk of RCE vulnerabilities, here are some strategies:
 
 2. **Secure Coding Practices:** Developers should follow secure coding practices such as input validation, output encoding, and use of parameterized queries to reduce the risk of RCE vulnerabilities in their code.
 
-3. **Least Privilege Principle:** Systems and applications should run with the least privileges necessary to perform their functions. This can limit the potential impact of an RCE attack.
+3. **Least Privilege Principle:** Systems and applications should run with the least privileges necessary to perform their functions. This can limit the potential impact of an RCE attack. Don't run your web server as `root`!
 
 4. **Firewall and IDS/IPS:** A properly configured firewall and intrusion detection/prevention system can help identify and block RCE attacks.
 

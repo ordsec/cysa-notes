@@ -88,7 +88,7 @@
 	- Authenticate as a user, but if you have an admin login, it has to be a different session
 	- Set privileged sessions to expire more often
 - Implement logout, even if nobody uses it
-	- It has to completely invalidate and destroy all session information on the back end
+	- It has to completely invalidate and destroy all session information on the back end - and this is what should happen just automatically when "expiring" session info
 - Allow multiple logins? How do we handle that? Or should we just invalidate all other sessions once a new one is created?
 - Secure your cookies using `Secure` and `HttpOnly` attributes
 	- **Exam**: know what these do!
@@ -131,9 +131,9 @@
 - Make sure your code always checks whether a user is authorized to perform a certain action
 	- Are they logged in? Does their session exist?
 	- Applies to different services communicating via API
-	- Don't expose all of your API - only what the external service is *authorized* to access
+	- Don't expose all of your API - only what the external service or user is *authorized* to access
 - Keep privilege management separate from app code (the overall idea is separation of concerns) - permissions should be stored someplace else so they're not accessible in the event of compromise
-- Fair securely - if a user tries to do something they're not allowed to do, just give a terse error message and don't give up any info (e.g. "this action is not permitted" rather than "only admins, domain admins, service accounts, and privileged users are allowed to do this")
+- Fail securely - if a user tries to do something they're not allowed to do, just give a terse error message and don't give up any info (e.g. "this action is not permitted" rather than "only admins, domain admins, service accounts, and privileged users are allowed to do this")
 	- Same for machine-to-machine communication - don't expose anything other than what's necessary in your API error messages
 - What if the authorization system doesn't respond? 
 	- Fall back to a restricted set of users with locally defined permissions
@@ -151,7 +151,7 @@
 	- Don't delete (what if there's an important file or evidence of illicit activity) - just disable
 - Coding practices:
 	- No direct system calls - use API's so that unwanted calls can be filtered out programmatically
-	- Avoid race conditions and TOCTOU exploits - use locking mechanism (when a resource is being used, it doesn't allow change from elsewhere, until it's no longer being used)
+	- Avoid race conditions and TOCTOU exploits - use locking mechanisms (when a resource is being used, it doesn't allow change from elsewhere, until it's no longer being used)
 
 ### System security
 
@@ -220,8 +220,8 @@
 
 - Code signing, especially important for compiled code
 	- Making sure that the end user can validate that the app is provided by you and not an impersonator
-- Hash the code, encrypt the has with your private key, user gets the public key and uses it to decrypt and validate the hash
-	- Nobody but the developer has the private key that encrypts the hash, and the public key only ever matches that private key
+- Hash the code, encrypt the hash with your private key, user gets the public key and uses it to decrypt and validate the hash
+	- Nobody but the developer has the private key that encrypts the hash, and the public key only ever matches that private key - non-repudiation
 	- Makes apps tamper-proof
 - Certificates can be attached to code so that the OS can validate the app's origin
 
@@ -281,7 +281,7 @@
 Be able to discuss:
 - Input validation
 - Risk assessment
-- WAF's (see 20 and 41)
+- WAF's (see [20](https://github.com/ordsec/cysa-notes/blob/master/20%20Attack%20mitigation%20-%20integer%20overflow%2C%20web%20app%20attacks.md) and [41](https://github.com/ordsec/cysa-notes/blob/master/41%20Log%20analysis%20and%20continuous%20security%20monitoring.md))
 - Output encoding
 - Communication security
 - Session management

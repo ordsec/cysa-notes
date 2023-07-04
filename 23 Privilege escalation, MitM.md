@@ -25,7 +25,7 @@
 
 - Works within an AD/Kerberos environment (Kerberos uses ticket-based authorization)
 - Can grant Admin permissions in AD
-- On vulnerable versions, dumping AD data store (`NTDS.DIT`) reveals `krbtgt` hashes
+- On vulnerable versions, dumping the AD data store (`NTDS.DIT`) reveals `krbtgt` hashes
 - These hashes can be used to create a "golden ticket" for any user
 - It's a master key for every single resource
 - **Silver ticket**: used to create multiple TGS tickets for a specific service without communicating with a DC
@@ -61,7 +61,7 @@
 ### DNS attacks (against servers)
 
 - Buffer overflows - can have many different consequences
-- DNS amplification - the initial is request disproportionately small compared to the reply, but in order for the attacker to not DoS themselves, they can use a spoofed IP address to perform this
+- DNS amplification - the initial request is disproportionately small compared to the response, but in order for the attacker to not DoS themselves, they can use a spoofed IP address to perform this
 - This IP address can be a different DNS server
 - Mitigation: 
 	- Patching
@@ -92,4 +92,4 @@
 
 ### Exam
 
-Discuss privesc, MitM and ARP poisoning as an example, know attacks against AD/Kerberos (pass the hash, golden ticket) as well as attacks against DNS and rootkits. Know mitigation methodologies for all of these. FIM and TripWire may be asked about as well.
+Discuss privesc, MitM and ARP poisoning as an example, know attacks against AD/Kerberos (pass the hash, golden ticket) as well as rootkits and attacks against DNS. Know mitigation methodologies for all of these. FIM and TripWire may be asked about as well.
