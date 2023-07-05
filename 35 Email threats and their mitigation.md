@@ -8,7 +8,7 @@
 - **Embedded links** are often used as part of a phishing scam because many users don't check where the link leads and just click
 	- The link can easily differ from the text in the email, and it can include all sorts of malicious crap or lead to a malicious site
 	- Email security tools scan for these links and block a lot of emails including them
-	- Others can be recognized via URL analysis - see 29
+	- Others can be recognized via URL analysis - see [29](https://github.com/ordsec/cysa-notes/blob/master/29%20URL%20analysis.md)
 - Subcategories:
 	- Spear phishing - targeted at a specific person or group of people 
 	- Whaling - targeted at high-level management, C-suite, etc.

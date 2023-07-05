@@ -10,7 +10,7 @@
 - Only offers non-credentialed scans
 - Output can be generated as HTML - pretty!
 - Vuln references are provided using OSVDB, which is deprecated - [here's a mapping of OSVDB entries to CVE](https://cve.mitre.org/data/refs/refmap/source-OSVDB.html)
-	- Just Ctrl+F the OSVDB code and it may be in there
+	- Just Ctrl+F/Cmd+F the OSVDB code and it may be in there
 - Can run passive with the `-findonly` flag, which only discovers HTTP/S ports, reports the server header, but doesn't perform a security scan
 - Guess/brute-force values such as subdomain names or directory names using the `-mutate` flag (but there may be better tools for that)
 - Can try and check specifically for some known vulnerabilities with `-Tuning`
@@ -24,7 +24,7 @@
 - Looks for weaknesses (code/SQL injection, XSS, etc.)
 - Can generate reports about what was attempted and what was found
 - Runs as a Docker container
-- Has a web interface, which provides are more intuitive way of configuring a scan
+- Has a web interface, which provides a more intuitive way of configuring a scan
 
 ### Interception proxies
 

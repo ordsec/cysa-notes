@@ -8,34 +8,37 @@
 - It's not meant for us, but we need to look at it...
 - Furthermore, how do we do it for an entire network or segment?
 - We need to know exactly what to capture and analyze
-	- Well, everything of course!
-		- Inline capture (placing your own device in between two hosts on the same network/segment)
-			- It works, but it's hard to implement, it's intrusive, and you have to do it for each cable/connection, meaning it doesn't scale at all
-		- Make a copy of all traffic on the switch
-			- SPAN (Switched Port ANalyzer) for Cisco switches (here's [some documentation from Cisco](https://community.cisco.com/t5/networking-knowledge-base/understanding-span-rspan-and-erspan/ta-p/3144951))
-			- Port mirroring for other vendors
-			- A device that can be configured to take all traffic from one or more **ports**, create a copy of it, and route it to a different port, where packet analysis software is located
-			- Downside: switches must support this type of thing (aka managed switches)
-		- Perform a MitM
-			- Only gonna work if network is not properly secured - and why isn't it?
-			- Just not a desired way
-	- Just a summary, please (for when it's not feasible/possible to capture everything)
-		- Who was talking to who, for how long, how much data was transferred
-		- Like a phone call log - you don't get to hear the actual convo
-		- In networking, this type of summary is called a **flow**
-		- **Network flow**: a sequence of packets that have some parameters in common (like src & dst addresses and ports) - like an overview of a conversation, but only from the standpoint of who spoke to who, not what was said
-		- Lots of different implementations, standards, and naming conventions:
-			- **Netflow**, Flexible Netflow by Cisco
-			- sFlow
-			- J-Flow by Juniper
-			- IPFIX
-			- and others
-		- Lately these standards have become interoperable, so we can grab flow info from different vendors, collect it into the same database, and get a coherent view regardless of how many different vendors' devices that network uses
-		- We need networking devices for this kind of summary, with netflow (meaning the generic term) being implemented on them - most likely on switches
-		- Switches can be configured to look at all the traffic passing through them and upload flow data to a centralized application at regular periods of time
-			- Broken down by top talkers, top destinations and sources, showing how much data was transferred - lots of details and ways to sort it
-			- How much Netflix has the sales department watched in the last month?
-			- Gather it to a centralized console, generate smart reports with stats and security-related information (any data streams in the network that shouldn't be there, such as VMs communicating when they shouldn't or clients trying to access restricted areas on the network or suspicious destinations on the web)
+
+##### Well, everything of course!
+- Inline capture (placing your own device in between two hosts on the same network/segment)
+	- It works, but it's hard to implement, it's intrusive, and you have to do it for each cable/connection, meaning it doesn't scale at all
+- Make a copy of all traffic on the switch
+	- SPAN (Switched Port ANalyzer) for Cisco switches (here's [some documentation from Cisco](https://community.cisco.com/t5/networking-knowledge-base/understanding-span-rspan-and-erspan/ta-p/3144951))
+	- Port mirroring for other vendors
+	- A device that can be configured to take all traffic from one or more **ports**, create a copy of it, and route it to a different port, where packet analysis software is located
+	- Downside: switches must support this type of thing (aka managed switches)
+- Perform a MitM
+	- Only gonna work if network is not properly secured - and why isn't it?
+	- Just not a desired way
+
+##### Just a summary, please 
+- The appropriate solution when it's not feasible/possible to capture everything
+- Who was talking to who, for how long, how much data was transferred
+- Like a phone call log - you don't get to hear the actual convo
+- In networking, this type of "data about traffic" is called a **flow**
+- **Network flow**: a sequence of packets that have some parameters in common (like src & dst addresses and ports) - like an overview of a conversation, but only from the standpoint of who spoke to who, not what was said
+- Lots of different implementations, standards, and naming conventions:
+	- **Netflow**, Flexible Netflow by Cisco
+	- sFlow
+	- J-Flow by Juniper
+	- IPFIX
+	- and others
+- Lately these standards have become interoperable, so we can grab flow info from different vendors, collect it into the same database, and get a coherent view regardless of how many different vendors' devices that network uses
+- We need networking devices for this kind of summary, with netflow (meaning the generic term) being implemented on them - most likely on switches
+- Switches can be configured to look at all the traffic passing through them and upload flow data to a centralized application at regular periods of time
+	- Broken down by top talkers, top destinations and sources, showing how much data was transferred - lots of details and ways to sort it
+	- How much Netflix has the sales department watched in the last month?
+	- Gather it to a centralized console, generate smart reports with stats and security-related information (any data streams in the network that shouldn't be there, such as VMs communicating when they shouldn't or clients trying to access restricted areas on the network or suspicious destinations on the web)
 
 ### Full packet inspection
 
@@ -67,7 +70,7 @@
 	- **NetworkMiner**: live sniffing, PCAP parsing, extracting certificates, extremely useful for network-based forensics
 	- **Suricata**: network IDS, IPS, security monitoring engine. Open-source, tons of functionality, rule-matching, etc. [Full documentation](https://docs.suricata.io/en/suricata-6.0.12/)
 	- **Zeek** (formerly Bro): open-source security monitoring tool, can also work with pcap files, generate log files with info it finds within traffic
-- Great - I can look at the entire traffic and rule the world! Not really, here are some issues:
+- Great - I can look at the entire traffic and rule the world! Not really, here are some caveats:
 	- Massive datasets being generated by traffic captures. On a home network, you can get thousands of packets per second. Imagine an enterprise network, even if it's a small segment.
 		- Filtering out things before capturing is possible but not a good idea - you might miss things, and the entire capture becomes useless
 	- Most of it is encrypted, silly! If you don't have a way of decrypting it, not much analysis can be done

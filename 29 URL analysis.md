@@ -38,12 +38,13 @@ This is a way of getting around static IP/domain blacklists through generating c
 - Secure recursive DNS resolver
 - Maybe the algorithm the hacker is using isn't that good? 
 	- A "bad" algorithm has predictable patterns and sequences, resulting in too many domain names that basically can't be pronounced
-	- DG may not sync that quickly, producing a lot of NXDOMAIN errors (non-existing domains) - but this isn't foolproof because this is generally a common error
+	- DG may not sync that quickly, producing a lot of `NXDOMAIN` errors (non-existing domains) - but this isn't foolproof because this is generally a common error
 - Blacklisting dynamic DNS domains with a bad reputation
 - Whitelisting allowed domains - but good luck with that because you probably can't find and list every specific destination for this list without making a few "enemies" in your company
 	- Some friendly folks at Cisco went into all the trouble so you don't have to, and created a free list of 1 million most popular "good" domains, known as the Cisco Umbrella 1 Million. It can be downloaded as a CSV or as a plugin for security orchestrators
 	- Also there are DNS reputation check services such as [IPVoid](https://www.ipvoid.com/dns-reputation/) or [Cisco Talos IP & Domain Reputation Center](https://talosintelligence.com/reputation_center/)
 	- Can whitelisting and reputation checks be automated? Hmmm...
+- More generally, threat hunting is super important here. Look for these things proactively, assume compromise.
 
 ---
 
@@ -58,7 +59,7 @@ This is a way of getting around static IP/domain blacklists through generating c
 - Domain
 - Resource path (after the TLD and the slash)
 - Resource information via a query string (after the `?`)
-- Sometimes a URL can contain a `#`, which points a browser to a specific location on the page. These can also be abused
+- Sometimes a URL can contain a `#`, which points the browser to a specific location on the page. These can also be abused
 
 ![url-components-1.png](img/url-components-1.png)
 
@@ -80,7 +81,7 @@ This is a way of getting around static IP/domain blacklists through generating c
 
 - Client-server, ports 80 and 443 (for HTTPS)
 - Request-based: HTTP method, resource (URL), headers, body
-- Methods: GET, POST, PUT, DELETE, HEAD - last three are not needed for most purposes
+- Common methods: GET, POST, PUT, DELETE, HEAD - but the last three are not needed for most purposes
 - The response, when successful, displays a web page, which is basically a set of files that come back from the server
 - Behind the response, there is a response code: 200 for OK, 3xx for redirects and other related things, 4xx for client errors (the famous 404), 5xx for server errors
 - **Know this basic stuff for the exam**

@@ -46,14 +46,14 @@
 ##### Things to consider in the virtual environment:
 - VM escape attacks, which target hypervisor software and try to take control of other VMs
 	- One compromised VM means others can get infected, and the attacker can pivot and take control over more of the infrastructure
-	- Much worse implications when the VM is in the cloud - most of those infrastructures are shared between 10s of other customers
+	- Much worse implications when the VM is in the cloud - most of those infrastructures are shared between many other customers
 	- At the moment, though, they're very hard to perform and are more of a theoretical risk, but 0-days may be lurking!
 - East-west traffic between VMs - they have to communicate with each other while running on the same host machine
 	- Most likely communicating over the internal switch (traffic doesn't physically leave that server)
 	- But what if you had a bigger infrastructure with more servers and your VMs needed to talk to each other in between physical servers?
 		- This traffic will pass through the physical network, which means physical networking devices, which means all risks that apply to the physical data center apply here as well
 		- Secure this traffic!
-- Attacks are much less visible in a VM environment - a lot of times it'll happen within the same physical host, so we won't be able to see malicious traffic travelling across the network
+- Attacks are much less visible in a VM environment - a lot of times it'll happen within the same physical host, so we won't be able to see malicious traffic traveling across the network
 - May not be able to enforce the same security policies as for the physical network
 - Misconfiguring security policies in a virtual environment is a recipe for disaster
 	- Apply the least privilege/least function paradigm to communication between VMs, isolate different types of VMs on different hosts
@@ -89,7 +89,7 @@
 	- Intelligence, routing policies, protocols, security policies, etc. all in a centralized place
 	- Reconfiguring the network almost instantly whenever changes need to be made (rerouting traffic, adding a device) - in a few commands
 	- Self-repairing infrastructure with just the right amount of redundancy
-	- More in 45
+	- More in [45](https://github.com/ordsec/cysa-notes/blob/master/45%20Cloud%20automation%20and%20threats.md)
 - Generally, SDN is traditional network device intelligence brought to the network-wide level via a control plane - and with more control/intelligence/overview/automation on top of that
 - Anything built in a cloud environment is software-defined since it's always a virtual infrastructure
 - The risk of human error is greatly reduced

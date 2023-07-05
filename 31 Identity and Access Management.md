@@ -55,15 +55,16 @@
 
 ### Two big problems
 
-- These are the two problematic account types:
-	- `root`/Administrator users - lots of privileges (you could even say it's too many)
-		- Keep an eye on these, log everything they do
-		- Great power, great responsibility
-	- Shared accounts
-		- Whether it's guest accounts used by more than 1 person or a "let me just use your employee account real quick" type of situation
-		- No identity to speak of, accounting is not possible - no way to tie a specific person to actions performed with a shared account
-			- Loss of non-repudiation as well
-		- Just don't allow these
+- There are two problematic account types
+- `root`/Administrator users - lots of privileges (you could even say it's too many)
+	- Keep an eye on these, log everything they do
+	- Great power, great responsibility
+	- Admins must have regular-privilege accounts that are to be used whenever high privileges are not needed - i.e. "partial" least privilege
+- Shared accounts
+	- Whether it's guest accounts used by more than 1 person or a "let me just use your employee account real quick" type of situation
+	- No identity to speak of, accounting is not possible - no way to tie a specific person to actions performed with a shared account
+		- Loss of non-repudiation as well
+	- Just don't allow these; AUP should state that all individual accounts must only be used by the one person they're assigned for
 
 ### Password policies
 
@@ -103,6 +104,10 @@
 		- Where you are
 		- Behaviour analysis (happens after authentication as well) - is the user breaking their routine in any way? Time of day, location, device, user-agent, etc.
 	- A password and a PIN is not MFA - make sure you choose from different factor categories
+- **Password vaults** such as 1Password or LastPass
+	- One master password to remember (and it'd better be a really good one), ways to restore involving MFA
+	- Everything else is locked up in the vault
+	- Generate passwords of any length and complexity
 
 ### Privilege management and access control
 
@@ -131,7 +136,7 @@
 	- Examples: SELinux, AppArmor implement MAC on Linux systems
 - **RBAC - Role-Based Access Control**
 	- Discretion from DAC is transferred to the admins
-	- Privileges are assigned for groups based on users' roles
+	- Privileges are assigned for groups based on users' roles/jobs
 	- Members of a group automatically inherit all appropriate privileges
 	- Group memberships are governed by admins and cannot be changed by regular users
 	- Example: group membership on Windows/Linux
@@ -155,8 +160,8 @@
 	- Can be queried (it's a AAA database after all)
 	- Protocols are usually RADIUS, TACACS+, LDAP, Kerberos
 		- TACACS+ has encryption flaws, should only be used on isolated networks
-		- RADIUS uses UDP (1645 or 1812 for authentication, 1646 or 1813 for accounting), can use TCP as well; uses client-server model; inherent password security isn't very strong, which is why IPSec or EAP are implemented in addition
-		- TACACS+ and RADIUS are designed to operate on trusted networks, Kerberos is for untrusted (but has its own weaknesses - see 23)
+		- RADIUS uses UDP (1645 or 1812 for authentication, 1646 or 1813 for accounting), can use TCP as well; uses the client-server model; inherent password security isn't very strong, which is why IPSec or EAP are implemented in addition
+		- TACACS+ and RADIUS are designed to operate on trusted networks, Kerberos is for untrusted (but has its own weaknesses - see [23](https://github.com/ordsec/cysa-notes/blob/master/23%20Privilege%20escalation%2C%20MitM.md))
 		- Do not use NTLM in Windows domains - it's outdated and insecure!
 	- LDAP hierarchy: DC (Domain Controller) -> OU's (Organizational Units such as HR, sales, security) -> CN's (Common Names, sub-entries under each OU)
 	- Others include OpenLDAP, Apache DS, OpenDS, RedHat Directory, OpenDJ
@@ -172,7 +177,7 @@
 - **Federation**
 	- Extending authentication across more than one company/service via SSO
 	- Can interconnect IAM services
-	- Used when you have people in one org that needs access to another org's systems, and they need to do it using the same account
+	- Used when you have people in one org that need access to another org's systems, and they need to do it using the same account
 		- Using a Windows domain account to access a cloud app
 	- **Federation == trust**
 	- The trust is mutual between your own domain and an outside service
@@ -213,7 +218,7 @@
 		- Defines four grant types: authorization code, implicit, resource owner password credentials, client credentials
 		- These are used for different scenarios
 - **OpenID Connect**
-	- An extention of OAuth2 that adds an identity layer to the authorization framework
+	- An extension of OAuth2 that adds an identity layer to the authorization framework
 	- This is about **authentication**
 	- A client can verify the identity of the user and obtain basic profile info
 	- User logs into an IdP (such as Google or FB) using OpenID Connect
@@ -245,7 +250,6 @@
 - Those claims are used to make authorization decisions
 - Can be used with Azure AD
 - [More here](https://learn.microsoft.com/en-us/windows-server/identity/ad-fs/technical-reference/understanding-key-ad-fs-concepts)
-
 
 ### IAM monitoring and logging
 
@@ -326,7 +330,7 @@ Be able to discuss all aspects of IAM: account types, password policies, federat
 - Admin account attacks
 - Pass-the-ticket (impersonation of legitimate users)
 - Pass-the-key (reusing a secret key to acquire tickets)
-- See 23 for the rest
+- See [23](https://github.com/ordsec/cysa-notes/blob/master/23%20Privilege%20escalation%2C%20MitM.md) for the rest
 
 ##### RADIUS
 - Session replay of server responses 

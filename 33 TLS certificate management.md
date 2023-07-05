@@ -60,7 +60,7 @@
 	- `openssl` on Linux
 	- `certutil` on Windows
 
-##### From Sybex: cert management
+##### From Sybex: cert management pro tips
 - Keep all related secrets such as private keys very secure
 - Come up with a cert-specific IR plan in case secrets get compromised: who to contact, how to replace secrets ASAP
 

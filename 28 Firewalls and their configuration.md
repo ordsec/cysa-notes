@@ -13,7 +13,7 @@
 	- These are mostly a thing of the past as they don't scale well at all
 - **Stateful**: keeps track of connections by looking at the source and destination port
 	- A host on our LAN can access a resource on the internet, which means that traffic from LAN to the internet is allowed
-	- But whenever a connection is initiated, the stateful firewall creates another rule and permit traffic **from** the resource being accessed **to** the host trying to access it, with the specific IP and port on that host
+	- But whenever a connection is initiated, the stateful firewall creates another rule and permits traffic **from** the resource being accessed **to** the host trying to access it, with the specific IP and port on that host
 	- The stateful firewall knows the connection is initiated from the "inside" while the response comes from the "outside" and acts accordingly
 	- In other words, the stateful FW keeps track of the whole context of every connection
 	- Dynamic rules - but how does the FW know whether the response will come back and how long it'll take to do so? How long should the rule last for?
@@ -46,7 +46,7 @@
 - The placement of the firewall really matters
 - Think of it in terms of zones:
 	- Internal (your LAN)
-	- Outside (interwebs, where all the bad things live)
+	- Outside (the interwebs, where all the bad things live)
 	- The DMZ (where everything publicly accessible and exposed to the interwebs resides: your web/email/DNS servers, VPN endpoints)
 		- This allows the admin to create custom security rules to provide limited external access to only those parts of the network that need that external access
 - There are two types of designs for this setup:
@@ -59,7 +59,7 @@
 
 - The first one uses one FW through which the traffic to the DMZ and the intranet are routed
 - The second one puts a firewall between the internet and the DMZ and another one between the DMZ and the intranet
-	- But the trick about it is that these two firewalls will likely still be implemented as a single **physical** device - otherwise it becomes quite inefficient
+	- But the trick is that these two firewalls will likely still be implemented as a single **physical** device - otherwise it becomes quite inefficient
 	- The two separate firewalls inside are logical, meaning they're virtual contexts/domains, or virtualized instances of the same FW software running on the same box
 		- Yes, we can have multiple FW's running on the same device as VM's or containers, and FW instances can be dedicated to specific services: one for VPN, one for managing DMZ policies, etc. It's pretty awesome!
 
@@ -111,7 +111,7 @@
 - Other applications for egress filtering:
 	- Also blocks access to malware sites (though it's not the only place we can do it)
 	- Block domains/IP addresses based on reputation, which can rely on live feeds with this info
-	- Block restricted locations on the internet that shouldn't be accessed from work (Phub, file sharing services, the local dispensary's website)
+	- Block restricted locations on the internet that shouldn't be accessed from work (P\*\*\*hub, file sharing services, the local dispensary's website)
 	- Block outside access from high-security networks - for any subnets/hosts that should not be facing the interwebs
 		- ICS/SCADA airgapping
 

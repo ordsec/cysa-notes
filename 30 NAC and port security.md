@@ -47,7 +47,7 @@
 1. Supplicant (aka user) sends valid credentials to the authenticator using EAPoL
 2. The authenticator doesn't know if the creds are valid or not since the switch doesn't store that data - so it forwards the creds to the AAA server via RADIUS, encrypted
 3. The AAA server validates the creds against whatever directory service is in use: LDAP, AD/Kerberos, etc.
-4. AAA server replies back to the authenticator via RADIUS and say whether the user is allowed in or not
+4. AAA server replies back to the authenticator via RADIUS and says whether the user is allowed in or not
 5. If everything is okay, the user is informed by the authenticator that authentication is successful
 	- And if it isn't, the port is configured to continue blocking all traffic from the user. Additional attempts may or may not be allowed, depending on configuration. EAPoL is still allowed, but in accordance with the overall security policy (which contains account lockouts and so forth)
 6. All traffic is now permitted through a specific port on the switch to which the supplicant is connected to. The port is configured with a customized access list according to the result of the authentication process. The user is recognized and given access to whatever resources they are authorized to use (a certain VLAN, for instance), and a specific security policy is applied to that user, all through that port.
@@ -75,7 +75,7 @@
 - Remediation options for when checks are not passed:
 	- Deny access, allow further attempts (how many? how soon?)
 	- Place a partially failed device in a restricted VLAN (a "quarantine zone") for remediation procedures such as updates
-- Never a bad idea to run these checks regularly and not trust a device that has once authenticated for too long
+- Never a bad idea to run these checks regularly and not trust a device that has once authenticated for too long (trust but verify)
 - Example: [Cisco AnyConnect](https://www.cisco.com/c/en/us/td/docs/security/vpn_client/anyconnect/anyconnect40/administration/guide/b_AnyConnect_Administrator_Guide_4-0/configure-posture.html) - assesses an endpoint's security posture compliance after a user is validated
 
 --- 
@@ -118,7 +118,7 @@ For instance, a NAC solution might prevent a device with outdated antivirus soft
 
 #### Example scenario
 
-Acme, Inc. allows its visiting business partners from CompTIA to use an available Ethernet port in their conference room to establish a VPN connection back to the CompTIA internal network. The CompTIA employees should obtain internet access from the *Ethernet port* in the conference room, but nowhere else in the building. Additionally, if any of the Acme employees use the same Ethernet port in the conference room, they should access Acme's secure internal network. Which of the following technologies would allow you to configure this port and support both requirements?
+Acme, Inc. allows its visiting business partners from CompTIA to use an available Ethernet port in their conference room to establish a VPN connection back to the CompTIA internal network. The CompTIA employees should obtain internet access from the *Ethernet port* in the conference room, but nowhere else in the building. Additionally, if any of the Acme employees use the same Ethernet port in the conference room, they should access Acme's secure internal network. Which of the following technologies would allow you to configure this port and support both requirements? (NAC, ACL, a couple others.)
 
 NAC is the answer here, not ACL. NAC uses a set of protocols to define and implement a policy that describes how to secure access to network nodes whenever a device initially attempts to access the network. NAC can utilize an automatic remediation process by fixing non-compliant hosts before allowing network access. Network Access Control can control access to a network with policies, including pre-admission endpoint security policy checks and post-admission controls over where users and devices can go on a network and what they can do. In this scenario, implementing NAC can identify which machines are known and trusted Acme assets and provide them with access to the secure internal network. NAC could also determine unknown machines (assumed to be those of CompTIA employees) and provide them with direct internet access only by placing them onto a guest network or VLAN.
 

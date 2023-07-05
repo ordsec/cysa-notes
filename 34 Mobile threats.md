@@ -3,7 +3,7 @@
 
 ### BYOD
 
-- Bring Your Own Disaster
+- Bring Your Own Disaster (or Device, whichever you prefer)
 - The trend we need to be the most concerned about
 - Employees using their personal mobile devices to connect to the network at their workplace
 - Fundamental idea: allowing employees to work the way they're used to, with devices they feel the most comfortable with
@@ -27,7 +27,7 @@
 - Samsung Knox is a good solution for managing the security of Samsung phones within an org
 - SEAndroid is similar to SELinux - it's an implementation of Mandatory Access Control for mobile
 - Downside:
-	- More open environment, so updates, including security updates, are the responsibility of vendors who provide model-specific implementations of Android. This means that updates main not be rolled out in a timely fashion. 
+	- More open environment, so updates, including security updates, are the responsibility of vendors who provide model-specific implementations of Android. This means that updates may not be rolled out in a timely fashion. 
 
 ##### iOS
 - Closed environment, no 3rd-party app stores, everything is controlled solely by Apple
