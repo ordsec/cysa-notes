@@ -57,13 +57,14 @@
 	- **Dictionary** - searching using keywords or regex patterns for anything that constitutes sensitive data
 	- **Policy templates** - basically do everything for us because they're pre-defined in most DLP solutions to match certain regulations if they apply to the org (HIPAA, GDPR, PCI DSS, the whole lot). Load the policy, it already knows everything, so it'll just go ahead and scan your file storage
 	- **EDM (Exact Data Matching)** - scanning outgoing data and/or feeds for exact values: SSN's, phone numbers, CC numbers, contact information, really any PII. This doesn't get uploaded to the DLP solution, but instead this data is hashed one way
-		- In other words, an SSN or a passport number should not be allowed to leave the company; that info can simply be hashed, and whenever the DLP solution finds one of those bits of data in the outgoing stream, it can calculate a hash from it and compared with a stored hash
+		- In other words, an SSN or a passport number should not be allowed to leave the company; that info can simply be hashed, and whenever the DLP solution finds one of those bits of data in the outgoing stream, it can calculate a hash from it and compare it with a stored hash
 		- This way sensitive data isn't even shared with the DLP solution, which makes sense for regulatory requirements
 	- **Document matching** - providing samples of specific documents that shouldn't leak: what an invoice looks like, or a CV, or an agreement
 		- Works better for humans than for machines - the latter might fail if there are minor changes that make these documents unrecognizable; deviations can even include file formats
 - EDM is the most difficult one to implement of all these methods, but it generates the smallest number of false positives
 - DLP solutions are not only technical controls against insider threats, but also against human error and unintentional data leakage
 	- Anyone can attach a wrong file to an email by mistake, or attach the right file but send it to the wrong person
+	- Works best in combination with user training
 
 ---
 

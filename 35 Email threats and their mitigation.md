@@ -1,4 +1,4 @@
-- Email may be one single communication channel, but it's so widespread that there are a lot of attack vectors, which we need to know how to deal with
+  - Email may be one single communication channel, but it's so widespread that there are a lot of attack vectors, which we need to know how to deal with
 
 ### Phishing
 
@@ -154,3 +154,17 @@ The second digit encodes responses in specific categories:
 ### Exam
 
 Understand what phishing is and how it can be dealt with. Discuss the importance of email headers, be familiar with secure email technologies: SPF, DKIM, DMARC on the integrity side, S/MIME on the confidentiality side. Know the importance of email logging and be familiar with SMTP response codes.
+
+---
+
+### Bonus: GPT explains SPF, DKIM, and DMARC like you're 5
+
+Sure, let's use a post office analogy:
+
+1. **SPF (Sender Policy Framework)**: Imagine you're sending a letter. SPF is like the return address you put on the envelope. The post office (in this case, the receiving email server) looks at your return address and checks whether you're allowed to send mail from this address. If you're not, the post office can decide not to deliver your letter.
+
+2. **DKIM (DomainKeys Identified Mail)**: Now, imagine you have a special stamp only you own. You stamp your letter with it before sending. The post office, upon receiving the letter, sees the stamp, recognizes it's truly yours, and says, "This is indeed a letter from you, as you're the only one who can use this special stamp."
+
+3. **DMARC (Domain-based Message Authentication, Reporting, and Conformance)**: This is like you telling the post office, "Hey, I'm only going to send letters with my return address and my special stamp. If you get a letter from me without these, or if something seems odd, let me know and don't deliver it."
+
+So in summary, SPF checks if you're allowed to send mail from your address. DKIM checks if the mail was really sent by you and hasn't been tampered with. DMARC tells the post office (receiving email servers) what to do if the SPF and DKIM checks fail.
