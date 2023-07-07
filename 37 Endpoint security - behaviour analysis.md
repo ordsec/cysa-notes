@@ -81,7 +81,7 @@
 		- Only one `lsass.exe` - handles authentication and authorization
 		- Only one `winlogon.exe` - handles GUI for each user session, so if there's more than one, then someone else is connected to your machine
 		- `userinit.exe` should not persist - it launches `explorer.exe` and then exits, so if it keeps running, there's something fishy
-			- `explorer.exe` is the file manager but also the parents process for any other processes manually launched by the current user
+			- `explorer.exe` is the file manager but also the parent process for any other processes manually launched by the current user
 - Use [Sysinternals](https://learn.microsoft.com/en-us/sysinternals/) for all sorts of Windows monitoring
 	- ProcMon is great for exploring the process tree, also tracks FS and registry changes
 - As far as Linux:
@@ -125,7 +125,7 @@ Compare and contrast signature and behaviour analysis, know solutions for each, 
 	- Whitelisting/blacklisting
 	- Antimalware, antivirus solutions
 	- Patch management, vuln assessment
-	- System hardening - see 12
+	- System hardening - see [12](https://github.com/ordsec/cysa-notes/blob/master/12%20Defense%20in%20depth%2C%20security%20baselines%2C%20architecture%20analysis.md)
 	- Encryption either for files/folders or FDE
 	- File integrity monitoring
 	- Logging

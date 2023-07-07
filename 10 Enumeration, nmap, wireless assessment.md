@@ -95,6 +95,12 @@ Aircrack-ng is a suite of tools for auditing wireless networks. The primary role
 - **Key Cracking:** Can crack WEP and WPA-PSK keys once enough data packets have been captured.
 - **Testing Network Security:** Can test the strength of your wireless network by attempting to break its encryption using various algorithms.
 
+Components:
+- `airmon-ng` - enable/disable monitor mode on a wifi card
+- `airodump-ng` - capture wireless frames, info about the access point based on its MAC addresses, identify clients based on their MAC addresses
+- `aireplay-ng` - inject frames, perform attacks to obtain authentication creds for an AP; deauthenticates a device from a wireless network, try to connect when re-authentication is caught
+- `aircrack-ng` - extra the authentication key, try to retrieve the plaintext version of the password for the network
+
 ##### Reaver
 
 Reaver is a tool specifically designed to exploit a vulnerability in the WPS (Wi-Fi Protected Setup) feature found in many routers. With this tool, you can:

@@ -168,3 +168,31 @@ Sure, let's use a post office analogy:
 3. **DMARC (Domain-based Message Authentication, Reporting, and Conformance)**: This is like you telling the post office, "Hey, I'm only going to send letters with my return address and my special stamp. If you get a letter from me without these, or if something seems odd, let me know and don't deliver it."
 
 So in summary, SPF checks if you're allowed to send mail from your address. DKIM checks if the mail was really sent by you and hasn't been tampered with. DMARC tells the post office (receiving email servers) what to do if the SPF and DKIM checks fail.
+
+### GPT lists important SMTP codes to know
+
+Simple Mail Transfer Protocol (SMTP) response codes are three-digit replies that mail servers use to communicate with each other, or with email clients, regarding the status of email transmission. 
+
+Some important SMTP codes that you should be familiar with include:
+
+1. **2xx (Success Responses):**
+   - 200 (non-standard success response): The request was successfully completed.
+   - 250 (Requested mail action okay, completed): The email was successfully sent to all recipients.
+   - 251 (User not local; will forward): The recipient is not local to the server, but the server will attempt to deliver the email anyway.
+
+2. **3xx (Redirection Responses):**
+   - 354 (Start mail input): The server is ready to receive the body of the message. 
+   - 334 (Server challenge): Used in SMTP service extension for authentication. 
+
+3. **4xx (Transient Negative Completion Responses):**
+   - 421 (Service not available, closing transmission channel): This may be a reply to any command if the service knows it must shut down.
+   - 450 (Requested mail action not taken: mailbox unavailable): Often due to mailbox being full or temporarily unavailable.
+   - 451 (Requested action aborted: error in processing): The action was aborted due to a server error.
+
+4. **5xx (Permanent Negative Completion Responses):**
+   - 500 (Syntax error, command unrecognized): The server couldn't recognize the command.
+   - 501 (Syntax error in parameters or arguments): The server couldn't interpret the parameters or arguments of the command.
+   - 550 (Requested action not taken: mailbox unavailable): This is often due to the mailbox being unavailable (e.g., mailbox not found, no access, or command rejected for policy reasons).
+   - 554 (Transaction failed): This often implies a permanent failure.
+
+Understanding SMTP response codes is critical in troubleshooting email delivery issues, as they provide insight into what happened when the email was attempted to be delivered.
